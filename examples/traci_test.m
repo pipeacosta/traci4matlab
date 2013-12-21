@@ -1,0 +1,19 @@
+%% SUMO TRACI TEST
+% THIS FILE AIMS TO TEST THE TRACI PROTOCOL FOR SUMO.
+
+%   Copyright 2013 Universidad Nacional de Colombia,
+%   Politecnico Jaime Isaza Cadavid.
+%   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
+%   $Id$
+
+clear all
+close all
+clc
+
+%% MAIN
+% HERE, WE START THE SUMO SIMULATOR AND INITIALIZR IT, ACCORDING TO
+% THE EXAMPLE FOUND IN http://sumo-sim.org/userdoc/Tutorials/TraCI4Traffic_Lights.html
+!sumo-gui -c C:/sumo-svn/docs/tutorial/traci_tls/data/cross.sumocfg &
+traci.init();
+traci.close();
+fprintf('SUMO version: %s\nTraCI version: %d\n',sumoVersion,traciVersion);
