@@ -11,7 +11,7 @@ close all
 clc
 
 %% MAIN
-% HERE, WE START THE SUMO SIMULATOR AND INITIALIZR IT, ACCORDING TO
+% HERE, WE START THE SUMO SIMULATOR AND INITIALIZE IT, ACCORDING TO
 % THE EXAMPLE FOUND IN http://sumo-sim.org/userdoc/Tutorials/TraCI4Traffic_Lights.html
 !sumo-gui -c C:/sumo-svn/docs/tutorial/traci_tls/data/cross.sumocfg &
 traci.init();
