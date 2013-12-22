@@ -1,10 +1,10 @@
 %% TRACI TEST 2
-%   this m-file shows how to use Traci4Matlab.
-%   this example is generated based on the SUMO traci tutorial, see
+%   This m-file shows how to use Traci4Matlab.
+%   This example uses the files of the SUMO traci tutorial, see
 %   http://sumo-sim.org/userdoc/Tutorials/TraCI4Traffic_Lights.html. If you
-%   want to test a TraCI command, just uncomment it. The commands are
-%   organized by SUMO object type, some of them need to be in the main loop
-%   of the script.
+%   want to test a TraCI command, just uncomment it. The commands are 
+%   organized by SUMO object type, some of them needed to be included in 
+%   the main loop of the script.
 
 %   Copyright 2013 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
@@ -20,12 +20,10 @@ clc
 % whose phases are changed if vehicles pass through an induction loop.
 
 % Initialize SUMO from the system. note that it is initialized in graphical
-% interface mode. The windows path have to be configured properly to
-% recognize the sumo command. In this case, the 0.19.0 version of SUMO is 
-% used. The SUMO configuration file must include the --remote-port option 
-% set to 8813 to start sumo as a server. You have to modify the path to the
-% SUMO configuration file according to your installation.
-!sumo-gui -c C:\sumo-0.19.0\docs\tutorial\traci_tls\data\cross.sumocfg &
+% interface mode. You have to set the SUMO_HOME environment variable
+% pointing to your SUMO root directory and modify the windows path to 
+% include the %SUMO_HOME%/bin directory.
+system(['sumo-gui -c ' getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg&']);
 
 import traci.constants
 
