@@ -13,7 +13,7 @@ clc
 %% MAIN
 % HERE, WE START THE SUMO SIMULATOR AND INITIALIZE IT, ACCORDING TO
 % THE EXAMPLE FOUND IN http://sumo-sim.org/userdoc/Tutorials/TraCI4Traffic_Lights.html
-!sumo-gui -c C:/sumo-svn/docs/tutorial/traci_tls/data/cross.sumocfg &
-traci.init();
+system(['sumo-gui -c ' getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg&']);
+[traciVersion sumoVersion] = traci.init();
 traci.close();
 fprintf('SUMO version: %s\nTraCI version: %d\n',sumoVersion,traciVersion);

@@ -9,7 +9,8 @@ clc
 
 import traci.constants
 
-!sumo-gui -c C:\sumo-0.19.0\docs\tutorial\traci_tls\data\cross.sumocfg &
+system(['sumo-gui -c ' getenv('SUMO_HOME')...
+	'\docs\tutorial\traci_tls\data\cross.sumocfg&']);
 
 % Define the traffic light phases in a sumo-readable way
 NSGREEN = 'GrGr';
