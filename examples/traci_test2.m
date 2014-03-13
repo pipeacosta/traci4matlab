@@ -60,11 +60,11 @@ steps = zeros(1,800);
 %% GETIDLIST COMMANDS
 
 
-areal_dets = traci.areal.getIDList();
-fprintf('IDs of the areal detectors in the simulation:\n')
-for i=1:length(areal_dets)
-    fprintf('%s\n',areal_dets{i});
-end
+% areal_dets = traci.areal.getIDList();
+% fprintf('IDs of the areal detectors in the simulation:\n')
+% for i=1:length(areal_dets)
+%     fprintf('%s\n',areal_dets{i});
+% end
 % edges = traci.edge.getIDList();
 % fprintf('IDs of the edges in the simulation:\n')
 % for i=1:length(edges)
@@ -123,7 +123,7 @@ end
 % LOADED IN THE NETWORK, IN THE MAIN LOOP
 
 
-%% SUBSCIBE COMMANDS
+%% SUBSCIBE COMMANDS: Note that you have to create the required detectors in the cross.det.xml file
 
 % traci.edge.subscribe('1i');
 % traci.gui.subscribe('View #0');
@@ -137,7 +137,7 @@ traci.inductionloop.subscribe('0');
 % tlsCurrentPhaseHandle = traci.trafficlights.getSubscriptionResults('0');
 % tlsCurrentPhase = tlsCurrentPhaseHandle(constants.TL_RED_YELLOW_GREEN_STATE);
 % fprintf('Fase del semaforo: %s\n', tlsCurrentPhase)
-% traci.vehicle.subscribe('5');
+% traci.vehicle.subscribe(testVehicle);
 % traci.vehicletype.subscribe('typeWE');
 % maxSpeedWEHandle = traci.vehicletype.getSubscriptionResults('typeWE');
 % maxSpeedWE = maxSpeedWEHandle(constants.VAR_MAXSPEED);
@@ -191,7 +191,7 @@ traci.inductionloop.subscribe('0');
 % traci.lane.subscribeContext('4i_0',constants.CMD_GET_LANE_VARIABLE,50);
 % traci.poi.subscribeContext('mypoi',constants.CMD_GET_VEHICLE_VARIABLE,50);
 % traci.polygon.subscribeContext('mypolygon',constants.CMD_GET_POLYGON_VARIABLE,30);
-% traci.vehicle.subscribeContext('5',constants.CMD_GET_VEHICLE_VARIABLE,30);
+% traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,30);
 
 WElaneoccupancy = zeros(1,800);
 NSlaneoccupancy = zeros(1,800);
@@ -298,14 +298,14 @@ for i=1:length(steps)
     %     fprintf('%s\n',vehicles{j});
     % end
     
-    % Subscribe to the vehicle with ID '5' when it is loaded in the
-    % network
-    % if ismember('5',vehicles)
-    %     vehicle5Handle = traci.vehicle.getSubscriptionResults('5');
-    %     vehicle5 = {vehicle5Handle(constants.VAR_ROAD_ID) vehicle5Handle(constants.VAR_LANEPOSITION)};
+    % Subscribe to the vehicle with the id contained in the variable "testVehicle" 
+	% when it is loaded in the network
+    % if ismember(testVehicle,vehicles)
+    %     testVehicleHandle = traci.vehicle.getSubscriptionResults(testVehicle);
+    %     testVehicleHandle = {testVehicleHandle(constants.VAR_ROAD_ID) testVehicleHandle(constants.VAR_LANEPOSITION)};
     % end
     
-    %% GETSUBSCRIPTIONRESULTS COMMANDS
+    %% GETSUBSCRIPTIONRESULTS COMMANDS: Note that you have to create the required detectors in the cross.det.xml file
     
     % occupancyEdge1Handle = traci.edge.getSubscriptionResults('1i');
     % WElaneoccupancy(i) = occupancyEdge1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
@@ -347,9 +347,9 @@ for i=1:length(steps)
     % laneContextSubscriptionResults = traci.lane.getContextSubscriptionResults('4i_0');
     % poiContextSubscriptionResults = traci.poi.getContextSubscriptionResults('mypoi');
     % polygonContextSubscriptionResults = traci.polygon.getContextSubscriptionResults('mypolygon');
-    % vehicleContextSubscriptionResults = traci.vehicle.getContextSubscriptionResults('5');
+    % vehicleContextSubscriptionResults = traci.vehicle.getContextSubscriptionResults(testVehicle);
     
-	%% AREAL DETECTOR COMMANDS
+	%% AREAL DETECTOR COMMANDS: Note that you have to create the detector in the cross.det.xml file
  	% arealDetectorIDCount = traci.areal.getIDCount();
  	% fprintf('Number of areal detectors in the simulation: %d\n',arealDetectorIDCount);
 	
@@ -469,7 +469,7 @@ for i=1:length(steps)
     % lane1i0HalringNumber = traci.lane.getLastStepHaltingNumber('1i_0')
     % lane1i0VehicleIDs = traci.lane.getLastStepVehicleIDs('1i_0')
     
-    %% MULTIENTRY=EXIT COMMANDS
+    %% MULTIENTRY=EXIT COMMANDS: Note that you have to create the detector in the cross.det.xml file
     
     % muiVehicleNumber = traci.multientryexit.getLastStepVehicleNumber('e3_0_1i')
     % muiMeanSpeed = traci.multientryexit.getLastStepMeanSpeed('e3_0_1i')
@@ -484,8 +484,8 @@ for i=1:length(steps)
     % loadedIDList = traci.simulation.getLoadedIDList();
     % departedNumber = traci.simulation.getDepartedNumber()
     % departedIDList = traci.simulation.getDepartedIDList();
-    % if ismember('5',departedIDList)
-    %     traci.vehicle.moveTo('5','1i_0',20);
+    % if ismember(testVehicle,departedIDList)
+    %     traci.vehicle.moveTo(testVehicle,'1i_0',20);
     % end
     % arrivedNumber = traci.simulation.getArrivedNumber()
     % arrivedIDList = traci.simulation.getArrivedIDList()
@@ -520,42 +520,42 @@ for i=1:length(steps)
     
     %% VEHICLE GET COMMANDS
     
-    % vehSpeed = traci.vehicle.getSpeed('5')
-    % vehSpeedWOTraci = traci.vehicle.getSpeedWithoutTraCI('5')
-    % vehPosition = traci.vehicle.getPosition('5')
-    % vehAngle = traci.vehicle.getAngle('5')
-    % vehRoadID = traci.vehicle.getRoadID('5')
-    % vehLaneID = traci.vehicle.getLaneID('5')
-    % vehLaneIndex = traci.vehicle.getLaneIndex('5')
-    % vehTypeID = traci.vehicle.getTypeID('5')
-    % vehRouteID = traci.vehicle.getRouteID('5')
-    % vehRoute = traci.vehicle.getRoute('5')
-    % vehLanePos = traci.vehicle.getLanePosition('5')
-    % vehColor = traci.vehicle.getColor('5')
-    % vehCO2Emission = traci.vehicle.getCO2Emission('5')
-    % vehCOEmission = traci.vehicle.getCOEmission('5')
-    % vehPmxEmission = traci.vehicle.getPMxEmission('5')
-    % vehNOxEmission = traci.vehicle.getNOxEmission('5')
-    % vehFuelConsumption = traci.vehicle.getFuelConsumption('5')
-    % vehAdaptedTraveltime = traci.vehicle.getAdaptedTraveltime('5',10,'1i')
-    % vehEffort = traci.vehicle.getEffort('5',10,'1i')
-    % vehValidRoute = traci.vehicle.isRouteValid('5')
-    % vehSignals = traci.vehicle.getSignals('5')
-    % vehMaxSpeed = traci.vehicle.getMaxSpeed('5')
-    % vehClass = traci.vehicle.getVehicleClass('5')
-    % vehSpeedFactor = traci.vehicle.getSpeedFactor('5')
-    % vehSpeedDeviation = traci.vehicle.getSpeedDeviation('5')
-    % vehEmissionClass = traci.vehicle.getEmissionClass('5')
-    % vehWidth = traci.vehicle.getWidth('5')
-    % vehMinGap = traci.vehicle.getMinGap('5')
-    % vehShapeClass = traci.vehicle.getShapeClass('5')
-    % vehAccel = traci.vehicle.getAccel('5')
-    % vehDecel = traci.vehicle.getDecel('5')
-    % vehImperfection = traci.vehicle.getImperfection('5')
-    % vehTau = traci.vehicle.getTau('5')
-    % vehBestLanes = traci.vehicle.getBestLanes('5')
-    % vehDrivingDistance = traci.vehicle.getDrivingDistance('5','2o',30)
-    % vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D('5',620,510)
+    % vehSpeed = traci.vehicle.getSpeed(testVehicle)
+    % vehSpeedWOTraci = traci.vehicle.getSpeedWithoutTraCI(testVehicle)
+    % vehPosition = traci.vehicle.getPosition(testVehicle)
+    % vehAngle = traci.vehicle.getAngle(testVehicle)
+    % vehRoadID = traci.vehicle.getRoadID(testVehicle)
+    % vehLaneID = traci.vehicle.getLaneID(testVehicle)
+    % vehLaneIndex = traci.vehicle.getLaneIndex(testVehicle)
+    % vehTypeID = traci.vehicle.getTypeID(testVehicle)
+    % vehRouteID = traci.vehicle.getRouteID(testVehicle)
+    % vehRoute = traci.vehicle.getRoute(testVehicle)
+    % vehLanePos = traci.vehicle.getLanePosition(testVehicle)
+    % vehColor = traci.vehicle.getColor(testVehicle)
+    % vehCO2Emission = traci.vehicle.getCO2Emission(testVehicle)
+    % vehCOEmission = traci.vehicle.getCOEmission(testVehicle)
+    % vehPmxEmission = traci.vehicle.getPMxEmission(testVehicle)
+    % vehNOxEmission = traci.vehicle.getNOxEmission(testVehicle)
+    % vehFuelConsumption = traci.vehicle.getFuelConsumption(testVehicle)
+    % vehAdaptedTraveltime = traci.vehicle.getAdaptedTraveltime(testVehicle,10,'1i')
+    % vehEffort = traci.vehicle.getEffort(testVehicle,10,'1i')
+    % vehValidRoute = traci.vehicle.isRouteValid(testVehicle)
+    % vehSignals = traci.vehicle.getSignals(testVehicle)
+    % vehMaxSpeed = traci.vehicle.getMaxSpeed(testVehicle)
+    % vehClass = traci.vehicle.getVehicleClass(testVehicle)
+    % vehSpeedFactor = traci.vehicle.getSpeedFactor(testVehicle)
+    % vehSpeedDeviation = traci.vehicle.getSpeedDeviation(testVehicle)
+    % vehEmissionClass = traci.vehicle.getEmissionClass(testVehicle)
+    % vehWidth = traci.vehicle.getWidth(testVehicle)
+    % vehMinGap = traci.vehicle.getMinGap(testVehicle)
+    % vehShapeClass = traci.vehicle.getShapeClass(testVehicle)
+    % vehAccel = traci.vehicle.getAccel(testVehicle)
+    % vehDecel = traci.vehicle.getDecel(testVehicle)
+    % vehImperfection = traci.vehicle.getImperfection(testVehicle)
+    % vehTau = traci.vehicle.getTau(testVehicle)
+    % vehBestLanes = traci.vehicle.getBestLanes(testVehicle)
+    % vehDrivingDistance = traci.vehicle.getDrivingDistance(testVehicle,'2o',30)
+    % vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D(testVehicle,620,510)
       
     
     % Change the phase of the traffic light if a vehicle passed through the
