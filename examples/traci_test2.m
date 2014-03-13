@@ -23,7 +23,19 @@ clc
 % interface mode. You have to set the SUMO_HOME environment variable
 % pointing to your SUMO root directory and modify the windows path to 
 % include the %SUMO_HOME%/bin directory.
+
+
 system(['sumo-gui -c ' getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg&']);
+
+
+% To test sine vehicle commands, we have to check wether the sumo 0.20.0
+% version is installed, because in that version the prefix of the vehicle
+% names has changed.
+if isempty(strfind(getenv('SUMO_HOME'),'sumo-0.20.0'))
+	testVehicle = '10';
+else
+	testVehicle = 'right_10';
+end
 
 import traci.constants
 
@@ -47,6 +59,12 @@ steps = zeros(1,800);
 
 %% GETIDLIST COMMANDS
 
+
+areal_dets = traci.areal.getIDList();
+fprintf('IDs of the areal detectors in the simulation:\n')
+for i=1:length(areal_dets)
+    fprintf('%s\n',areal_dets{i});
+end
 % edges = traci.edge.getIDList();
 % fprintf('IDs of the edges in the simulation:\n')
 % for i=1:length(edges)
@@ -187,7 +205,7 @@ traci.gui.setZoom('View #0', 1000);
 traci.gui.setOffset('View #0',  523.7211,  525.9342);
 traci.gui.setSchema('View #0',  'real world');
 % traci.gui.setBoundary('View #0', 386.95, 485.88, 651.64, 589.01);
-traci.gui.trackVehicle('View #0', '10');
+traci.gui.trackVehicle('View #0', testVehicle);
 
 %% LANE SET COMMANDS
 % traci.lane.setAllowed('1i_0',{'typeWE'});
@@ -200,32 +218,32 @@ traci.gui.trackVehicle('View #0', '10');
 % routeUpEdges = traci.route.getEdges('up')
 
 %% VEHICLE SET COMMANDS
-% traci.vehicle.setMaxSpeed('5',5);
-% traci.vehicle.setStop('5','1i',50,0,40000);
-% traci.vehicle.changeLane('5',0,40000);
-% traci.vehicle.slowDown('5',1,180000);
-% traci.vehicle.changeTarget('5','2o');
-% traci.vehicle.setRouteID('5','down');
-% traci.vehicle.setRoute('5',{'51o' '1i' '2o'});
-% traci.vehicle.setAdaptedTraveltime('5',10000,50000,'1i',15000);
-% traci.vehicle.setEffort('5',10000,50000,'1i',12.454);
-% traci.vehicle.rerouteTraveltime('5');
-% traci.vehicle.rerouteEffort('5');
-% traci.vehicle.setSignals('5',2);
-traci.vehicle.setSpeed('10',5);
-traci.vehicle.setColor('10',[0 0 255 0]);
-traci.vehicle.setLength('10',10);
-% traci.vehicle.setVehicleClass('5','unknown');
-% traci.vehicle.setSpeedFactor('5',0.6);
-% traci.vehicle.setSpeedDeviation('5',0.02);
-% traci.vehicle.setEmissionClass('5','unknown');
-% traci.vehicle.setWidth('5',3);
-traci.vehicle.setMinGap('10',10);
-% traci.vehicle.setShapeClass('5','');
-traci.vehicle.setAccel('10',2);
-traci.vehicle.setDecel('10',2);
-traci.vehicle.setImperfection('10',1);
-traci.vehicle.setTau('10',1);
+% traci.vehicle.setMaxSpeed(testVehicle,5);
+% traci.vehicle.setStop(testVehicle,'1i',50,0,40000);
+% traci.vehicle.changeLane(testVehicle,0,40000);
+% traci.vehicle.slowDown(testVehicle,1,180000);
+% traci.vehicle.changeTarget(testVehicle,'2o');
+% traci.vehicle.setRouteID(testVehicle,'down');
+% traci.vehicle.setRoute(testVehicle,{'51o' '1i' '2o'});
+% traci.vehicle.setAdaptedTraveltime(testVehicle,10000,50000,'1i',15000);
+% traci.vehicle.setEffort(testVehicle,10000,50000,'1i',12.454);
+% traci.vehicle.rerouteTraveltime(testVehicle);
+% traci.vehicle.rerouteEffort(testVehicle);
+% traci.vehicle.setSignals(testVehicle,2);
+traci.vehicle.setSpeed(testVehicle,5);
+traci.vehicle.setColor(testVehicle,[0 0 255 0]);
+traci.vehicle.setLength(testVehicle,10);
+% traci.vehicle.setVehicleClass(testVehicle,'unknown');
+% traci.vehicle.setSpeedFactor(testVehicle,0.6);
+% traci.vehicle.setSpeedDeviation(testVehicle,0.02);
+% traci.vehicle.setEmissionClass(testVehicle,'unknown');
+% traci.vehicle.setWidth(testVehicle,3);
+traci.vehicle.setMinGap(testVehicle,10);
+% traci.vehicle.setShapeClass(testVehicle,'');
+traci.vehicle.setAccel(testVehicle,2);
+traci.vehicle.setDecel(testVehicle,2);
+traci.vehicle.setImperfection(testVehicle,1);
+traci.vehicle.setTau(testVehicle,1);
 % traci.vehicle.add('myvehicle','down');
 % traci.vehicle.remove('myvehicle');
 % traci.gui.trackVehicle('View #0', 'myvehicle');
@@ -331,6 +349,23 @@ for i=1:length(steps)
     % polygonContextSubscriptionResults = traci.polygon.getContextSubscriptionResults('mypolygon');
     % vehicleContextSubscriptionResults = traci.vehicle.getContextSubscriptionResults('5');
     
+	%% AREAL DETECTOR COMMANDS
+ 	% arealDetectorIDCount = traci.areal.getIDCount();
+ 	% fprintf('Number of areal detectors in the simulation: %d\n',arealDetectorIDCount);
+	
+	% JamLengthVehicle = traci.areal.getJamLengthVehicle('0');
+	% fprintf('Jam lenght in vehicles in the areal detector 0: %d\n',JamLengthVehicle);
+	
+	% JamLengthMeters = traci.areal.getJamLengthMeters('0');
+	% fprintf('Jam lenght in meters in the areal detector 0: %d\n',JamLengthMeters);
+	
+	% vehicleMeanSpeedAreal0 = traci.areal.getLastStepMeanSpeed('0');
+    % fprintf('Average speed in the areal detector 0: %d\n',lastStepMeanSpeed);
+	
+	% vehicleOccupancyAreal0 = traci.areal.getLastStepOccupancy('0');
+    % fprintf('Occupancy in the areal detector 0 1i: %d\n',vehicleOccupancyAreal0);
+	
+
     %% EDGE COMMANDS
     
     % edgeIDCount = traci.edge.getIDCount();

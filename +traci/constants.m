@@ -56,18 +56,31 @@ classdef constants
 		CMD_SUBSCRIBE_INDUCTIONLOOP_VARIABLE = '0xd0'
 		% response: subscribe induction loop (e1) variable
 		RESPONSE_SUBSCRIBE_INDUCTIONLOOP_VARIABLE = '0xe0'
-
-		% command: subscribe areal detector (e3) context
+		
+		% command: subscribe areal detector (e2) context
+		CMD_SUBSCRIBE_AREAL_DETECTOR_CONTEXT = '0x8D'
+		% response: subscribe areal detector (e2) context
+		RESPONSE_SUBSCRIBE_AREAL_DETECTOR_CONTEXT = '0x9D'
+		% command: get areal detector (e2) variable
+		CMD_GET_AREAL_DETECTOR_VARIABLE = '0x8E'
+		% response: get areal detector (e2) variable
+		RESPONSE_GET_AREAL_DETECTOR_VARIABLE = '0x9E'
+		% command: subscribe areal detector (e2) variable
+		CMD_SUBSCRIBE_AREAL_DETECTOR_VARIABLE = '0x8F'
+		% response: subscribe areal detector (e2) variable
+		RESPONSE_SUBSCRIBE_AREAL_DETECTOR_VARIABLE = '0x9F'
+		
+		% command: subscribe multi-entry/multi-exit detector (e3) context
 		CMD_SUBSCRIBE_MULTI_ENTRY_EXIT_DETECTOR_CONTEXT = '0x81'
-		% response: subscribe areal detector (e3) context
+		% response: subscribe multi-entry/multi-exit detector (e3) context
 		RESPONSE_SUBSCRIBE_MULTI_ENTRY_EXIT_DETECTOR_CONTEXT = '0x91'
 		% command: get multi-entry/multi-exit detector (e3) variable
 		CMD_GET_MULTI_ENTRY_EXIT_DETECTOR_VARIABLE = '0xa1'
-		% response: get areal detector (e3) variable
+		% response: get multi-entry/multi-exit detector (e3) variable
 		RESPONSE_GET_MULTI_ENTRY_EXIT_DETECTOR_VARIABLE = '0xb1'
 		% command: subscribe multi-entry/multi-exit detector (e3) variable
 		CMD_SUBSCRIBE_MULTI_ENTRY_EXIT_DETECTOR_VARIABLE = '0xd1'
-		% response: subscribe areal detector (e3) variable
+		% response: subscribe multi-entry/multi-exit detector (e3) variable
 		RESPONSE_SUBSCRIBE_MULTI_ENTRY_EXIT_DETECTOR_VARIABLE = '0xe1'
 
 		% command: subscribe traffic lights context
@@ -373,7 +386,12 @@ classdef constants
 
 		% entry times
 		LAST_STEP_VEHICLE_DATA = '0x17'
-
+		
+		% last step jam length in vehicles
+		JAM_LENGTH_VEHICLE = '0x18'
+		
+		% last step jam length in meters
+		JAM_LENGTH_METERS = '0x19'
 
 		% traffic light states, encoded as rRgGyYoO tuple (get: traffic lights)
 		TL_RED_YELLOW_GREEN_STATE = '0x20'
