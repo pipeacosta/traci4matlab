@@ -10,10 +10,10 @@ function contextSubscriptionResults = getContextSubscriptionResults(detID)
 %   It is not possible to retrieve older subscription results than the ones
 %   from the last time step.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2014 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getContextSubscriptionResults.m 2 2013-12-21 21:39:57Z aacosta $
+%   $Id$
 
 global arealSubscriptionResults
 if isempty(arealSubscriptionResults)
