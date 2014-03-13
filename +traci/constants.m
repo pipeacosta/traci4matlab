@@ -1,7 +1,7 @@
 classdef constants
     %The SUMO hexadecimal constants.
     
-    %   Copyright 2013 Universidad Nacional de Colombia,
+    %   Copyright 2014 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 	%   $Id$
