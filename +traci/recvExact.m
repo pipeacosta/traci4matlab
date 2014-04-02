@@ -13,6 +13,16 @@ recvlength = [];
 
 % Receive the total length of the response
 while length(recvlength) < 1
+	
+% 	We tried to address the issue that arises when the user closes
+%	the SUMO GUI without closing the connection from the client through
+%	this workaround. Unfortunately, it leads to an incredibly high
+%	slowdown.
+% 	connClosed = strcmp(system('netstat | findstr 8813'),'');
+% 	if connClosed
+% 		result = [];
+% 		break
+% 	end
 	t = fread(connections(''),1 - length(recvlength),'int32');
 	if isempty(t)
 		result = [];
