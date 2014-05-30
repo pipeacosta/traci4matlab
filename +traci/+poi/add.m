@@ -28,9 +28,9 @@ typeInteger = sscanf(constants.TYPE_INTEGER,'%x');
 position2D = sscanf(constants.POSITION_2D,'%x');
 traci.beginMessage(constants.CMD_SET_POI_VARIABLE, constants.ADD, poiID,...
  1+4 + 1+4+length(poiType) + 1+1+1+1+1 + 1+4 + 1+8+8);
-message.string = [message.string uint8(typeCompound) fliplr(typecast(int32(4),'uint8'))];
-message.string = [message.string uint8(typeString) fliplr(typecast(int32(length(poiType)),'uint8')) uint8(poiType)];
+message.string = [message.string uint8(typeCompound) traci.packInt32(4)];
+message.string = [message.string uint8(typeString) traci.packInt32(length(poiType)) uint8(poiType)];
 message.string = [message.string uint8([typeColor color])];
-message.string = [message.string uint8(typeInteger) fliplr(typecast(int32(layer),'uint8'))];
-message.string = [message.string uint8(position2D) fliplr(typecast([x y],'uint8'))];
+message.string = [message.string uint8(typeInteger) traci.packInt32(layer)];
+message.string = [message.string uint8(position2D) traci.packInt64([x y])];
 traci.sendExact();

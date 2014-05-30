@@ -7,12 +7,12 @@ function result = recvExact()
 %   $Id$
 
 global connections
-warning('off','instrument:fread:unsuccessfulRead');
 
-recvlength = [];
+% recvlength = [];
+% connections('').BytesAvailable
 
 % Receive the total length of the response
-while length(recvlength) < 1
+% while length(recvlength) < 1
 	
 % 	We tried to address the issue that arises when the user closes
 %	the SUMO GUI without closing the connection from the client through
@@ -23,25 +23,30 @@ while length(recvlength) < 1
 % 		result = [];
 % 		break
 % 	end
-	t = fread(connections(''),1 - length(recvlength),'int32');
-	if isempty(t)
-		result = [];
-		return
-	end
-	recvlength = [recvlength t];
-end
-recvlength = recvlength - 4;
+% 	t = connections('').readInt();
+% 	if isempty(t)
+% 		result = [];
+% 		return
+% 	end
+% 	recvlength = [recvlength t];
+% end
+
+activeConnection = connections('');
+recvLength = activeConnection.dis.readInt() - 4;
 
 % Receive the response
-result = [];
-while length(result) < recvlength
-	t = fread(connections(''),recvlength-length(result),'uint8');
-	if isempty(t)
-		result = [];
-		return
-	end
-	result = [result t];
-end
+
+result = typecast(activeConnection.dataReader.readBuffer(recvLength),'uint8');
+
+% while length(result) < recvlength
+% 	t = fread(connections(''),recvlength-length(result),'uint8');
+% % 	flushinput(connections(''));
+% 	if isempty(t)
+% 		result = [];
+% 		return
+% 	end
+% 	result = [result t];
+% end
 
 % Construct the traci.Storage object containing the result
 result = traci.Storage(uint8(result'));

@@ -15,5 +15,5 @@ global message
 traci.beginMessage(constants.CMD_SET_VEHICLE_VARIABLE, constants.CMD_REROUTE_EFFORT, vehID,...
     1+4);
 message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
-    fliplr(typecast(int32(0),'uint8'))];
+    traci.packInt32(0)];
 traci.sendExact();

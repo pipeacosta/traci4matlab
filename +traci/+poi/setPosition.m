@@ -10,6 +10,5 @@ function setPosition(poiID, x, y)
 import traci.constants
 global message
 traci.beginMessage(constants.CMD_SET_POI_VARIABLE, constants.VAR_POSITION, poiID, 1+8+8);
-message.string = [message.string uint8(sscanf(constants.POSITION_2D,'%x')) fliplr(...
-    typecast([y x],'uint8'))];
+message.string = [message.string uint8(sscanf(constants.POSITION_2D,'%x')) traci.packInt64([y x])];
 traci.sendExact();

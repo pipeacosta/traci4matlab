@@ -25,6 +25,11 @@ function [traciVersion sumoVersion] = init(varargin)
 %   $Id$
 
 import traci.constants
+
+% Add the DataReader class
+[pathstr,~,~] = fileparts(which('traci.init'));
+javaaddpath([pathstr '\..\traci4matlab.jar']);
+
 global connections
 
 % Parse the input
@@ -44,7 +49,7 @@ label = p.Results.label;
 % Create the tcp object
 if isempty(connections)
     connections = containers.Map();
-    connections(label) = tcpip(host,port,'timeout',inf);
+    connections(label) = traci.Socket();
     connections('') = connections(label);
 end
 
@@ -52,7 +57,7 @@ end
 err = [];
 for i=1:numRetries
     try
-        fopen(connections(label));
+        connections(label).connect(host, port);
     break
     catch err
         pause(i)

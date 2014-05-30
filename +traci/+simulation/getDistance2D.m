@@ -37,10 +37,10 @@ end
 traci.beginMessage(constants.CMD_GET_SIM_VARIABLE, constants.DISTANCE_REQUEST,...
     '', 1+4 + 1+8+8 + 1+8+8 + 1);
 message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
-    fliplr(typecast(int32(3),'uint8'))];
+    traci.packInt32(3)];
 message.string = [message.string uint8(posType) ...
-    fliplr(typecast([y1 x1],'uint8'))];
+    traci.packInt64([y1 x1])];
 message.string = [message.string uint8(posType) ...
-    fliplr(typecast([y2 x2],'uint8')) uint8(distType)];
+    traci.packInt64([y2 x2]) uint8(distType)];
 result = traci.checkResult(constants.CMD_GET_SIM_VARIABLE, constants.DISTANCE_REQUEST, '');
 distance2D = result.readDouble();

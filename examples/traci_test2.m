@@ -24,8 +24,10 @@ clc
 % pointing to your SUMO root directory and modify the windows path to 
 % include the %SUMO_HOME%/bin directory.
 
-
-system(['sumo-gui -c ' getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg&']);
+try
+	system(['sumo-gui -c ' getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg&']);
+catch err
+end
 
 
 % To test sine vehicle commands, we have to check wether the sumo 0.20.0
@@ -54,7 +56,8 @@ WEYELLOW = 'ryry';
 PROGRAM = {WEYELLOW,WEYELLOW,WEYELLOW,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSYELLOW,NSYELLOW,WEGREEN};
 
 programPointer = length(PROGRAM);
-steps = zeros(1,800);
+step = 0;
+% steps = zeros(1,800);
 
 
 %% GETIDLIST COMMANDS
@@ -127,7 +130,7 @@ steps = zeros(1,800);
 
 % traci.edge.subscribe('1i');
 % traci.gui.subscribe('View #0');
-traci.inductionloop.subscribe('0');
+% traci.inductionloop.subscribe('0');
 % traci.junction.subscribe('0');
 % traci.lane.subscribe('1i_0');
 % traci.multientryexit.subscribe('e3_0_1i');
@@ -136,7 +139,7 @@ traci.inductionloop.subscribe('0');
 % traci.trafficlights.subscribe('0',{constants.TL_RED_YELLOW_GREEN_STATE});
 % tlsCurrentPhaseHandle = traci.trafficlights.getSubscriptionResults('0');
 % tlsCurrentPhase = tlsCurrentPhaseHandle(constants.TL_RED_YELLOW_GREEN_STATE);
-% fprintf('Fase del semaforo: %s\n', tlsCurrentPhase)
+% fprintf('Traffic lights phase: %s\n', tlsCurrentPhase)
 % traci.vehicle.subscribe(testVehicle);
 % traci.vehicletype.subscribe('typeWE');
 % maxSpeedWEHandle = traci.vehicletype.getSubscriptionResults('typeWE');
@@ -158,8 +161,8 @@ traci.inductionloop.subscribe('0');
 % traci.poi.setPosition('mypoi', 550, 580);
 % poiposition = traci.poi.getPosition('mypoi')
 % traci.poi.setColor('mypoi', [255 255 255 0]);
-% traci.poi.remove('mypoi', 1);
-
+% % traci.poi.remove('mypoi', 1);
+% 
 % traci.polygon.add('mypolygon', {[440,440],[440,450],[450,440],[450,450]},...
 %     [0 255 255 0], false, '', 1);
 % traci.polygon.add('my2ndpolygon', {[400,400],[400,420],[430,420],[430,400],[400,400]},...
@@ -180,7 +183,7 @@ traci.inductionloop.subscribe('0');
 
 
 %% CONTEXT SUBSCRIPTIONS
-% It's worth noting that, accordong to
+% It's worth noting that, according to
 % http://sumo-sim.org/userdoc/TraCI/Object_Context_Subscription.html, only
 % the following SUMO objects are supported: inductive loops, lanes,
 % vehicles, points-of-interest, polygons, junctions, edges.
@@ -191,25 +194,25 @@ traci.inductionloop.subscribe('0');
 % traci.lane.subscribeContext('4i_0',constants.CMD_GET_LANE_VARIABLE,50);
 % traci.poi.subscribeContext('mypoi',constants.CMD_GET_VEHICLE_VARIABLE,50);
 % traci.polygon.subscribeContext('mypolygon',constants.CMD_GET_POLYGON_VARIABLE,30);
-% traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,30);
-
-WElaneoccupancy = zeros(1,800);
-NSlaneoccupancy = zeros(1,800);
+% traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,10);
+% 
+% WElaneoccupancy = zeros(1,800);
+% NSlaneoccupancy = zeros(1,800);
 
 % getminexectednumber returns the number of expected vehicles to leave the
 % network, which will be the condition to execute the simulation.
 % MinExpectedNumber = traci.simulation.getMinExpectedNumber();
 
 %% GUI SET COMMANDS
-traci.gui.setZoom('View #0', 1000);
-traci.gui.setOffset('View #0',  523.7211,  525.9342);
-traci.gui.setSchema('View #0',  'real world');
+% traci.gui.setZoom('View #0', 1000);
+% traci.gui.setOffset('View #0',  523.7211,  525.9342);
+% traci.gui.setSchema('View #0',  'real world');
 % traci.gui.setBoundary('View #0', 386.95, 485.88, 651.64, 589.01);
-traci.gui.trackVehicle('View #0', testVehicle);
+% traci.gui.trackVehicle('View #0', testVehicle);
 
 %% LANE SET COMMANDS
-% traci.lane.setAllowed('1i_0',{'typeWE'});
-% traci.lane.setDisallowed('1i_0',{'typeWE'});
+% traci.lane.setAllowed('1i_0',{'unknown'});
+% traci.lane.setDisallowed('1i_0',{'unknown'});
 % traci.lane.setMaxSpeed('1i_0',5);
 % traci.lane.setLength('1i_0',450);
 
@@ -226,28 +229,28 @@ traci.gui.trackVehicle('View #0', testVehicle);
 % traci.vehicle.setRouteID(testVehicle,'down');
 % traci.vehicle.setRoute(testVehicle,{'51o' '1i' '2o'});
 % traci.vehicle.setAdaptedTraveltime(testVehicle,10000,50000,'1i',15000);
-% traci.vehicle.setEffort(testVehicle,10000,50000,'1i',12.454);
-% traci.vehicle.rerouteTraveltime(testVehicle);
-% traci.vehicle.rerouteEffort(testVehicle);
+% % traci.vehicle.setEffort(testVehicle,10000,50000,'1i',0.125); %Not online
+% % traci.vehicle.rerouteTraveltime(testVehicle); %Not online
+% % traci.vehicle.rerouteEffort(testVehicle); %Not online
 % traci.vehicle.setSignals(testVehicle,2);
-traci.vehicle.setSpeed(testVehicle,5);
-traci.vehicle.setColor(testVehicle,[0 0 255 0]);
-traci.vehicle.setLength(testVehicle,10);
+% traci.vehicle.setSpeed(testVehicle,5);
+% traci.vehicle.setColor(testVehicle,[0 0 255 0]);
+% traci.vehicle.setLength(testVehicle,10);
 % traci.vehicle.setVehicleClass(testVehicle,'unknown');
 % traci.vehicle.setSpeedFactor(testVehicle,0.6);
-% traci.vehicle.setSpeedDeviation(testVehicle,0.02);
+% % traci.vehicle.setSpeedDeviation(testVehicle,5); %Not online
 % traci.vehicle.setEmissionClass(testVehicle,'unknown');
 % traci.vehicle.setWidth(testVehicle,3);
-traci.vehicle.setMinGap(testVehicle,10);
+% traci.vehicle.setMinGap(testVehicle,10);
 % traci.vehicle.setShapeClass(testVehicle,'');
-traci.vehicle.setAccel(testVehicle,2);
-traci.vehicle.setDecel(testVehicle,2);
-traci.vehicle.setImperfection(testVehicle,1);
-traci.vehicle.setTau(testVehicle,1);
+% traci.vehicle.setAccel(testVehicle,2);
+% traci.vehicle.setDecel(testVehicle,2);
+% traci.vehicle.setImperfection(testVehicle,1);
+% traci.vehicle.setTau(testVehicle,1);
 % traci.vehicle.add('myvehicle','down');
 % traci.vehicle.remove('myvehicle');
 % traci.gui.trackVehicle('View #0', 'myvehicle');
-% traci.vehicle.moveToVTD('10','2o',0,608,509);
+% traci.vehicle.moveToVTD('right_10','2o',0,608,509);
 
 %% VEHICLE TYPE COMMANDS
 
@@ -264,8 +267,8 @@ traci.vehicle.setTau(testVehicle,1);
 % typeShapeClass = traci.vehicletype.getShapeClass('typeWE')
 % typeMinGap = traci.vehicletype.getShapeClass('typeWE')
 % typeWidth = traci.vehicletype.getWidth('typeWE')
-% typeColor = traci.vehicletype.getColor('typeWE
-
+% typeColor = traci.vehicletype.getColor('typeWE')
+% 
 % traci.vehicletype.setLength('typeWE',8);
 % traci.vehicletype.setMaxSpeed('typeWE',10);
 % traci.vehicletype.setVehicleClass('typeWE','passenger');
@@ -281,15 +284,15 @@ traci.vehicle.setTau(testVehicle,1);
 % traci.vehicletype.setTau('typeWE',0.1);
 % traci.vehicletype.setColor('typeWE',[255 255 255 0]);
 
-for i=1:length(steps)
-    
+%for i=1:length(steps)
+while traci.simulation.getMinExpectedNumber()>0
     % Perform a simulation step (one second)
     traci.simulationStep();
     programPointer = min(programPointer+1, length(PROGRAM));
     
     % Get the number of vehicles that passed through the induction loop in
     % the last simulation step
-    % no = traci.inductionloop.getLastStepVehicleNumber('0');
+    no = traci.inductionloop.getLastStepVehicleNumber('0');
     
     % SHOW THE VEHICLES IDS INSIDE THE NETWORK
     % vehicles = traci.vehicle.getIDList();
@@ -310,9 +313,9 @@ for i=1:length(steps)
     % occupancyEdge1Handle = traci.edge.getSubscriptionResults('1i');
     % WElaneoccupancy(i) = occupancyEdge1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
     % offsethandle = traci.gui.getSubscriptionResults('View #0');
-    % offset = offsethandle(traci.VAR_VIEW_OFFSET);
-    indloopSubsResults = traci.inductionloop.getSubscriptionResults('0');
-    no = indloopSubsResults(constants.LAST_STEP_VEHICLE_NUMBER);
+    % offset = offsethandle(traci.constants.VAR_VIEW_OFFSET);
+    % indloopSubsResults = traci.inductionloop.getSubscriptionResults('0');
+    % no = indloopSubsResults(constants.LAST_STEP_VEHICLE_NUMBER);
     % junctionPositionHandle = traci.junction.getSubscriptionResults('0');
     % junctionPosition = junctionPositionHandle(constants.VAR_POSITION);
     % occupancyLane1Handle = traci.lane.getSubscriptionResults('1i_0');
@@ -327,8 +330,6 @@ for i=1:length(steps)
     % routeList = routeListHandle(constants.ID_LIST);
     % departedVehicleIDsHandle = traci.simulation.getSubscriptionResults();
     % departedVehicleIDs = departedVehicleIDsHandle(constants.VAR_DEPARTED_VEHICLES_IDS);
-    % tlsCurrentPhaseHandle = traci.trafficlights.getSubscriptionResults('0');
-    % tlsCurrentPhase = tlsCurrentPhaseHandle(constants.TL_CURRENT_PHASE);
     
     %% GET CONTEXT SUBSCRIPTION RESULTS COMMANDS
     
@@ -360,7 +361,7 @@ for i=1:length(steps)
 	% fprintf('Jam lenght in meters in the areal detector 0: %d\n',JamLengthMeters);
 	
 	% vehicleMeanSpeedAreal0 = traci.areal.getLastStepMeanSpeed('0');
-    % fprintf('Average speed in the areal detector 0: %d\n',lastStepMeanSpeed);
+    % fprintf('Average speed in the areal detector 0: %d\n',vehicleMeanSpeedAreal0);
 	
 	% vehicleOccupancyAreal0 = traci.areal.getLastStepOccupancy('0');
     % fprintf('Occupancy in the areal detector 0 1i: %d\n',vehicleOccupancyAreal0);
@@ -392,7 +393,7 @@ for i=1:length(steps)
     % NOxEmissionEdge1i = traci.edge.getNOxEmission('1i');
     % fprintf('NOx emission in the edge 1i: %d\n',NOxEmissionEdge1i);
     
-    % fuelConsumptionEdge1i = traci.edge.getFuelConsumptionEmission('1i');
+    % fuelConsumptionEdge1i = traci.edge.getFuelConsumption('1i');
     % fprintf('Fuel consumption in the edge 1i: %d\n',fuelConsumptionEdge1i);
     
     % noiseEmissionEdge1i = traci.edge.getNoiseEmission('1i');
@@ -511,11 +512,11 @@ for i=1:length(steps)
     % traci.trafficlights.setPhase('0',0);
     % traci.trafficlights.setProgram('0','0');
     % traci.trafficlights.setPhaseDuration('0',5);
-    myRYGDefinition = traci.trafficlights.Logic('0',0,0,0,...
-        {traci.trafficlights.Phase(31000,31000,31000,'GrGr'),...
-        traci.trafficlights.Phase(31000,31000,31000,'rGrG'),...
-        traci.trafficlights.Phase(6000,6000,6000,'ryry')});
-    traci.trafficlights.setCompleteRedYellowGreenDefinition('0',myRYGDefinition);
+%     myRYGDefinition = traci.trafficlights.Logic('0',0,0,0,...
+%         {traci.trafficlights.Phase(31000,31000,31000,'GrGr'),...
+%         traci.trafficlights.Phase(31000,31000,31000,'rGrG'),...
+%         traci.trafficlights.Phase(6000,6000,6000,'ryry')});
+%     traci.trafficlights.setCompleteRedYellowGreenDefinition('0',myRYGDefinition);
     % tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
     
     %% VEHICLE GET COMMANDS
@@ -563,10 +564,12 @@ for i=1:length(steps)
     if no > 0
         % traci.gui.screenshot('View #0','passedvehicle.bmp')
         % loop0VehicleData = traci.inductionloop.getVehicleData('0')
-        if programPointer == length(PROGRAM)-1
+        if programPointer == length(PROGRAM)
             programPointer = 1;
-        else
+		elseif ~strcmp(PROGRAM(programPointer), WEYELLOW)
             programPointer = 4;
+		else
+			continue
         end
     end
     traci.trafficlights.setRedYellowGreenState('0', PROGRAM{programPointer});
@@ -576,24 +579,24 @@ for i=1:length(steps)
     % if no > 0
     %     tlsCurrentPhaseHandle = traci.trafficlights.getSubscriptionResults('0');
     %     tlsCurrentPhase = tlsCurrentPhaseHandle(constants.TL_RED_YELLOW_GREEN_STATE);
-    %     fprintf('La fase del semaforo cambio a: %s\n', tlsCurrentPhase)
+    %     fprintf('The traffic lights'' phase changed to: %s\n', tlsCurrentPhase)
     % end
     
     % AN ADDITIONAL EVIDENCE OF THE LANE SUBSCRIPTIONS, ENABLE THE PLOTTING
     % FUNCTIONS BELOW TO VISUALIZE IT.
-    WElaneoccupancy(i) = traci.lane.getLastStepVehicleNumber('1i_0')+...
-        traci.lane.getLastStepVehicleNumber('2i_0');
-    NSlaneoccupancy(i) = traci.lane.getLastStepVehicleNumber('3i_0')+...
-        traci.lane.getLastStepVehicleNumber('4i_0');
-    
-    steps(i) = i;
-    MinExpectedNumber = traci.simulation.getMinExpectedNumber();
+%     WElaneoccupancy(i) = traci.lane.getLastStepVehicleNumber('1i_0')+...
+%         traci.lane.getLastStepVehicleNumber('2i_0');
+%     NSlaneoccupancy(i) = traci.lane.getLastStepVehicleNumber('3i_0')+...
+%         traci.lane.getLastStepVehicleNumber('4i_0');
+%     
+%     steps(i) = i;
+%     MinExpectedNumber = traci.simulation.getMinExpectedNumber();
 end
 traci.close()
-plot(steps, WElaneoccupancy)
-hold;
-plot(steps, NSlaneoccupancy, 'r')
-legend('WE lane occupancy', 'NS lane occupancy')
-title('Lane occupancy vs time')
-xlabel('t (seconds)')
-ylabel('number of vehicles')
+% plot(steps, WElaneoccupancy)
+% hold;
+% plot(steps, NSlaneoccupancy, 'r')
+% legend('WE lane occupancy', 'NS lane occupancy')
+% title('Lane occupancy vs time')
+% xlabel('t (seconds)')
+% ylabel('number of vehicles')

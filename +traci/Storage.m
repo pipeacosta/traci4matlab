@@ -15,16 +15,17 @@ classdef Storage < handle
 			this.content = content;
 			this.pos = 1;
         end
-		function varargout = read(this,numbytes)
-            if nargout == 0
-                this.pos = this.pos + numbytes;
-            end
-			interval = round(numbytes/nargout);
-			for i=1:nargout
-				oldpos = this.pos;
-				this.pos = this.pos + interval;
-				varargout{i} = this.content(oldpos:this.pos-1);
-			end
+		function value = read(this,numbytes)
+			oldpos = this.pos;
+			this.pos = this.pos + numbytes;
+			value = this.content(oldpos:this.pos-1);
+			
+% 			interval = round(numbytes/nargout);
+% 			for i=1:nargout
+% 				oldpos = this.pos;
+% 				this.pos = this.pos + interval;
+% 				varargout{i} = this.content(oldpos:this.pos-1);
+% 			end
         end
         function value = readInt(this)
             value = typecast(fliplr(uint8(this.read(4))),'int32');

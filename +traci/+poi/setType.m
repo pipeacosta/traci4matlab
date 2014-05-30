@@ -10,6 +10,6 @@ function setType(poiID, poiType)
 import traci.constants
 global message
 traci.beginMessage(constants.CMD_SET_POI_VARIABLE, constants.VAR_TYPE, poiID, 1+4+length(poiType));
-message.string = [message.string uint8(sscanf(constants.TYPE_STRING,'%x')) fliplr(...
-    typecast(int32(length(poiType)),'uint8')) uint8(poiType)];
+message.string = [message.string uint8(sscanf(constants.TYPE_STRING,'%x'))...
+	traci.packInt32(length(poiType)) uint8(poiType)];
 traci.sendExact();

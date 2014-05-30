@@ -38,16 +38,13 @@ typePolygon = sscanf(constants.TYPE_POLYGON,'%x');
 
 traci.beginMessage(constants.CMD_SET_POLYGON_VARIABLE, constants.ADD, polygonID,...
  1+4 + 1+4+length(polygonType) + 1+1+1+1+1 + 1+1 + 1+4 + 1+1+length(shape)*(8+8));
-message.string = [message.string uint8(typeCompound) fliplr(...
-    typecast(int32(5),'uint8'))];
-message.string = [message.string uint8(typeString) fliplr(...
-    typecast(int32(length(polygonType)),'uint8')) uint8(polygonType)];
+message.string = [message.string uint8(typeCompound) traci.packInt32(4)];
+message.string = [message.string uint8(typeString) traci.packInt32(length(polygonType)) uint8(polygonType)];
 message.string = [message.string uint8([typeColor color])];
 message.string = [message.string uint8([typeUbyte fill])];
-message.string = [message.string uint8(typeInteger) fliplr(...
-    typecast(int32(layer),'uint8'))];
+message.string = [message.string uint8(typeInteger) traci.packInt32(layer)];
 message.string = [message.string uint8([typePolygon length(shape)])];
 for i=1:length(shape)
-    message.string = [message.string fliplr(typecast(fliplr(shape{i}),'uint8'))];
+    message.string = [message.string traci.packInt64(fliplr(shape{i}))];
 end
 traci.sendExact();

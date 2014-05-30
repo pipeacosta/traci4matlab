@@ -22,6 +22,7 @@ traci.sendExact();
 
 % Close and clear the tcp object
 if isKey(connections,'')
-    fclose(connections(''));
+	activeConnection = connections('');
+    activeConnection.socket.close();
     clear connections('')
 end
