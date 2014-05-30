@@ -13,11 +13,11 @@ import traci.constants
 message = traci.Message();
 % Get the command ID from the traci Constants.
 strcommand = constants.CMD_GETVERSION;
-command = uint8(sscanf(strcommand,'%x'));
+command = sscanf(strcommand,'%x');
 
 % Prepare the outgoing message
 message.queue = [message.queue command]; 
-message.string = [message.string uint8(1+1) command];
+message.string = uint8([message.string 1+1 command]);
 
 % Send the outgoing message and receive the result
 result = traci.sendExact();

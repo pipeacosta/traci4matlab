@@ -29,9 +29,9 @@ end
 traci.beginMessage(constants.CMD_GET_SIM_VARIABLE, constants.POSITION_CONVERSION,...
     '', 1+4 + 1+8+8 + 1+1);
 message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
-    fliplr(typecast(int32(2),'uint8'))];
+    traci.packInt32(2)];
 message.string = [message.string uint8(fromType) ...
-    fliplr(typecast([y x],'uint8'))];
+    traci.packInt64([y x])];
 message.string = [message.string uint8([sscanf(constants.TYPE_UBYTE,'%x') toType])];
 result = traci.checkResult(constants.CMD_GET_SIM_VARIABLE, constants.POSITION_CONVERSION, '');
 longitude = result.readDouble;

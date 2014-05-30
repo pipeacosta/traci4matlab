@@ -26,11 +26,11 @@ end
 traci.beginMessage(constants.CMD_GET_SIM_VARIABLE, constants.DISTANCE_REQUEST,...
     '', 1+4 + 1+4+length(edgeID1)+8+1 + 1+4+length(edgeID2)+8+1 + 1);
 message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
-    fliplr(typecast(int32(3),'uint8'))];
+    traci.packInt32(3)];
 message.string = [message.string uint8(sscanf(constants.POSITION_ROADMAP,'%x')) ...
-    fliplr(typecast(int32(length(edgeID1)),'uint8')) uint8(edgeID1)];
-message.string = [message.string fliplr(typecast(pos1,'uint8')) uint8([0 sscanf(constants.POSITION_ROADMAP,'%x')]) ...
-    fliplr(typecast(int32(length(edgeID2)),'uint8')) uint8(edgeID2)];
-message.string = [message.string fliplr(typecast(pos2,'uint8')) uint8([0 distType])];
+    traci.packInt32(length(edgeID1)) uint8(edgeID1)];
+message.string = [message.string traci.packInt64(pos1) uint8([0 sscanf(constants.POSITION_ROADMAP,'%x')]) ...
+    traci.packInt32(length(edgeID2)) uint8(edgeID2)];
+message.string = [message.string traci.packInt64(pos2) uint8([0 distType])];
 result = traci.checkResult(constants.CMD_GET_SIM_VARIABLE, constants.DISTANCE_REQUEST, '');
 distanceRoad = result.readDouble;

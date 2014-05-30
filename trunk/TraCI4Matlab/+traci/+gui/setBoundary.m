@@ -12,5 +12,5 @@ import traci.constants
 global message
 traci.beginMessage(constants.CMD_SET_GUI_VARIABLE, constants.VAR_VIEW_BOUNDARY, viewID, 1+8+8+8+8);
 message.string = [message.string uint8(sscanf(constants.TYPE_BOUNDINGBOX,'%x'))...
-    fliplr(typecast([ymax xmax ymin xmin],'uint8'))];
+    traci.packInt64([ymax xmax ymin xmin])];
 traci.sendExact();

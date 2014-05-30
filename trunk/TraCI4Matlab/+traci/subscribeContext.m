@@ -33,13 +33,13 @@ len = 1+1+4+4+4+length(objID)+1+8+1+length(varIDs);
 if len<=255
     message.string = [message.string uint8(len)];
 else
-    message.string = [message.string uint8(0) fliplr(typecast(len+4,'uint8'))];
+    message.string = [message.string uint8(0) traci.packInt64(len+4)];
 end
 message.string = [message.string uint8(sscanf(cmdID,'%x')),...
-    fliplr(typecast(int32([length(objID)...
-    subscriptionEnd subscriptionBegin]),'uint8')) uint8(objID)];
+    traci.packInt32([length(objID)...
+    subscriptionEnd subscriptionBegin]) uint8(objID)];
 message.string = [message.string uint8(sscanf(domain,'%x')) ...
-    fliplr(typecast(dist,'uint8')) uint8(length(varIDs))];
+    traci.packInt64(dist) uint8(length(varIDs))];
 for i=1:length(varIDs)
     message.string = [message.string uint8(sscanf(varIDs{i},'%x'))];
 end

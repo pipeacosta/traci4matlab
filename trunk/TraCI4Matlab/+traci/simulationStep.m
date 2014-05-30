@@ -37,7 +37,7 @@ import traci.constants
 % Prepare the message to be sent to the SUMO server
 message.queue = [message.queue uint8(sscanf(constants.CMD_SIMSTEP2,'%x'))];
 message.string = [message.string uint8([1+1+4 sscanf(constants.CMD_SIMSTEP2,'%x')]) ...
-    fliplr(typecast(int32(timeStep),'uint8'))];
+    traci.packInt32(timeStep)];
 
 % Send the message
 result = traci.sendExact();

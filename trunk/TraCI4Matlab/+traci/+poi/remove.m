@@ -14,6 +14,5 @@ if nargin < 2
     layer = 0;
 end
 traci.beginMessage(constants.CMD_SET_POI_VARIABLE, constants.REMOVE, poiID, 1+4);
-message.string = [message.string uint8(sscanf(constants.TYPE_INTEGER,'%x')) fliplr(...
-    typecast(int32(layer),'uint8'))];
+message.string = [message.string uint8(sscanf(constants.TYPE_INTEGER,'%x')) traci.packInt32(layer)];
 traci.sendExact();

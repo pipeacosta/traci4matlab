@@ -10,5 +10,5 @@ import traci.constants
 global message
 traci.beginMessage(cmdID, varID, objID, 1+8);
 message.string = [message.string uint8(sscanf(constants.TYPE_DOUBLE,'%x')) ...
-    fliplr(typecast(value,'uint8'))];
+    traci.packInt64(value)];
 traci.sendExact();

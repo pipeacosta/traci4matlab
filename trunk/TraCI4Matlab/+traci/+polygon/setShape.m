@@ -15,6 +15,6 @@ global message
 traci.beginMessage(constants.CMD_SET_POLYGON_VARIABLE, constants.VAR_SHAPE, polygonID, 1+1+length(shape)*(8+8));
 message.string = [message.string uint8([sscanf(constants.TYPE_POLYGON,'%x') length(shape)])]; 
 for i=1:length(shape)
-    message.string = [message.string fliplr(typecast(fliplr(shape{i}),'uint8'))];
+    message.string = [message.string traci.packInt64(fliplr(shape{i}))];
 end
 traci.sendExact();

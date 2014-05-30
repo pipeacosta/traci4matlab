@@ -20,10 +20,10 @@ len = len+1+1+1+4+length(objID);
 % Build the message string depending on the length of the message
 if len <= 255
 	message.string = [message.string uint8([len sscanf(cmdID,'%x') sscanf(varID,'%x')])...
-		fliplr(typecast(int32(length(objID)),'uint8')) uint8(objID)];
+		traci.packInt32(length(objID)) uint8(objID)];
 else
-	message.string = [message.string uint8(0) fliplr(typecast(int32(len+4),'uint8')) ...
+	message.string = [message.string uint8(0) traci.packInt32(len+4) ...
 		uint8([sscanf(cmdID,'%x') sscanf(varID,'%x')])...
-		fliplr(typecast(int32(length(objID)),'uint8')) uint8(objID)];
+		traci.packInt32(length(objID)) uint8(objID)];
 end
 

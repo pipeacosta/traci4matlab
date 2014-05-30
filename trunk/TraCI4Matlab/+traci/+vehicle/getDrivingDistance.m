@@ -17,8 +17,8 @@ if nargin < 4
 end
 traci.beginMessage(constants.CMD_GET_VEHICLE_VARIABLE, constants.DISTANCE_REQUEST,...
     vehID, 1+4+1+4+length(edgeID) + 8+1+1);
-message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) fliplr(typecast(int32(2),'uint8')) ...
-    uint8(sscanf(constants.POSITION_ROADMAP,'%x')) fliplr(typecast(int32(length(edgeID)),'uint8')) uint8(edgeID)];
-message.string = [message.string fliplr(typecast(pos,'uint8')) uint8([laneID sscanf(constants.REQUEST_DRIVINGDIST,'%x')])];
+message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) traci.packInt32(2) ...
+    uint8(sscanf(constants.POSITION_ROADMAP,'%x')) traci.packInt32(length(edgeID)) uint8(edgeID)];
+message.string = [message.string traci.packInt64(pos) uint8([laneID sscanf(constants.REQUEST_DRIVINGDIST,'%x')])];
 result = traci.checkResult(constants.CMD_GET_VEHICLE_VARIABLE, constants.DISTANCE_REQUEST, vehID);
 drivingDistance = result.readDouble();

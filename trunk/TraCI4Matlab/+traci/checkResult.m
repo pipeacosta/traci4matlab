@@ -14,7 +14,8 @@ result = traci.sendExact();
 result.readLength();
 
 % Read the response and the id of the returned variable
-[response, retVarID] = result.read(2);
+response = result.read(1);
+retVarID = result.read(1);
 
 % Read the acknowledged object ID
 objectID = result.readString();

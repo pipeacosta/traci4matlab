@@ -99,8 +99,10 @@ numVars = result.read(1);
 if isVariableSubscription
     while numVars > 0
         varID = result.read(1);
-        [status, ~] = result.read(2);
+		status = result.read(1);
+		result.read(1);
         if status
+			traci.close();
             throw(MException('traci:FatalTraciError','Error %s', result.readString()));
         elseif isKey(subscriptionResults, strresponse)
             subsResultsHandle = subscriptionResults(strresponse);
@@ -118,7 +120,8 @@ else
         oid = result.readString();
         for v=1:numVars
             varID = result.read(1);
-            [status, ~] = result.read(2);
+			status = result.read(1);
+			result.read(1);
             if status
                 throw(MException('traci:FatalTraciError','Error %s', result.readString()));
             elseif isKey(subscriptionResults, strresponse)

@@ -15,11 +15,11 @@ len = 1+1+4+4+4+length(objID)+1+length(varIDs);
 if len <= 255
     message.string = [message.string uint8(len)];
 else
-    message.string = [message.string uint8(0) fliplr(typecast(int32(len+4),'uint8'))];
+    message.string = [message.string uint8(0) traci.packInt32(len+4)];
 end
 message.string = [message.string uint8(sscanf(cmdID,'%x')),...
-    fliplr(typecast(int32([length(objID) subscriptionEnd ...
-    subscriptionBegin]),'uint8')) uint8(objID)];
+    traci.packInt32([length(objID) subscriptionEnd ...
+    subscriptionBegin]) uint8(objID)];
 message.string = [message.string uint8(length(varIDs))];
 for v=1:length(varIDs)
     message.string = [message.string sscanf(varIDs{v},'%x')];

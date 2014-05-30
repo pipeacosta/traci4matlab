@@ -11,15 +11,13 @@ global message connections
 import traci.constants
 % warning('off','instrument:fread:unsuccessfulRead');
 
-% The possible results
-RESULTS = containers.Map({'0x00' '0x01' '0xFF'},...
-	{'OK' 'Not implemented' 'Error'});
-
 % Length of the command
-len = int32(4 + length(message.string));
+len = 4 + length(message.string);
+activeConnection = connections('');
 
 % Write the message in the tcp socket
-fwrite(connections(''),[fliplr(typecast(len,'uint8')) message.string])
+activeConnection.dos.writeInt(len);
+activeConnection.dos.write(message.string);
 
 % Read the result from the socket
 result = traci.recvExact();
@@ -33,16 +31,24 @@ end
 % Parse the result
 for i= 1:length(message.queue)
 	prefix = result.read(3);
-    strresult = RESULTS(['0x' sprintf('%.2X',prefix(3))]);
+	if prefix(3)==0
+		strresult = 'OK';
+	elseif prefix(3)==1
+		strresult = 'Not Implemented';
+	else
+		strresult = 'Error';
+	end
 	err = result.readString();
 	if prefix(3) || ~isempty(err)
         message.string = [];
         message.queue = [];
+		traci.close();
 		throw(MException('traci:FatalTraciError','%s %s %s\n', num2str(prefix), strresult, err));
 	elseif prefix(2) ~= message.queue(i)
+		traci.close();
 		throw(MException('traci:FatalTraciError','Received answer 0x%.2X for command 0x%.2x.\n',...
             prefix(2), message.queue(i)));
-	elseif prefix(2) == constants.CMD_STOP
+	elseif strcmp(prefix(2),constants.CMD_STOP)
 		len = result.read(1) - 1;
 		result.read(len + 1);
 	end

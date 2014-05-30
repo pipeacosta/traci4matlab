@@ -16,6 +16,7 @@ function subscriptionResults = getSubscriptionResults(tlsID)
 
 global tlSubscriptionResults
 if isempty(tlSubscriptionResults)
+	traci.close();
     throw(MException('traci:FatalTraCIError',...
         'You have to subscribe to the variable'));
 end
