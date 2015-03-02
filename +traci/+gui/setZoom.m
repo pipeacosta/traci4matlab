@@ -2,7 +2,7 @@ function setZoom(viewID, zoom)
 %setZoom Set the zoom of the view.
 %   setZoom(VIEWID, ZOOM) Set the current zoom factor for the given view.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

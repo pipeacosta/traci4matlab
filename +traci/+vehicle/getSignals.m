@@ -21,7 +21,7 @@ function signals = getSignals(vehID)
 %   VEH_SIGNAL_EMERGENCY_YELLOW      13
 
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

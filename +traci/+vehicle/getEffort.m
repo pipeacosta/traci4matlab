@@ -4,7 +4,7 @@ function effort = getEffort(vehID, time, edgeID)
 %   given time as stored in the vehicle's internal container. If such a 
 %   value does not exist, -1 is returned.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

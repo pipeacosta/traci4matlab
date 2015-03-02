@@ -3,7 +3,7 @@ function setMaxSpeed(typeID, speed)
 %   setMaxSpeed(TYPEID,SPEED) Sets the maximum speed in m/s of vehicles of 
 %   this type.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

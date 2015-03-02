@@ -3,7 +3,7 @@ function setSpeedDeviation(vehID, deviation)
 %   setSpeedDeviation(VEHID,DEVIATION) Sets the maximum speed deviation for 
 %   this vehicle.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

@@ -2,7 +2,7 @@ function laneID = getLaneID(loopID)
 %getLaneID Get the id of the lane the loop is on.
 %   laneID = getLaneID(LOOPID) Returns the id of the lane the loop is on.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

@@ -3,7 +3,7 @@ function loadedIDList = getLoadedIDList()
 %   loadedIDList = getLoadedIDList() Returns a cell array of strings
 %   cotaining the ids of the vehicles which were loaded in this time step.  
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

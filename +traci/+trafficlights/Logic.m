@@ -7,7 +7,7 @@ classdef Logic
 %   myLogic. TYPE and SUBPARAMETER are not currently implemented in SUMO 
 %   server, therefore, the must be set to zero.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

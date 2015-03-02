@@ -2,7 +2,7 @@ function subscribeContext(cmdID, subscriptionBegin, subscriptionEnd, objID, doma
 %subscribeContext An internal function to build a context subscription
 %command and parse the response.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

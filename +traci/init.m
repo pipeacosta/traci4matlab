@@ -19,7 +19,7 @@ function [traciVersion sumoVersion] = init(varargin)
 %   [TRACIVERSION,SUMOVERSION] = INIT(...) Returns the TRACIVERSION and the
 %   SUMOVERSION.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$
@@ -35,7 +35,7 @@ global connections
 % Parse the input
 p = inputParser;
 p.FunctionName = 'traci.init';
-p.addOptional('port', 8813, @(x)isnumeric(x) && length(x)==1)
+p.addOptional('port', 8873, @(x)isnumeric(x) && length(x)==1)
 p.addOptional('numRetries', 10, @(x)isnumeric(x) && length(x)==1)
 p.addOptional('host', '127.0.0.1', @ischar)
 p.addOptional('label', 'default', @ischar)
@@ -59,12 +59,12 @@ for i=1:numRetries
     try
         connections(label).connect(host, port);
     break
-    catch err
+    catch err        
         pause(i)
     end
 end
 if ~isempty(err)
-    rethrow(err);
+    disp(err);
 end
 
 [traciVersion sumoVersion] = traci.getVersion();

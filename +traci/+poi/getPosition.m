@@ -3,7 +3,7 @@ function position = getPosition(poiID)
 %   position = getPosition(POIID) Returns the position coordinates of 
 %   the given poi. 
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

@@ -4,7 +4,7 @@ function drivingDistance2D = getDrivingDistance2D(vehID, x, y)
 %   the driving distance from the current position to that defined by the 
 %   coordinates X and Y.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

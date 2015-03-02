@@ -4,7 +4,7 @@ function setColor(poiID, color)
 %   four-element vector whose elements range from 0 to 255, they represent
 %   the R, G, B and Alpha (unused) components of the color.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

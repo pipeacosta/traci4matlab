@@ -5,7 +5,7 @@ function setCompleteRedYellowGreenDefinition(tlsID, tls)
 %   attributes are included in the TLS parameter, which is a
 %   traci.trafficlights.Logic object.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

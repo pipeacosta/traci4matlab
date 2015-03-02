@@ -4,7 +4,7 @@ function close()
 %   connections have to be closed, they must be enabled through the
 %   traci.switch() command, and closed with CLOSE().
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

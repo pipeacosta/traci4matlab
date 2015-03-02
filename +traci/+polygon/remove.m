@@ -3,7 +3,7 @@ function remove(polygonID, layer)
 %   remove(POLYGONID,LAYER) Removes the polygon identified with POLYGONID 
 %   and associated to the given layer. If no layer is given, it defaults to 0.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

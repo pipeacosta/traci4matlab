@@ -4,7 +4,7 @@ function setImperfection(vehID, imperfection)
 %   (dawdling). IMPERFECTION is a double precision integer ranging from
 %   zero to one.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

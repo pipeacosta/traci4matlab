@@ -4,7 +4,7 @@ function adaptedTraveltime = getAdaptedTraveltime(edgeID, time)
 %   time value (in s) used for (re-)routing which is valid on the specified
 %   edge at the given time.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   $Id$
 

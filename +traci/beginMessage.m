@@ -1,7 +1,7 @@
 function beginMessage(cmdID, varID, objID, len)
 %beginMessage Internal function to build the TraCI message.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

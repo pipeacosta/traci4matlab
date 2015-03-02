@@ -4,7 +4,7 @@ import traci.constants
 %   NOxEmission = getNOxEmission(EDGEID) Returns the NOx emission in mg for
 %   the last time step on the given edge.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

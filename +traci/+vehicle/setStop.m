@@ -8,7 +8,7 @@ function setStop(vehID, edgeID, pos, laneIndex, duration)
 %   made.
 %   setStop(...,DURATION) Specify the duration of the stop.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

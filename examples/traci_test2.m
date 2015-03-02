@@ -33,7 +33,7 @@ end
 % To test sine vehicle commands, we have to check wether the sumo 0.20.0
 % version is installed, because in that version the prefix of the vehicle
 % names has changed.
-if isempty(strfind(getenv('SUMO_HOME'),'sumo-0.20.0'))
+if isempty(strfind(getenv('SUMO_HOME'),'sumo-0.21.0'))
 	testVehicle = '10';
 else
 	testVehicle = 'right_10';
@@ -56,7 +56,7 @@ WEYELLOW = 'ryry';
 PROGRAM = {WEYELLOW,WEYELLOW,WEYELLOW,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSGREEN,NSYELLOW,NSYELLOW,WEGREEN};
 
 programPointer = length(PROGRAM);
-step = 0;
+% step = 0;
 % steps = zeros(1,800);
 
 
@@ -206,7 +206,7 @@ step = 0;
 %% GUI SET COMMANDS
 % traci.gui.setZoom('View #0', 1000);
 % traci.gui.setOffset('View #0',  523.7211,  525.9342);
-% traci.gui.setSchema('View #0',  'real world');
+traci.gui.setSchema('View #0',  'real world');
 % traci.gui.setBoundary('View #0', 386.95, 485.88, 651.64, 589.01);
 % traci.gui.trackVehicle('View #0', testVehicle);
 
@@ -284,18 +284,22 @@ step = 0;
 % traci.vehicletype.setTau('typeWE',0.1);
 % traci.vehicletype.setColor('typeWE',[255 255 255 0]);
 
-%for i=1:length(steps)
+step = 1;
+% for i=1:length(steps)
 while traci.simulation.getMinExpectedNumber()>0
-    % Perform a simulation step (one second)
-    traci.simulationStep();
+    % Here, we demonstrate how to use the simulationStep command using an
+    % argument. In this case, the simulation is performed each 5 seconds,
+    % note the behavior when you increase the delay in the gui
+    traci.simulationStep(5000*step);
+    pause(1);
     programPointer = min(programPointer+1, length(PROGRAM));
     
     % Get the number of vehicles that passed through the induction loop in
     % the last simulation step
-    no = traci.inductionloop.getLastStepVehicleNumber('0');
+    numPriorityVehicles = traci.inductionloop.getLastStepVehicleNumber('0');
     
     % SHOW THE VEHICLES IDS INSIDE THE NETWORK
-    % vehicles = traci.vehicle.getIDList();
+     vehicles = traci.vehicle.getIDList();
     % fprintf('IDs of the vehicles in the simulation\n')
     % for j=1:length(vehicles)
     %     fprintf('%s\n',vehicles{j});
@@ -310,18 +314,18 @@ while traci.simulation.getMinExpectedNumber()>0
     
     %% GETSUBSCRIPTIONRESULTS COMMANDS: Note that you have to create the required detectors in the cross.det.xml file
     
-    % occupancyEdge1Handle = traci.edge.getSubscriptionResults('1i');
-    % WElaneoccupancy(i) = occupancyEdge1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
+%     occupancyEdge1Handle = traci.edge.getSubscriptionResults('1i');
+%     WElaneoccupancy(i) = occupancyEdge1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
     % offsethandle = traci.gui.getSubscriptionResults('View #0');
     % offset = offsethandle(traci.constants.VAR_VIEW_OFFSET);
     % indloopSubsResults = traci.inductionloop.getSubscriptionResults('0');
     % no = indloopSubsResults(constants.LAST_STEP_VEHICLE_NUMBER);
     % junctionPositionHandle = traci.junction.getSubscriptionResults('0');
     % junctionPosition = junctionPositionHandle(constants.VAR_POSITION);
-    % occupancyLane1Handle = traci.lane.getSubscriptionResults('1i_0');
-    % WElaneoccupancy(i) = occupancyLane1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
+%     occupancyLane1Handle = traci.lane.getSubscriptionResults('1i_0');
+%     WElaneoccupancy(i) = occupancyLane1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
     % occupancyLane1Handle = traci.multientryexit.getSubscriptionResults('e3_0_1i');
-    % WElaneoccupancy(i) = occupancyLane1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
+%     WElaneoccupancy(i) = occupancyLane1Handle(constants.LAST_STEP_VEHICLE_NUMBER);
     % poiPositionHandle = traci.poi.getSubscriptionResults('mypoi');
     % poiPosition = poiPositionHandle(constants.VAR_POSITION);
     % polygonPositionHandle = traci.polygon.getSubscriptionResults('mypolygon');
@@ -516,7 +520,7 @@ while traci.simulation.getMinExpectedNumber()>0
 %         {traci.trafficlights.Phase(31000,31000,31000,'GrGr'),...
 %         traci.trafficlights.Phase(31000,31000,31000,'rGrG'),...
 %         traci.trafficlights.Phase(6000,6000,6000,'ryry')});
-%     traci.trafficlights.setCompleteRedYellowGreenDefinition('0',myRYGDefinition);
+    % traci.trafficlights.setCompleteRedYellowGreenDefinition('0',tlsRYGDefinition{1});
     % tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
     
     %% VEHICLE GET COMMANDS
@@ -554,6 +558,9 @@ while traci.simulation.getMinExpectedNumber()>0
     % vehDecel = traci.vehicle.getDecel(testVehicle)
     % vehImperfection = traci.vehicle.getImperfection(testVehicle)
     % vehTau = traci.vehicle.getTau(testVehicle)
+    if ismember(testVehicle,vehicles)
+        vehLeader = traci.vehicle.getLeader(testVehicle, 1)
+    end
     % vehBestLanes = traci.vehicle.getBestLanes(testVehicle)
     % vehDrivingDistance = traci.vehicle.getDrivingDistance(testVehicle,'2o',30)
     % vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D(testVehicle,620,510)
@@ -561,15 +568,13 @@ while traci.simulation.getMinExpectedNumber()>0
     
     % Change the phase of the traffic light if a vehicle passed through the
     % induction loop
-    if no > 0
+    if numPriorityVehicles > 0
         % traci.gui.screenshot('View #0','passedvehicle.bmp')
         % loop0VehicleData = traci.inductionloop.getVehicleData('0')
         if programPointer == length(PROGRAM)
             programPointer = 1;
 		elseif ~strcmp(PROGRAM(programPointer), WEYELLOW)
             programPointer = 4;
-		else
-			continue
         end
     end
     traci.trafficlights.setRedYellowGreenState('0', PROGRAM{programPointer});
@@ -588,9 +593,10 @@ while traci.simulation.getMinExpectedNumber()>0
 %         traci.lane.getLastStepVehicleNumber('2i_0');
 %     NSlaneoccupancy(i) = traci.lane.getLastStepVehicleNumber('3i_0')+...
 %         traci.lane.getLastStepVehicleNumber('4i_0');
-%     
+% %     
 %     steps(i) = i;
 %     MinExpectedNumber = traci.simulation.getMinExpectedNumber();
+    step = step + 1;
 end
 traci.close()
 % plot(steps, WElaneoccupancy)

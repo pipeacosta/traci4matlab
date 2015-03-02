@@ -3,7 +3,7 @@ function lastStepLength = getLastStepLength(laneID)
 %   lastStepLength = getLastStepLength(LANEID) Returns the mean vehicle 
 %   length in m for the last time step on the given lane.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

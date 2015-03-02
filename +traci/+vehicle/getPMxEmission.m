@@ -3,7 +3,7 @@ function PMxEmission = getPMxEmission(vehID)
 %   pmxEmission = getPmxEmission(VEHID) Returns the particular matter 
 %   emission in mg for the last time step.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

@@ -4,7 +4,7 @@ function netBoundary = getNetBoundary()
 %   lower-left and the upper-right points that define the boundaries of the
 %   network.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

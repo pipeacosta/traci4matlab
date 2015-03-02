@@ -4,7 +4,7 @@ function JamLengthVehicle = getJamLengthVehicle(detID)
 %	jam length in vehicles within the last simulation step on
 %	the given areal detector.
 
-%   Copyright 2014 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

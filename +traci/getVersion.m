@@ -3,7 +3,7 @@ function [traciversion, sumoversion] = getVersion()
 %   [TRACIVERSION SUMOVERSION] = getVersion() Returns the current TraCI and
 %   SUMO versions.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

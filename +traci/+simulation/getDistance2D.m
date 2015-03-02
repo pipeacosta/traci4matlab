@@ -8,7 +8,7 @@ function distance2D = getDistance2D(x1, y1, x2, y2, isGeo, isDriving)
 %   distance2D = getDistance2D(...,ISDRIVING) Specify wether the air or the
 %   driving distance shall be computed.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

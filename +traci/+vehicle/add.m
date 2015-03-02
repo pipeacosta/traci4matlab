@@ -2,13 +2,13 @@ function add(vehID, routeID, varargin)
 %add Get the traffic lights' state.
 %   add(VEHID,ROUTEID) Adds a vehicle in the current time-step with ID 
 %   VEHID and assigns the route with ID ROUTEID to it.
-%   add(...,DEPART) Specify the departure time in miliseconds.
+%   add(...,DEPART) Specify the departure time in seconds.
 %   add(...,POS) Specify the position relative to the starting lane.
 %   add(...,SPEED) Specify the starting speed of the vehicle.
 %   add(...,LANE) Specify the lane number in which the vehicle will start.
 %   add(...,TYPEID) Specify the type of the vehicle.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$
@@ -20,7 +20,7 @@ p = inputParser;
 p.FunctionName = 'vehicle.add';
 p.addRequired('vehID',@ischar)
 p.addRequired('routeID',@ischar)
-p.addOptional('depart', -2, @numeric)   % -2 = DEPART_NOW
+p.addOptional('depart', -2, @isnumeric)   % -2 = DEPART_NOW
 p.addOptional('pos', 0, @isnumeric)
 p.addOptional('speed', 0, @isnumeric)
 p.addOptional('lane', 0, @isnumeric)

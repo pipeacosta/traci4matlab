@@ -3,7 +3,7 @@ function nextSwitch = getNextSwitch(tlsID)
 %   nextSwitch = getNextSwitch(TLSID) Returns the time in ms at which the
 %   next phase change will be performed. 
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

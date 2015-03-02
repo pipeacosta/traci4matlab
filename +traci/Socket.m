@@ -24,6 +24,8 @@ classdef Socket < handle
 			try
 				this.socket.connect(inetSocketAddress);
 			catch err
+                disp(err.getReport);
+%                 throw(MException('Connection:ConnectionRefused', err.getReport));
 			end
 			this.dis = DataInputStream(this.socket.getInputStream());
 			this.dataReader = DataReader(this.dis);
