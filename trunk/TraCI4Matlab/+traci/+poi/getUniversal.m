@@ -2,7 +2,7 @@ function returnedValue = getUniversal(varID, poiID)
 %getUniversal An internal function to send the get command and read the 
 %variable value.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

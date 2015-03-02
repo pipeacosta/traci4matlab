@@ -4,7 +4,7 @@ function setEffort(vehID, begTime, endTime, edgeID, effort)
 %   about the effort of edge EDGEID valid from BEGTIME time to ENDTIME time
 %   into the vehicle's internal edge weights container.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

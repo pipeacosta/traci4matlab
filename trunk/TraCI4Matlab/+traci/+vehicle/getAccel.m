@@ -3,7 +3,7 @@ function accel = getAccel(vehID)
 %   accel = getAccel(VEHID) Returns the maximum acceleration possibility in
 %   m/s^2 of this vehicle.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

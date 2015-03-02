@@ -3,7 +3,7 @@ function CO2Emission = getCO2Emission(vehID)
 %   CO2Emission = getCO2Emission(VEHID) Returns the CO2 emission in mg for
 %   the last time step.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

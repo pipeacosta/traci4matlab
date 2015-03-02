@@ -3,7 +3,7 @@ function vehicleData = getVehicleData(loopID)
 %   vehicleData = getVehicleData(LOOPID) Returns a cell structure 
 %   containing several information about vehicles which passed the detector.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

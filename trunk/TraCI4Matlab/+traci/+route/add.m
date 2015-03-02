@@ -4,7 +4,7 @@ function add(routeID, edges)
 %   given edges. EDGES is a cell array of strings containing the IDs of the
 %   edges.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

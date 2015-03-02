@@ -10,7 +10,7 @@ function contextSubscriptionResults = getContextSubscriptionResults(detID)
 %   It is not possible to retrieve older subscription results than the ones
 %   from the last time step.
 
-%   Copyright 2014 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

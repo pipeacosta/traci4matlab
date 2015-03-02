@@ -13,7 +13,7 @@ function subscribeContext(routeID, domain, dist, varargin)
 %   BEGIN and END. 
 %   A call to this method clears all previous subscription results.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

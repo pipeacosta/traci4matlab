@@ -5,7 +5,7 @@ function screenshot(viewID, filename)
 %   available formats differ from platform to platform but should at least
 %   include ps, svg and pdf, on linux probably gif, png and jpg as well.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

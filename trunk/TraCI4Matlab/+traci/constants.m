@@ -584,7 +584,8 @@ classdef constants
 		VAR_PERSON_NUMBER = '0x67'
 		VAR_BUS_STOP_WAITING = '0x67'
 
-
+        % current leader together with gap (get: vehicle)
+        VAR_LEADER = '0x68'
 
 		% current time step (get: simulation)
 		VAR_TIME_STEP = '0x70'

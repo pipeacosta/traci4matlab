@@ -6,7 +6,7 @@ function [x y] = convert2D(edgeID, pos, laneIndex, toGeo)
 %   [X,Y] = convert2D(...,TOGEO) Specify if the conversion is made to
 %   geo-coordinates, in this case, X is the longitude and Y is the latitude.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

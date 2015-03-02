@@ -3,7 +3,7 @@ function route = getRoute(vehID)
 %   route = getRoute(VEHID) Returns a cell array of strings containing the 
 %   ids of the edges the vehicle's route is made of.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

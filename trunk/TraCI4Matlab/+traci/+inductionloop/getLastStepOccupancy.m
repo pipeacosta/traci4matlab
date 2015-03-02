@@ -3,7 +3,7 @@ function lastStepOccupancy = getLastStepOccupancy(loopID)
 %   lastStepOccupancy = getLastStepOccupancy(LOOPID) Returns the percentage
 %   of time the detector was occupied by a vehicle.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

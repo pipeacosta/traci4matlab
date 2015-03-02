@@ -4,7 +4,7 @@ function setRedYellowGreenState(tlsID, state)
 %   string of light definitions from rRgGyYoO, for red, green, yellow, off, 
 %   where lower case letters mean that the stream has to decelerate. 
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

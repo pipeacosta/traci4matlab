@@ -3,7 +3,7 @@ function loadedNumber = getLoadedNumber()
 %   loadedNumber = getLoadedNumber() Returns the number of vehicles which 
 %   were loaded in this time step. 
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

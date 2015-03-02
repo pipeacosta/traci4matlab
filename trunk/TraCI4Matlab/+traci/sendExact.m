@@ -2,7 +2,7 @@ function result = sendExact()
 %sendExact An internal function to send a message to the SUMO server and
 %parse the result.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$
@@ -15,7 +15,7 @@ import traci.constants
 len = 4 + length(message.string);
 activeConnection = connections('');
 
-% Write the message in the tcp socket
+% Write the message to the tcp socket
 activeConnection.dos.writeInt(len);
 activeConnection.dos.write(message.string);
 

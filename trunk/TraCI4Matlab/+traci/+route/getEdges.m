@@ -4,7 +4,7 @@ function edges = getEdges(routeID)
 %   list of edges is a cell array of strings whose elements are the IDs of
 %   the edges.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

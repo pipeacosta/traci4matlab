@@ -3,7 +3,7 @@ function setMaxSpeed(edgeID, speed)
 %   setMaxSpeed(EDGEID,SPEED) Set a new maximum speed (in m/s) for all 
 %   lanes of the edge.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

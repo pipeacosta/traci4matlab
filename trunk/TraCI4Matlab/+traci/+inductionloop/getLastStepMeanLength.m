@@ -3,7 +3,7 @@ function lastStepMeanLength = getLastStepMeanLength(loopID)
 %   lastStepMeanLength = getLastStepMeanLength(LOOPID) Returns the mean 
 %   length in m of vehicles which were on the detector in the last step.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

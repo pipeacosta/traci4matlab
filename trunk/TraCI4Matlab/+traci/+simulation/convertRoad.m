@@ -7,7 +7,7 @@ function [roadID pos laneID] = convertRoad(x, y, isGeo)
 %   [ROADID POS LANEID] = convertRoad(...,ISGEO) Specify if the absolute
 %   input position is in geo-coordinates.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

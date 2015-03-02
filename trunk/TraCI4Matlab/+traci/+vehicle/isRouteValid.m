@@ -3,7 +3,7 @@ function isvalid = isRouteValid(vehID)
 %   isvalid = isRouteValid(VEHID) Determine whether the current route of the
 %   vehicle is valid (i.e. all the edges along the route are connected).
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

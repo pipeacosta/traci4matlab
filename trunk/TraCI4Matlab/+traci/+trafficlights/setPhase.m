@@ -4,7 +4,7 @@ function setPhase(tlsID, index)
 %   to the given in the INDEX parameter. There are as many tls indexes as
 %   phase definitions in the tls program. The tls index starts from zero.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

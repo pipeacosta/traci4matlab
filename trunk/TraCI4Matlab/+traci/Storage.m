@@ -1,7 +1,7 @@
 classdef Storage < handle
 %Storage A container for responses from SUMO server.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$
@@ -28,7 +28,7 @@ classdef Storage < handle
 % 			end
         end
         function value = readInt(this)
-            value = typecast(fliplr(uint8(this.read(4))),'int32');
+            value = double(typecast(fliplr(uint8(this.read(4))),'int32'));
         end
         
         function value = readDouble(this)

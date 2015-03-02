@@ -2,7 +2,7 @@ function setMaxSpeed(vehID, speed)
 %setMaxSpeed
 %   setMaxSpeed(VEHID,SPEED) Sets the maximum speed in m/s for this vehicle.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

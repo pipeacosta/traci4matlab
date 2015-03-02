@@ -3,7 +3,7 @@ function departedNumber = getDepartedNumber()
 %   departedNumber = getDepartedNumber() Returns the number of vehicles 
 %   which departed (were inserted into the road network) in this time step. 
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

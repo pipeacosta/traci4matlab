@@ -3,7 +3,7 @@ function speedDeviation = getSpeedDeviation(typeID)
 %   speedDeviation = getSpeedDeviation(TYPEID) Returns the maximum speed 
 %   deviation of vehicles of this type.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

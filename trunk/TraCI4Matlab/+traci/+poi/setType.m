@@ -2,7 +2,7 @@ function setType(poiID, poiType)
 %setType
 %   setType(POIID,POITYPE) Sets the (abstract) type of the poi.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

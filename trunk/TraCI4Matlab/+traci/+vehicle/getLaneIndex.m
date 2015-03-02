@@ -3,7 +3,7 @@ function laneIndex = getLaneIndex(vehID)
 %   laneIndex = getLaneIndex(VEHID) Returns the index of the lane the named
 %   vehicle was at within the last step.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

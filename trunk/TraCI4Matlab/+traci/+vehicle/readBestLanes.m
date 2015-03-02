@@ -2,7 +2,7 @@ function lanes = readBestLanes(result)
 %readBestLanes Internal function to read information about the whish to use
 %subsequent edge's lanes.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

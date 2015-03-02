@@ -4,7 +4,7 @@ function switchConnection(label)
 %   switchConnection(label) Switch to the connection specified in LABEL 
 %   with the SUMO server.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

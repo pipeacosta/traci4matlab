@@ -2,7 +2,7 @@ function subscribe(cmdID, subscriptionBegin, subscriptionEnd, objID, varIDs)
 %subscribe An internal function to build a subscription message and parse
 %the response.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

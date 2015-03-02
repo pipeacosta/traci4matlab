@@ -1,7 +1,7 @@
 function sendIntCmd(cmdID, varID, objID, value)
 %sendIntCmd An internal function to build a message which sends an int.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

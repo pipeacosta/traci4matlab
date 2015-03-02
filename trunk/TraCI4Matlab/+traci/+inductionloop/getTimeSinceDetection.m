@@ -3,7 +3,7 @@ function timeSinceDetection = getTimeSinceDetection(loopID)
 %   timeSinceDetection = getTimeSinceDetection(LOOPID) Returns the time in 
 %   seconds since last detection.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$
