@@ -1,5 +1,5 @@
 function program = getProgram(tlsID)
-%getProgram
+%getProgram Returns the id of the current program.
 %   program = getProgram(TLSID) Returns the id of the current program. 
 
 %   Copyright 2015 Universidad Nacional de Colombia,

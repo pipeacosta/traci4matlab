@@ -1,5 +1,5 @@
 function setLength(laneID, len)
-%setLength
+%setLength Sets the length of the lane in m.
 %   setLength(LANEID,LENGTH) Sets the length of the lane in m.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

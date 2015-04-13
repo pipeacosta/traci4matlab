@@ -1,5 +1,5 @@
 function vehicleClass = getVehicleClass(typeID)
-%getVehicleClass
+%getVehicleClass Returns the class of vehicles of this type.
 %   vehicleClass = getVehicleClass(TYPEID) Returns the class of vehicles of 
 %   this type.
 

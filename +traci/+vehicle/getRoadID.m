@@ -1,5 +1,5 @@
 function roadID = getRoadID(vehID)
-%getRoadID
+%getRoadID Returns the edge the vehicle was at in last step. 
 %   roadID = getRoadID(VEHID) Returns the id of the edge the named vehicle 
 %   was at within the last step.
 

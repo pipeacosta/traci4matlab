@@ -1,5 +1,5 @@
 function deltaT = getDeltaT()
-%getDeltaT
+%getDeltaT Returns the time-step of the simulation in ms.
 %   deltaT = getDeltaT() Returns the time-step of the simulation in ms. 
 
 %   Copyright 2015 Universidad Nacional de Colombia,

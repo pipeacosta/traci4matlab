@@ -1,5 +1,5 @@
 function setLength(vehID, length)
-%setLength
+%setLength Sets the length in m for the given vehicle.
 %   setLength(VEHID,LENGTH) Sets the length in m for the given vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

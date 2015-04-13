@@ -1,5 +1,5 @@
 function setDecel(vehID, decel)
-%setDecel
+%setDecel ets the maximum deceleration for this vehicle.
 %   setDecel(VEHID,DECEL) Sets the maximum deceleration in m/s^2 for this 
 %   vehicle.
 

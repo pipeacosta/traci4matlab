@@ -1,5 +1,5 @@
 function length = getLength(laneID)
-%getLength
+%getLength Returns the length of the lane in m.
 %   length = getLength(LANEID) Returns the length of the lane in m.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

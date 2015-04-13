@@ -1,5 +1,5 @@
 function slowDown(vehID, speed, duration)
-%slowDown
+%slowDown Reduces the speed of the vehicle.
 %   slowDown(VEHID,SPEED,DURATION) Reduces the speed of the vehicle to the 
 %   given for the given amount of time.
 

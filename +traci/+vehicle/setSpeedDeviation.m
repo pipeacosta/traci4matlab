@@ -1,5 +1,5 @@
 function setSpeedDeviation(vehID, deviation)
-%setSpeedDeviation
+%setSpeedDeviation Sets the maximum speed deviation for this vehicle.
 %   setSpeedDeviation(VEHID,DEVIATION) Sets the maximum speed deviation for 
 %   this vehicle.
 

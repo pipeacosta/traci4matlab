@@ -1,5 +1,5 @@
 function speedDeviation = getSpeedDeviation(typeID)
-%getSpeedDeviation
+%getSpeedDeviation Returns the maximum speed deviation of vehicles of this type.
 %   speedDeviation = getSpeedDeviation(TYPEID) Returns the maximum speed 
 %   deviation of vehicles of this type.
 

@@ -1,5 +1,5 @@
 function edgeID = getEdgeID(laneID)
-%getEdgeID
+%getEdgeID Returns the id of the edge the lane belongs to.
 %   edgeID = getEdgeID(LANEID) Returns the id of the edge the lane belongs 
 %   to.
 

@@ -1,5 +1,5 @@
 function type = getType(poiID)
-%getType
+%getType Returns the (abstract) type of the poi.
 %   type = getType(POIID) Returns the (abstract) type of the poi.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

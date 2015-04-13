@@ -1,5 +1,5 @@
 function currentTime = getCurrentTime()
-%getCurrentTime
+%getCurrentTime  Returns the current simulation time in ms.
 %   currentTime = getCurrentTime() Returns the current simulation time in 
 %   ms. 
 

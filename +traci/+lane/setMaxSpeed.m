@@ -1,5 +1,5 @@
 function setMaxSpeed(laneID, speed)
-%setMaxSpeed
+%setMaxSpeed Sets a new maximum allowed speed on the lane in m/s.
 %   setMaxSpeed(LANEID,SPEED) Sets a new maximum allowed speed on the lane
 %   in m/s.
 

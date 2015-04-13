@@ -1,5 +1,5 @@
 function setType(polygonID, polygonType)
-%setType
+%setType Sets the (abstract) type of the polygon.
 %   setType(POLYGONID,POLYGONTTYPE) Sets the (abstract) type of the polygon.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

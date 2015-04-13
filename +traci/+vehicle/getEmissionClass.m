@@ -1,5 +1,5 @@
 function emissionClass = getEmissionClass(vehID)
-%getEmissionClass
+%getEmissionClass Returns the emission class of this vehicle.
 %   emissionClass = getEmissionClass(VEHID) Returns the emission class of 
 %   this vehicle.
 

@@ -1,4 +1,6 @@
 function moveToVTD(vehID, edgeID, lane, x, y)
+%moveToVTD Commands the vehicle to move to the specified position.
+%   moveToVTD(VEHID,EDGEID,LANE,X,Y) 
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.

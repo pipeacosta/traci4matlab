@@ -1,5 +1,5 @@
 function setTau(vehID, tau)
-%setTau
+%setTau Sets the driver's reaction time in s for this vehicle.
 %   setTau(VEHID,TAU) Sets the driver's reaction time in s for this vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

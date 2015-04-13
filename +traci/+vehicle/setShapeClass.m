@@ -1,5 +1,5 @@
 function setShapeClass(vehID, clazz)
-%setShapeClass
+%setShapeClass Sets the shape class for this vehicle.
 %   setShapeClass(VEHID,CLASS) Sets the shape class for this vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

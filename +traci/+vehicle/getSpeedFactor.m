@@ -1,5 +1,5 @@
 function speedFactor = getSpeedFactor(vehID)
-%getSpeedFactor
+%getSpeedFactor Returns the chosen speed factor for this vehicle.
 %   speedFactor = getSpeedFactor(VEHID) Returns the chosen speed factor for
 %   this vehicle.
 

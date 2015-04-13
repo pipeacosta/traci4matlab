@@ -1,5 +1,5 @@
 function bestLanes = getBestLanes(vehID)
-%getBestLanes
+%getBestLanes Returns information about the wish to use subsequent lanes
 %   bestLanes = getBestLanes(VEHID) Returns information about the wish to 
 %   use subsequent edges' lanes, which is stored in a cell array. The
 %   information includes laneID, length, occupation, offset, 

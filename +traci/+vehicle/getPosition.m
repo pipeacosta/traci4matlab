@@ -1,5 +1,5 @@
 function position = getPosition(vehID)
-%getPosition
+%getPosition Returns the position of the named vehicle within the last step.
 %   position = getPosition(VEHID) Returns the x,y position of the named 
 %   vehicle within the last step.
 

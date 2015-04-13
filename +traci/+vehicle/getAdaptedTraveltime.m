@@ -1,5 +1,5 @@
 function adaptedTraveltime = getAdaptedTraveltime(vehID, time, edgeID)
-%getAdaptedTraveltime
+%getAdaptedTraveltime Returns the vehicle-dependent edge travel time.
 %   adaptedTraveltime = getAdaptedTraveltime(VEHID,TIME,EDGEID) Returns the
 %   edge travel time for the given time as stored in the vehicle's internal
 %   container. If such a value does not exist, -1 is returned.

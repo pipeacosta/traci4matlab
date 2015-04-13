@@ -1,5 +1,5 @@
 function typeID = getTypeID(vehID)
-%getTypeID
+%getTypeID Returns the id of the type of the named vehicle.
 %   typeID = getTypeID(VEHID) Returns the id of the type of the named 
 %   vehicle.
 

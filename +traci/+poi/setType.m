@@ -1,5 +1,5 @@
 function setType(poiID, poiType)
-%setType
+%setType Sets the (abstract) type of the poi.
 %   setType(POIID,POITYPE) Sets the (abstract) type of the poi.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

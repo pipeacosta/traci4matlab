@@ -1,4 +1,5 @@
 function [vehicleID, dist] = getLeader(vehID,dist)
+%getLeader Return the leading vehicle id and distance to ir.
 % [vehicleID, dist] = getLeader(VEHID,DIST) Return the leading vehicle id 
 % together with the distance.
 % The DIST parameter defines the maximum lookahead, 0 calculates a 

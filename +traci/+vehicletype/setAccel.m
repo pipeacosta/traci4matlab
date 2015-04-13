@@ -1,6 +1,6 @@
 function setAccel(typeID, accel)
-%setAccel
-%   setAccel(TYPEID,ACCEL) Sets the maximum acceleration in m/s^2 of 
+%setAccel Sets the maximum acceleration for vehicles of this type.
+%   setAccel(TYPEID,ACCEL) Sets the maximum acceleration in m/s^2 for 
 %   vehicles of this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

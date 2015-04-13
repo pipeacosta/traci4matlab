@@ -1,5 +1,5 @@
 function setMinGap(vehID, minGap)
-%setMinGap
+%setMinGap Sets the offset (gap to front vehicle) for this vehicle.
 %   setMinGap(VEHID,MINGAP) Sets the offset (gap to front vehicle if 
 %   halting) for this vehicle.
 
