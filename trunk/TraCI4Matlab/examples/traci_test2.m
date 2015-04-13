@@ -30,10 +30,13 @@ catch err
 end
 
 
-% To test sine vehicle commands, we have to check wether the sumo 0.20.0
+% To test vehicle commands, we have to check wether the sumo 0.20.0
 % version is installed, because in that version the prefix of the vehicle
 % names has changed.
-if isempty(strfind(getenv('SUMO_HOME'),'sumo-0.21.0'))
+
+sumoHome = getenv('SUMO_HOME');
+sumoVersion = str2double(sumoHome(9:12));
+if sumoVersion < 0.20
 	testVehicle = '10';
 else
 	testVehicle = 'right_10';
@@ -208,7 +211,6 @@ programPointer = length(PROGRAM);
 % traci.gui.setOffset('View #0',  523.7211,  525.9342);
 traci.gui.setSchema('View #0',  'real world');
 % traci.gui.setBoundary('View #0', 386.95, 485.88, 651.64, 589.01);
-% traci.gui.trackVehicle('View #0', testVehicle);
 
 %% LANE SET COMMANDS
 % traci.lane.setAllowed('1i_0',{'unknown'});
@@ -290,8 +292,9 @@ while traci.simulation.getMinExpectedNumber()>0
     % Here, we demonstrate how to use the simulationStep command using an
     % argument. In this case, the simulation is performed each 5 seconds,
     % note the behavior when you increase the delay in the gui
-    traci.simulationStep(5000*step);
-    pause(1);
+%     traci.simulationStep(5000*step);
+%     pause(1);
+    traci.simulationStep();
     programPointer = min(programPointer+1, length(PROGRAM));
     
     % Get the number of vehicles that passed through the induction loop in
@@ -428,7 +431,11 @@ while traci.simulation.getMinExpectedNumber()>0
     
     % traci.edge.setMaxSpeed('1i',5);
     
-    %% GUI GET COMMANDS
+    %% GUI COMMANDS
+    vehiclesInNetwork = traci.vehicle.getIDList();
+%     if  ~isempty(find(ismember(vehiclesInNetwork,testVehicle), 1))
+%         traci.gui.trackVehicle('View #0', testVehicle);
+%     end
     
     % guizoom = traci.gui.getZoom()
     % offset = traci.gui.getOffset()
@@ -558,9 +565,9 @@ while traci.simulation.getMinExpectedNumber()>0
     % vehDecel = traci.vehicle.getDecel(testVehicle)
     % vehImperfection = traci.vehicle.getImperfection(testVehicle)
     % vehTau = traci.vehicle.getTau(testVehicle)
-    if ismember(testVehicle,vehicles)
-        vehLeader = traci.vehicle.getLeader(testVehicle, 1)
-    end
+%     if ismember(testVehicle,vehicles)
+%         vehLeader = traci.vehicle.getLeader(testVehicle, 1)
+%     end
     % vehBestLanes = traci.vehicle.getBestLanes(testVehicle)
     % vehDrivingDistance = traci.vehicle.getDrivingDistance(testVehicle,'2o',30)
     % vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D(testVehicle,620,510)

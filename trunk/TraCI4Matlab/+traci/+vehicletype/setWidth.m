@@ -1,5 +1,5 @@
 function setWidth(typeID, width)
-%setWidth
+%setWidth Sets the width in m for vehicles of this type.
 %   setWidth(TYPEID,WIDTH) Sets the width in m of vehicles of this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

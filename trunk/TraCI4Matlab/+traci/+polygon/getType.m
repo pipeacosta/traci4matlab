@@ -1,5 +1,5 @@
 function type = getType(polygonID)
-%getType
+%getType Returns the (abstract) type of the polygon.
 %   type = getType(POLYGONID) Returns the (abstract) type of the polygon.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

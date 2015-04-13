@@ -1,5 +1,5 @@
 function linkNumber = getLinkNumber(laneID)
-%getLinkNumber
+%getLinkNumber Returns the number of connections to successive lanes.
 %   linkNumber = getLinkNumber(LANEID) Returns the number of connections to
 %   successive lanes.
 

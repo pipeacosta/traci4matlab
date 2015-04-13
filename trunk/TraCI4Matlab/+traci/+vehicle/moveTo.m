@@ -1,5 +1,5 @@
 function moveTo(vehID, laneID, pos)
-%moveTo
+%moveTo Commands the vehicle to move to the specified position.
 %   moveTo(VEHID,LANEID,POS) Commands the vehicle to move to the specified
 %   position on the given lane.
 

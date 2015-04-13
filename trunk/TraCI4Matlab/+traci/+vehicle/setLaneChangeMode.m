@@ -1,5 +1,5 @@
 function setLaneChangeMode(vehID, lcm)
-
+%setLaneChangeMode Sets the vehicle's lane change mode as a bitset.
 % setLaneChangeMode(VEHID, LCM)Sets the vehicle's lane change mode as a 
 %   bitset. For further details, see 'lane change mode' in 
 %   http://sumo.dlr.de/wiki/TraCI/Change_Vehicle_State

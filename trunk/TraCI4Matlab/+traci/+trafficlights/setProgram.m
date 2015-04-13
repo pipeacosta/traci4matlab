@@ -1,5 +1,5 @@
 function setProgram(tlsID, programID)
-%setProgram
+%setProgram Sets the id of the current program.
 %   setProgram(TLSID,PROGRAMID)Sets the id of the current program.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

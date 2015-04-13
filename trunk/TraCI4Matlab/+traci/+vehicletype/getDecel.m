@@ -1,5 +1,5 @@
 function decel = getDecel(typeID)
-%getDecel
+%getDecel Returns the maximum deceleration in of vehicles of this type.
 %   decel = getDecel(TYPEID) Returns the maximum deceleration in m/s^2 of 
 %   vehicles of this type.
 

@@ -1,5 +1,6 @@
 function nextSwitch = getNextSwitch(tlsID)
-%getNextSwitch.
+%getNextSwitch Returns the time in ms at which the next phase change will
+%be performed.
 %   nextSwitch = getNextSwitch(TLSID) Returns the time in ms at which the
 %   next phase change will be performed. 
 

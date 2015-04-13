@@ -1,5 +1,5 @@
 function setRouteID(vehID, routeID)
-%setRouteID
+%setRouteID Sets the id of the route for the named vehicle.
 %   setRouteID(VEHID,ROUTEID) Sets the id of the route for the named 
 %   vehicle.
 

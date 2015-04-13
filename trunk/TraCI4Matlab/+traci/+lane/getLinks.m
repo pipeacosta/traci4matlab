@@ -1,5 +1,6 @@
 function links = getLinks(laneID)
-%getLinks
+%getLinks Returns a cell containing ids of successor lanes together with
+%priority, open and foe.
 %   links = getLinks(LANEID) Returns a cell containing ids of successor 
 %   lanes together with priority, open and foe.
 

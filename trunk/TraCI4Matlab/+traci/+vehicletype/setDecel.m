@@ -1,6 +1,6 @@
 function setDecel(typeID, decel)
-%setDecel
-%   setDecel(TYPEID,DECEL) Sets the maximum deceleration in m/s^2 of 
+%setDecel Sets the maximum deceleration for vehicles of this type.
+%   setDecel(TYPEID,DECEL) Sets the maximum deceleration in m/s^2 for 
 %   vehicles of this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

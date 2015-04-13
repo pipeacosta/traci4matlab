@@ -1,5 +1,5 @@
 function setSpeedMode(vehID, sm)
-
+%setSpeedMode Sets the vehicle's speed mode as a bitset.
 % setSpeedMode(VEHID, SM) Sets the vehicle's speed mode as a bitset. For
 %   further details, see 'speed mode' in http://sumo.dlr.de/wiki/TraCI/Change_Vehicle_State
 

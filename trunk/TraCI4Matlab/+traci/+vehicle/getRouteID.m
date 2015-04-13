@@ -1,5 +1,5 @@
 function routeID = getRouteID(vehID)
-%getRouteID
+%getRouteID Returns the id of the route of the named vehicle.
 %   routeID = getRouteID(VEHID) Returns the id of the route of the named 
 %   vehicle.
 

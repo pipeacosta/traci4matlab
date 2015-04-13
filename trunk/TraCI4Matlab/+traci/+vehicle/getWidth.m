@@ -1,5 +1,5 @@
 function width = getWidth(vehID)
-%getWidth
+%getWidth Returns the width in m of this vehicle.
 %   width = getWidth(VEHID) Returns the width in m of this vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

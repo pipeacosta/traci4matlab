@@ -1,5 +1,5 @@
 function laneIndex = getLaneIndex(vehID)
-%getLaneIndex
+%getLaneIndex Returns the index of the lane where the vehicle was in the last step.
 %   laneIndex = getLaneIndex(VEHID) Returns the index of the lane the named
 %   vehicle was at within the last step.
 

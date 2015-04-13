@@ -1,5 +1,5 @@
 function setSignals(vehID, signals)
-%setSignals
+%setSignals Sets an integer encoding the state of the vehicle's signals.
 %   setSignalsVEHID,SIGNALS) Sets an integer encoding the state of the 
 %   vehicle's signals.
 %   The following table shows the defined signals.

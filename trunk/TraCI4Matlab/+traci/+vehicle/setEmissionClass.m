@@ -1,5 +1,5 @@
 function setEmissionClass(vehID, clazz)
-%setEmissionClass
+%setEmissionClass Sets the emission class for this vehicle.
 %   setEmissionClass(VEHID,CLASS) Sets the emission class for this vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

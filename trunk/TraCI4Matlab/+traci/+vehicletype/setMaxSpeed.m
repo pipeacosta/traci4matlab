@@ -1,6 +1,6 @@
 function setMaxSpeed(typeID, speed)
-%setMaxSpeed
-%   setMaxSpeed(TYPEID,SPEED) Sets the maximum speed in m/s of vehicles of 
+%setMaxSpeed Sets the maximum speed for vehicles of this type.
+%   setMaxSpeed(TYPEID,SPEED) Sets the maximum speed in m/s for vehicles of 
 %   this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

@@ -1,5 +1,5 @@
 function minGap = getMinGap(vehID)
-%getMinGap
+%getMinGap Returns the gap to front vehicle.
 %   minGap = getMinGap(VEHID) Returns the offset (gap to front vehicle if 
 %   halting) of this vehicle.
 

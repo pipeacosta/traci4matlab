@@ -1,5 +1,5 @@
 function width = getWidth(laneID)
-%getWidth
+%getWidth Returns the width of the lane in m.
 %   width = getWidth(LANEID) Returns the width of the lane in m.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

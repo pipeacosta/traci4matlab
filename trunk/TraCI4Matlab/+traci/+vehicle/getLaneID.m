@@ -1,5 +1,5 @@
 function laneID = getLaneID(vehID)
-%getLaneID
+%getLaneID Returns the ID of the lane where the vehicle was in the last step.
 %   laneID = getLaneID(VEHID) Returns the id of the lane the named vehicle 
 %   was at within the last step.
 

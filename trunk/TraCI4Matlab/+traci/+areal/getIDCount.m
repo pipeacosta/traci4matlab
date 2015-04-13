@@ -1,5 +1,5 @@
 function IDCount = getIDCount()
-%IDCount = getIDCount() Get the number of aeral detectors in the SUMO network.  
+%getIDCount Get the number of aeral detectors in the SUMO network.  
 
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.

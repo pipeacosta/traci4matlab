@@ -1,5 +1,5 @@
 function setPosition(poiID, x, y)
-%setPosition
+%setPosition Sets the position coordinates of the poi.
 %   setPosition(POIID,X,Y) Sets the position coordinates of the poi.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

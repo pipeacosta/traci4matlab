@@ -1,5 +1,5 @@
 function setLength(typeID, length)
-%setLength
+%setLength Sets the length in m of the vehicles of this type.
 %   setLength(TYPEID,LENGTH) Sets the length in m of the vehicles of this 
 %   type.
 

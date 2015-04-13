@@ -1,7 +1,7 @@
 function setMinGap(typeID, minGap)
-%setMinGap
+%setMinGap Sets the offset for vehicles of this type.
 %   setMinGap(TYPEID,MINGAP) Sets the offset (gap to front vehicle if 
-%   halting) of vehicles of this type.
+%   halting) for vehicles of this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.

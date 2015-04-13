@@ -1,5 +1,5 @@
 function length = getLength(vehID)
-%getLength
+%getLength Returns the length in m of the given vehicle.
 %   length = getLength(VEHID) Returns the length in m of the given vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

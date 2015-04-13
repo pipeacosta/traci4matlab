@@ -1,5 +1,5 @@
 function maxSpeed = getMaxSpeed(vehID)
-%getMaxSpeed
+%getMaxSpeed Returns the maximum speed in m/s of this vehicle.
 %   maxSpeed = getMaxSpeed(VEHID) Returns the maximum speed in m/s of this 
 %   vehicle.
 

@@ -1,5 +1,5 @@
 function length = getLength(typeID)
-%getLength
+%getLength Returns the length in m of the vehicles of this type.
 %   length = getLength(TYPEID) Returns the length in m of the vehicles of 
 %   this type.
 

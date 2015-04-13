@@ -1,5 +1,5 @@
 function speedFactor = getSpeedFactor(typeID)
-%getSpeedFactor
+%getSpeedFactor Returns the chosen speed factor for vehicles of this type.
 %   speedFactor = getSpeedFactor(TYPEID) Returns the chosen speed factor for
 %   vehicles of this type.
 

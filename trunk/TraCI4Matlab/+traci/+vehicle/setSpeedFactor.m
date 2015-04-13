@@ -1,5 +1,5 @@
 function setSpeedFactor(vehID, factor)
-%setSpeedFactor
+%setSpeedFactor Sets the speed factor within the last step.
 %   setSpeedFactor(VEHID,FACTOR) Sets the speed factor for the named
 %   vehicle within the last step.
 

@@ -1,6 +1,6 @@
 function setShapeClass(typeID, clazz)
-%setShapeClass
-%   setShapeClass(TYPEID,CLASS) Sets the shape class of vehicles of this 
+%setShapeClass Sets the shape class for vehicles of this type. 
+%   setShapeClass(TYPEID,CLASS) Sets the shape class for vehicles of this 
 %   type. 
 
 %   Copyright 2015 Universidad Nacional de Colombia,

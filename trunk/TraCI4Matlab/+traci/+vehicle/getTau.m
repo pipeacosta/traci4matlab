@@ -1,5 +1,5 @@
 function tau = getTau(vehID)
-%getTau
+%getTau Returns the driver's reaction time in s for this vehicle.
 %   tau = getTau(VEHID) Returns the driver's reaction time in s for this 
 %   vehicle.
 

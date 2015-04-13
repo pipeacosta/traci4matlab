@@ -1,5 +1,5 @@
 function shapeClass = getShapeClass(typeID)
-%getShapeClass
+%getShapeClass Returns the shape class of vehicles of this type. 
 %   shapeClass = getShapeClass(TYPEID) Returns the shape class of vehicles 
 %   of this type. 
 

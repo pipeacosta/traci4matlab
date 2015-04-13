@@ -1,5 +1,5 @@
 function setVehicleClass(vehID, clazz)
-%setVehicleClass
+%setVehicleClass Sets the vehicle class for this vehicle.
 %   setVehicleClass(VEHID,CLASS) Sets the vehicle class for this vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

@@ -1,5 +1,5 @@
 function effort = getEffort(vehID, time, edgeID)
-%getEffort
+%getEffort Return the vehicle-dependent edge effort.
 %   effort = getEffort(VEHID,TIME,EDGEID) Returns the edge effort for the 
 %   given time as stored in the vehicle's internal container. If such a 
 %   value does not exist, -1 is returned.

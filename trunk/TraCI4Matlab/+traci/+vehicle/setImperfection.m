@@ -1,5 +1,5 @@
 function setImperfection(vehID, imperfection)
-%setImperfection
+%setImperfection Sets the driver's imperfection (dawdling).
 %   setImperfection(VEHID,IMPERFECTION) Sets the driver's imperfection
 %   (dawdling). IMPERFECTION is a double precision integer ranging from
 %   zero to one.

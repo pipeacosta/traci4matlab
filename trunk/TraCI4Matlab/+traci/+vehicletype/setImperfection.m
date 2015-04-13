@@ -1,5 +1,5 @@
 function setImperfection(typeID, imperfection)
-%setImperfection
+%setImperfection Sets the driver's imperfection for vehicles of this class.
 %   setImperfection(TYPEID,IMPERFECTION) Sets the driver's imperfection
 %   (dawdling) for vehicles of this class. IMPERFECTION is a double 
 %   precision integer rnging from zero to one.

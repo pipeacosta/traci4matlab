@@ -1,5 +1,5 @@
 function setEffort(vehID, begTime, endTime, edgeID, effort)
-%setEffort
+%setEffort Inserts the information about the effort of the given edge.
 %   setEffort(VEHID,BEGTIME,ENDTIME,EDGEID,EFFORT) Inserts the information 
 %   about the effort of edge EDGEID valid from BEGTIME time to ENDTIME time
 %   into the vehicle's internal edge weights container.

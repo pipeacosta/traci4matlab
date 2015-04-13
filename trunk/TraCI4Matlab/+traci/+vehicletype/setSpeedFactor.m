@@ -1,6 +1,6 @@
 function setSpeedFactor(typeID, factor)
-%setSpeedFactor
-%   setSpeedFactor(TYPEID,FACTOR) Sets the speed factor for the vehicles of
+%setSpeedFactor Sets the speed factor for vehicles of this type.
+%   setSpeedFactor(TYPEID,FACTOR) Sets the speed factor for vehicles of
 %   this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

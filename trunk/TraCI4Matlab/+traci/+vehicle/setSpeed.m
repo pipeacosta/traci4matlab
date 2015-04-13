@@ -1,5 +1,5 @@
 function setSpeed(vehID, speed)
-%setSpeed
+%setSpeed Sets the speed in m/s for the named vehicle within the last step.
 %   setSpeed(VEHID,SPEED) Sets the speed in m/s for the named vehicle 
 %   within the last step.
 

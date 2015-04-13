@@ -1,5 +1,5 @@
 function add(vehID, routeID, varargin)
-%add Get the traffic lights' state.
+%add Add a vehicle to the SUMO network
 %   add(VEHID,ROUTEID) Adds a vehicle in the current time-step with ID 
 %   VEHID and assigns the route with ID ROUTEID to it.
 %   add(...,DEPART) Specify the departure time in seconds.

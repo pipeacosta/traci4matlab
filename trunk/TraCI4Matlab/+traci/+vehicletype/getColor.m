@@ -1,5 +1,5 @@
 function color = getColor(typeID)
-%getColor
+%getColor Returns the color of this type of vehicle.
 %   color = getColor(TYPEID)Returns the color of this type of vehicle.
 
 %   Copyright 2015 Universidad Nacional de Colombia,

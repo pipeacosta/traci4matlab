@@ -1,7 +1,7 @@
 function setSpeedDeviation(typeID, deviation)
-%setSpeedDeviation
-%   setSpeedDeviation(TYPEID,DEVIATION) Sets the maximum speed deviation of
-%   vehicles of this type.
+%setSpeedDeviation Sets the maximum speed deviation for vehicles of this type.
+%   setSpeedDeviation(TYPEID,DEVIATION) Sets the maximum speed deviation
+%   for vehicles of this type.
 
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.

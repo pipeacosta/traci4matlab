@@ -1,5 +1,5 @@
 function setColor(polygonID, color)
-%setColor
+%setColor Sets the rgba color of the polygon.
 %   setColor(POLYGONID,COLOR) Sets the rgba color of the polygon. COLOR is 
 %   a four-element vector whose elements range from 0 to 255, they represent
 %   the R, G, B and Alpha (unused) components of the color.

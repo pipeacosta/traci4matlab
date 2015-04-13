@@ -1,5 +1,5 @@
 function isvalid = isRouteValid(vehID)
-%isRouteValid
+%isRouteValid Determine whether the current route of the vehicle is valid.
 %   isvalid = isRouteValid(VEHID) Determine whether the current route of the
 %   vehicle is valid (i.e. all the edges along the route are connected).
 
