@@ -1,4 +1,4 @@
-function [traciVersion sumoVersion] = init(varargin)
+function [traciVersion, sumoVersion] = init(varargin)
 %INIT Initialize the connection to the SUMO server.
 %   INIT() Initialize the connection to the SUMO server using the socket
 %   localhost:8813. The SUMO server must be listening on the same socket.

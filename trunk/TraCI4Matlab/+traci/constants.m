@@ -10,7 +10,7 @@ classdef constants
 		% ****************************************
 		% VERSION
 		% ****************************************
-		TRACI_VERSION = 6
+		TRACI_VERSION = 9
 
 
 		% ****************************************
@@ -37,9 +37,6 @@ classdef constants
 		% command: change target
 		CMD_CHANGETARGET = '0x31'
 
-		% command: add vehicle
-		CMD_ADDVEHICLE = '0x74'
-
 		% command: close sumo
 		CMD_CLOSE = '0x7F'
 
@@ -57,20 +54,7 @@ classdef constants
 		% response: subscribe induction loop (e1) variable
 		RESPONSE_SUBSCRIBE_INDUCTIONLOOP_VARIABLE = '0xe0'
 		
-		% command: subscribe areal detector (e2) context
-		CMD_SUBSCRIBE_AREAL_DETECTOR_CONTEXT = '0x8D'
-		% response: subscribe areal detector (e2) context
-		RESPONSE_SUBSCRIBE_AREAL_DETECTOR_CONTEXT = '0x9D'
-		% command: get areal detector (e2) variable
-		CMD_GET_AREAL_DETECTOR_VARIABLE = '0x8E'
-		% response: get areal detector (e2) variable
-		RESPONSE_GET_AREAL_DETECTOR_VARIABLE = '0x9E'
-		% command: subscribe areal detector (e2) variable
-		CMD_SUBSCRIBE_AREAL_DETECTOR_VARIABLE = '0x8F'
-		% response: subscribe areal detector (e2) variable
-		RESPONSE_SUBSCRIBE_AREAL_DETECTOR_VARIABLE = '0x9F'
-		
-		% command: subscribe multi-entry/multi-exit detector (e3) context
+        % command: subscribe multi-entry/multi-exit detector (e3) context
 		CMD_SUBSCRIBE_MULTI_ENTRY_EXIT_DETECTOR_CONTEXT = '0x81'
 		% response: subscribe multi-entry/multi-exit detector (e3) context
 		RESPONSE_SUBSCRIBE_MULTI_ENTRY_EXIT_DETECTOR_CONTEXT = '0x91'
@@ -247,6 +231,34 @@ classdef constants
 		CMD_SUBSCRIBE_GUI_VARIABLE = '0xdc'
 		% response: subscribe GUI variable
 		RESPONSE_SUBSCRIBE_GUI_VARIABLE = '0xec'
+        
+        % command: subscribe areal detector (e2) context
+		CMD_SUBSCRIBE_AREAL_DETECTOR_CONTEXT = '0x8d'
+		% response: subscribe areal detector (e2) context
+		RESPONSE_SUBSCRIBE_AREAL_DETECTOR_CONTEXT = '0x9d'
+		% command: get areal detector (e2) variable
+		CMD_GET_AREAL_DETECTOR_VARIABLE = '0xad'
+		% response: get areal detector (e2) variable
+		RESPONSE_GET_AREAL_DETECTOR_VARIABLE = '0xbd'
+		% command: subscribe areal detector (e2) variable
+		CMD_SUBSCRIBE_AREAL_DETECTOR_VARIABLE = '0xdd'
+		% response: subscribe areal detector (e2) variable
+		RESPONSE_SUBSCRIBE_AREAL_DETECTOR_VARIABLE = '0xed'
+        
+        % command: subscribe person context
+        CMD_SUBSCRIBE_PERSON_CONTEXT = '0x8e'
+        % response: subscribe person context
+        RESPONSE_SUBSCRIBE_PERSON_CONTEXT = '0x9e'
+        % command: get person variable
+        CMD_GET_PERSON_VARIABLE = '0xae'
+        % response: get person variable
+        RESPONSE_GET_PERSON_VARIABLE = '0xbe'
+        % command: set person variable
+        CMD_SET_PERSON_VARIABLE = '0xce'
+        % command: subscribe person variable
+        CMD_SUBSCRIBE_PERSON_VARIABLE = '0xde'
+        % response: subscribe person variable
+        RESPONSE_SUBSCRIBE_PERSON_VARIABLE = '0xee'
 
 
 		% ****************************************
@@ -429,7 +441,8 @@ classdef constants
 		% assumed time to next switch (get: traffic lights)
 		TL_NEXT_SWITCH = '0x2d'
 
-
+        % current state, using external signal names (get: traffic lights)
+        TL_EXTERNAL_STATE = '0x2e'
 
 		% outgoing link number (get: lanes)
 		LANE_LINK_NUMBER = '0x30'
@@ -455,6 +468,9 @@ classdef constants
 
 		% position (2D) (get: vehicle, poi, set: poi)
 		VAR_POSITION = '0x42'
+        
+        % position (3D) (get: vehicle, poi, set: poi)
+        VAR_POSITION3D = '0x39'
 
 		% angle (get: vehicle)
 		VAR_ANGLE = '0x43'
@@ -558,6 +574,12 @@ classdef constants
 		% is the vehicle stopped, and if so parked and/or triggered?
 		% value = stopped + 2 * parking + 4 * triggered
 		VAR_STOPSTATE = '0xb5'
+        
+        % how lane changing is performed (set: vehicle)
+        VAR_LANECHANGE_MODE = '0xb6'
+        
+        % maximum speed regarding max speed on the current lane and speed factor (get: vehicle)
+        VAR_ALLOWED_SPEED = '0xb7'
 
 		% current CO2 emission of a node (get: vehicle, lane, edge)
 		VAR_CO2EMISSION = '0x60'
@@ -586,6 +608,9 @@ classdef constants
 
         % current leader together with gap (get: vehicle)
         VAR_LEADER = '0x68'
+        
+        %current waiting time (get: vehicle, lane)
+        VAR_WAITING_TIME = '0x7a'
 
 		% current time step (get: simulation)
 		VAR_TIME_STEP = '0x70'
@@ -629,7 +654,35 @@ classdef constants
 		% minimum number of expected vehicles (get: simulation)
 		VAR_MIN_EXPECTED_VEHICLES = '0x7d'
 
-
+        % number of vehicles starting to park (get: simulation)
+        VAR_STOP_STARTING_VEHICLES_NUMBER = '0x68'
+        
+        % ids of vehicles starting to park (get: simulation)
+        VAR_STOP_STARTING_VEHICLES_IDS = '0x69'
+        
+        % number of vehicles ending to park (get: simulation)
+        VAR_STOP_ENDING_VEHICLES_NUMBER = '0x6a'
+        
+        % ids of vehicles ending to park (get: simulation)
+        VAR_STOP_ENDING_VEHICLES_IDS = '0x6b'
+        
+        % number of vehicles starting to park (get: simulation)
+        VAR_PARKING_STARTING_VEHICLES_NUMBER = '0x6c'
+        
+        % ids of vehicles starting to park (get: simulation)
+        VAR_PARKING_STARTING_VEHICLES_IDS = '0x6d'
+        
+        % number of vehicles ending to park (get: simulation)
+        VAR_PARKING_ENDING_VEHICLES_NUMBER = '0x6e'
+        
+        % ids of vehicles ending to park (get: simulation)
+        VAR_PARKING_ENDING_VEHICLES_IDS = '0x6f'
+        
+        % clears the simulation of all not inserted vehicles (set: simulation)
+        CMD_CLEAR_PENDING_VEHICLES = '0x94'
+        
+        % sets/retrieves abstract parameter
+        VAR_PARAMETER = '0x7e'
 
 		% add an instance (poi, polygon, vehicle, route)
 		ADD = '0x80'
@@ -642,7 +695,12 @@ classdef constants
 
 		% distance between points or vehicles
 		DISTANCE_REQUEST = '0x83'
-
+        
+        %the current driving distance
+        VAR_DISTANCE = '0x84'
+        
+        % add a fully specified instance (vehicle)
+        ADD_FULL = '0x85'
 
 		% force rerouting based on travel time (vehicles)
 		CMD_REROUTE_TRAVELTIME = '0x90'

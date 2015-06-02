@@ -6,7 +6,7 @@
 %   organized by SUMO object type, some of them needed to be included in 
 %   the main loop of the script.
 
-%   Copyright 2013 Universidad Nacional de Colombia,
+%   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$
@@ -24,8 +24,16 @@ clc
 % pointing to your SUMO root directory and modify the windows path to 
 % include the %SUMO_HOME%/bin directory.
 
+% Tutorial in docs
+scenarioPath = [getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg'];
+
+% Tutorial in tests
+if ~exist(scenarioPath, 'file')
+   scenarioPath = [getenv('SUMO_HOME') '\tests\complex\tutorial\traci_tls\data\cross.sumocfg']; 
+end
+
 try
-	system(['sumo-gui -c ' getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg&']);
+	system(['sumo-gui -c ' scenarioPath '&']);
 catch err
 end
 
@@ -33,13 +41,17 @@ end
 % To test vehicle commands, we have to check wether the sumo 0.20.0
 % version is installed, because in that version the prefix of the vehicle
 % names has changed.
-
 sumoHome = getenv('SUMO_HOME');
-sumoVersion = str2double(sumoHome(9:12));
-if sumoVersion < 0.20
-	testVehicle = '10';
+if isempty(strfind(sumoHome,'-'))
+    sumoVersion = 'unknown';
+    testVehicle = 'right_10';
 else
-	testVehicle = 'right_10';
+    sumoVersion = str2double(sumoHome(9:12));
+    if sumoVersion < 0.20
+        testVehicle = '10';
+    else
+        testVehicle = 'right_10';
+    end
 end
 
 import traci.constants
