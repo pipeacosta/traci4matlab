@@ -4,7 +4,9 @@
 %   http://sumo-sim.org/userdoc/Tutorials/TraCI4Traffic_Lights.html. If you
 %   want to test a TraCI command, just uncomment it. The commands are 
 %   organized by SUMO object type, some of them needed to be included in 
-%   the main loop of the script.
+%   the main loop of the script. Note that you have to generate your own
+%   traffic demand, we recommend to obtain it by running tha SUMO TraCI
+%   tutorial using Python 
 
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
@@ -53,6 +55,8 @@ else
         testVehicle = 'right_10';
     end
 end
+
+subscribedToTestVeh = 0;
 
 import traci.constants
 
@@ -154,8 +158,7 @@ programPointer = length(PROGRAM);
 % traci.trafficlights.subscribe('0',{constants.TL_RED_YELLOW_GREEN_STATE});
 % tlsCurrentPhaseHandle = traci.trafficlights.getSubscriptionResults('0');
 % tlsCurrentPhase = tlsCurrentPhaseHandle(constants.TL_RED_YELLOW_GREEN_STATE);
-% fprintf('Traffic lights phase: %s\n', tlsCurrentPhase)
-% traci.vehicle.subscribe(testVehicle);
+% fprintf('Traffic lights phase: %s\n', tlsCurrentPhase);
 % traci.vehicletype.subscribe('typeWE');
 % maxSpeedWEHandle = traci.vehicletype.getSubscriptionResults('typeWE');
 % maxSpeedWE = maxSpeedWEHandle(constants.VAR_MAXSPEED);
@@ -322,10 +325,14 @@ while traci.simulation.getMinExpectedNumber()>0
     
     % Subscribe to the vehicle with the id contained in the variable "testVehicle" 
 	% when it is loaded in the network
-    % if ismember(testVehicle,vehicles)
-    %     testVehicleHandle = traci.vehicle.getSubscriptionResults(testVehicle);
-    %     testVehicleHandle = {testVehicleHandle(constants.VAR_ROAD_ID) testVehicleHandle(constants.VAR_LANEPOSITION)};
-    % end
+    if ismember(testVehicle,vehicles)
+        if ~subscribedToTestVeh
+            traci.vehicle.subscribe(testVehicle);
+            subscribedToTestVeh = 1;
+        end
+        testVehicleHandle = traci.vehicle.getSubscriptionResults(testVehicle);
+        testVehicleHandle = {testVehicleHandle(constants.VAR_ROAD_ID) testVehicleHandle(constants.VAR_LANEPOSITION)};
+    end
     
     %% GETSUBSCRIPTIONRESULTS COMMANDS: Note that you have to create the required detectors in the cross.det.xml file
     
