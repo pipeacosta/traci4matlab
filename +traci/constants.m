@@ -404,6 +404,9 @@ classdef constants
 		
 		% last step jam length in meters
 		JAM_LENGTH_METERS = '0x19'
+        
+        % last step person list (get: edges)
+        LAST_STEP_PERSON_ID_LIST = '0x1a'
 
 		% traffic light states, encoded as rRgGyYoO tuple (get: traffic lights)
 		TL_RED_YELLOW_GREEN_STATE = '0x20'
@@ -710,6 +713,15 @@ classdef constants
 
 		% validates current route (vehicles)
 		VAR_ROUTE_VALID = '0x92'
+        
+        % retrieve information regarding the current person/container stage
+        VAR_STAGE = '0xc0'
+
+        % retrieve information regarding the next edge including crossings and walkingAreas (pedestrians only)
+        VAR_NEXT_EDGE = '0xc1'
+
+        % retrieve the number of stages (person, container)
+        VAR_NUM_STAGES = '0xc2'
 
 
 		% zoom
