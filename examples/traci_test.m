@@ -4,7 +4,7 @@
 %   Copyright 2013 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test.m 4 2014-03-03 15:18:05Z afacostag $
+%   $Id: traci_test.m 30 2016-01-21 16:09:25Z afacostag $
 
 clear all
 close all

@@ -11,7 +11,7 @@
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 29 2015-10-13 13:21:27Z afacostag $
+%   $Id: traci_test2.m 30 2016-01-21 16:09:25Z afacostag $
 
 clear all
 close all
@@ -154,7 +154,7 @@ programPointer = length(PROGRAM);
 % traci.gui.subscribe('View #0');
 % traci.inductionloop.subscribe('0');
 % traci.junction.subscribe('0');
-% traci.lane.subscribe('1i_0');
+% traci.lane.subscribe('1i_0',{constants.VAR_WAITING_TIME});
 % traci.multientryexit.subscribe('e3_0_1i');
 % traci.route.subscribe('down');
 % traci.simulation.subscribe();
@@ -328,6 +328,10 @@ while traci.simulation.getMinExpectedNumber()>0
     % Subscribe to the vehicle with the id contained in the variable "testVehicle" 
 	% when it is loaded in the network
     if ismember(testVehicle,vehicles)
+        
+%         traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,10,...
+%             {constants.VAR_WAITING_TIME});
+        
 %         if ~subscribedToTestVeh
 %             traci.vehicle.subscribe(testVehicle);
 %             subscribedToTestVeh = 1;

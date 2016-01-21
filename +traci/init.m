@@ -22,7 +22,7 @@ function [traciVersion, sumoVersion] = init(varargin)
 %   Copyright 2015 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: init.m 29 2015-10-13 13:21:27Z afacostag $
+%   $Id: init.m 30 2016-01-21 16:09:25Z afacostag $
 
 % Add the DataReader class
 % [pathstr,~,~] = fileparts(which('traci.init'));

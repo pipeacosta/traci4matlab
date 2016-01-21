@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 06/22/15 12:16:49 by SUMO netconvert Version dev-SVN-r18493
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="C:/Users/AndresFelipe/Documents/SUMO/hello/data/hello_patched.net.xml"/>
+        <node-files value="C:/Users/AndresFelipe/Documents/SUMO/hello/data/patch_node.nod.xml"/>
+        <tllogic-files value="C:/Users/AndresFelipe/Documents/SUMO/hello/data/patch_tls.tll.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:/Users/AndresFelipe/Documents/SUMO/hello/data/hello_patched.net.xml"/>
+    </output>
+
+    <processing>
+        <no-turnarounds value="true"/>
+        <offset.disable-normalization value="true"/>
+    </processing>
+
+</configuration>
+-->
+
+<net version="0.13" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="250.00,0.00" convBoundary="0.00,0.00,550.00,0.00" origBoundary="-250.00,0.00,300.00,0.00" projParameter="!"/>
+
+    <edge id=":2_0" function="internal">
+        <lane id=":2_0_0" index="0" speed="13.90" length="0.10" shape="500.00,-1.65 500.00,-1.65"/>
+    </edge>
+
+    <edge id="1to2" from="1" to="2" priority="-1">
+        <lane id="1to2_0" index="0" speed="13.90" length="500.00" shape="0.00,-1.65 500.00,-1.65"/>
+    </edge>
+    <edge id="out" from="2" to="3" priority="-1">
+        <lane id="out_0" index="0" speed="13.90" length="50.00" shape="500.00,-1.65 550.00,-1.65"/>
+    </edge>
+
+    <tlLogic id="0" type="static" programID="0" offset="0">
+        <phase duration="31" state="G"/>
+        <phase duration="31" state="r"/>
+    </tlLogic>
+
+    <junction id="1" type="unregulated" x="0.00" y="0.00" incLanes="" intLanes="" shape="-0.00,-0.05 -0.00,-3.25"/>
+    <junction id="2" type="traffic_light" x="500.00" y="0.00" incLanes="1to2_0" intLanes=":2_0_0" shape="500.00,-0.05 500.00,-3.25 500.00,-0.05">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+    <junction id="3" type="unregulated" x="550.00" y="0.00" incLanes="out_0" intLanes="" shape="550.00,-3.25 550.00,-0.05"/>
+
+    <connection from="1to2" to="out" fromLane="0" toLane="0" via=":2_0_0" tl="0" linkIndex="0" dir="s" state="o"/>
+
+    <connection from=":2_0" to="out" fromLane="0" toLane="0" dir="s" state="M"/>
+
+</net>

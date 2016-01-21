@@ -4,13 +4,13 @@ classdef constants
     %   Copyright 2014 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-	%   $Id: constants.m 24 2015-06-25 22:33:59Z afacostag $
+	%   $Id: constants.m 30 2016-01-21 16:09:25Z afacostag $
 
 	properties (Constant = true)
 		% ****************************************
 		% VERSION
 		% ****************************************
-		TRACI_VERSION = 9
+		TRACI_VERSION = 10
 
 
 		% ****************************************
