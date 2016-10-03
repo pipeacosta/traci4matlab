@@ -8,10 +8,10 @@
 %   traffic demand, we recommend to obtain it by running tha SUMO TraCI
 %   tutorial using Python 
 
-%   Copyright 2015 Universidad Nacional de Colombia,
+%   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 30 2016-01-21 16:09:25Z afacostag $
+%   $Id: traci_test2.m 32 2016-10-03 15:16:21Z afacostag $
 
 clear all
 close all
@@ -35,7 +35,7 @@ if ~exist(scenarioPath, 'file')
 end
 
 try
-	system(['sumo-gui -c ' scenarioPath ' &']);
+	system(['sumo-gui -c ' scenarioPath ' --remote-port 8873 --start&']);
 catch err
 end
 
@@ -328,20 +328,19 @@ while traci.simulation.getMinExpectedNumber()>0
     % Subscribe to the vehicle with the id contained in the variable "testVehicle" 
 	% when it is loaded in the network
     if ismember(testVehicle,vehicles)
-        
-%         traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,10,...
-%             {constants.VAR_WAITING_TIME});
-        
+               
 %         if ~subscribedToTestVeh
 %             traci.vehicle.subscribe(testVehicle);
 %             subscribedToTestVeh = 1;
 %         end
         
-%         if ~contextSubsToTestVeh
+        if ~contextSubsToTestVeh
 %             traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,...
 %                 20, {'0x40', '0x42','0x43','0x5b','0x51','0x56','0x7a'});
-%             subscribedToTestVeh = 1;
-%         end
+            traci.vehicle.subscribeContext(testVehicle,constants.CMD_GET_VEHICLE_VARIABLE,10,...
+                {constants.VAR_WAITING_TIME});
+            contextSubsToTestVeh = 1;
+        end
         
 %         testVehicleHandle = traci.vehicle.getSubscriptionResults(testVehicle);
 %         testVehicleHandle = {testVehicleHandle(constants.VAR_ROAD_ID) testVehicleHandle(constants.VAR_LANEPOSITION)};
@@ -407,7 +406,13 @@ while traci.simulation.getMinExpectedNumber()>0
     % laneContextSubscriptionResults = traci.lane.getContextSubscriptionResults('4i_0');
     % poiContextSubscriptionResults = traci.poi.getContextSubscriptionResults('mypoi');
     % polygonContextSubscriptionResults = traci.polygon.getContextSubscriptionResults('mypolygon');
-    % vehicleContextSubscriptionResults = traci.vehicle.getContextSubscriptionResults(testVehicle);
+    if contextSubsToTestVeh
+        vehicleContextSubscriptionResults = traci.vehicle.getContextSubscriptionResults(testVehicle);
+        if ~strcmp(vehicleContextSubscriptionResults,'None')
+            testVehicleSubsResults = vehicleContextSubscriptionResults(testVehicle);
+            testVehicleWaitingTime = testVehicleSubsResults(constants.VAR_WAITING_TIME)
+        end
+    end
     
 	%% AREAL DETECTOR COMMANDS: Note that you have to create the detector in the cross.det.xml file
  	% arealDetectorIDCount = traci.areal.getIDCount();
@@ -528,6 +533,7 @@ while traci.simulation.getMinExpectedNumber()>0
     % lane1i0TravelTime = traci.lane.getTraveltime('1i_0')
     % lane1i0HalringNumber = traci.lane.getLastStepHaltingNumber('1i_0')
     % lane1i0VehicleIDs = traci.lane.getLastStepVehicleIDs('1i_0')
+    lane1i0HaltingNumber = traci.lane.getLastStepHaltingNumber('1i_0')
     
     %% MULTIENTRY=EXIT COMMANDS: Note that you have to create the detector in the cross.det.xml file
     
