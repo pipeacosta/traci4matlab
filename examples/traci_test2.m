@@ -11,7 +11,7 @@
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 32 2016-10-03 15:16:21Z afacostag $
+%   $Id: traci_test2.m 33 2016-10-07 19:58:46Z afacostag $
 
 clear all
 close all
@@ -27,15 +27,20 @@ clc
 % include the %SUMO_HOME%/bin directory.
 
 % Tutorial in docs
-scenarioPath = [getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data\cross.sumocfg'];
+scenarioPath1 = fullfile([getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data'],'cross.sumocfg');
+scenarioPath2 = fullfile([getenv('SUMO_HOME') '\doc\tutorial\traci_tls\data'],'cross.sumocfg');
 
-% Tutorial in tests
-if ~exist(scenarioPath, 'file')
-   scenarioPath = [getenv('SUMO_HOME') '\tests\complex\tutorial\traci_tls\data\cross.sumocfg']; 
+if ~isempty(dir(scenarioPath1))
+    scenarioPath = scenarioPath1;
+elseif ~isempty(dir(scenarioPath2))
+    scenarioPath = scenarioPath2;
+else
+    % Tutorial in tests
+    scenarioPath = fullfile(-[getenv('SUMO_HOME') '\tests\complex\tutorial\traci_tls\data\cross.sumocfg']);
 end
 
 try
-	system(['sumo-gui -c ' scenarioPath ' --remote-port 8873 --start&']);
+	system(['sumo-gui -c ' '"' scenarioPath '"' ' --remote-port 8873 --start&']);
 catch err
 end
 
