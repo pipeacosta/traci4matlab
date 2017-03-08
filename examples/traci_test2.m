@@ -39,11 +39,7 @@ else
     scenarioPath = fullfile(-[getenv('SUMO_HOME') '\tests\complex\tutorial\traci_tls\data\cross.sumocfg']);
 end
 
-try
-	system(['sumo-gui -c ' '"' scenarioPath '"' ' --remote-port 8873 --start&']);
-catch err
-end
-
+system(['sumo-gui -c ' '"' scenarioPath '"' ' --remote-port 8873 --start&']);
 
 % To test vehicle commands, we have to check wether the sumo 0.20.0
 % version is installed, because in that version the prefix of the vehicle
