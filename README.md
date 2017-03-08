@@ -12,14 +12,14 @@ Add traci4matlab.jar to the Matlab static java directory <br>
 # Citing TraCI4Matlab
 If you use TraCI4Matlab in your research reports, articles and conferences, please cite it, as follows:
 
-@incollection{acosta_etal_2015,
-	title = {{TraCI}4Matlab: {Enabling} the {Integration} of the {SUMO} {Road} {Traffic} {Simulator} and {Matlab}® {Through} a {Software} {Re}-engineering {Process}},
-	shorttitle = {{TraCI}4Matlab},
-	url = {http://link.springer.com/10.1007/978-3-319-15024-6_9},
-	urldate = {2017-03-06},
-	booktitle = {Modeling {Mobility} with {Open} {Data}},
-	publisher = {Springer},
-	author = {Acosta, Andrés F. and Espinosa, Jorge E. and Espinosa, Jairo},
-	year = {2015},
-	pages = {155--170}
+@incollection{acosta_etal_2015, <br>
+title = {{TraCI}4Matlab: {Enabling} the {Integration} of the {SUMO} {Road} {Traffic} {Simulator} and {Matlab}® {Through} a {Software} {Re}-engineering {Process}}, <br>
+shorttitle = {{TraCI}4Matlab}, <br>
+url = {http://link.springer.com/10.1007/978-3-319-15024-6_9}, <br>
+urldate = {2017-03-06}, <br>
+booktitle = {Modeling {Mobility} with {Open} {Data}}, <br>
+publisher = {Springer}, <br>
+author = {Acosta, Andrés F. and Espinosa, Jorge E. and Espinosa, Jairo}, <br>
+year = {2015}, <br>
+pages = {155--170} <br>
 }
