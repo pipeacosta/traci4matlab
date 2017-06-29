@@ -11,7 +11,7 @@
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 33 2016-10-07 19:58:46Z afacostag $
+%   $Id: traci_test2.m 35 2017-06-29 03:48:27Z afacostag $
 
 clear all
 close all
@@ -61,6 +61,7 @@ subscribedToTestVeh = 0;
 contextSubsToTestVeh = 0;
 moveToVTDTested = 0;
 trackingTestVeh = 0;
+setSpeedTested = 0;
 
 import traci.constants
 
@@ -363,7 +364,11 @@ while traci.simulation.getMinExpectedNumber()>0
             moveToVTDTested = 1;
         end
         
-        
+        if ~setSpeedTested
+            traci.vehicle.setSpeed(testVehicle, 13.8999);
+            traci.vehicle.setSpeed(testVehicle, 12.0001);
+            setSpeedTested = 1;
+        end
         
     end
     
@@ -620,9 +625,9 @@ while traci.simulation.getMinExpectedNumber()>0
     % vehDecel = traci.vehicle.getDecel(testVehicle)
     % vehImperfection = traci.vehicle.getImperfection(testVehicle)
     % vehTau = traci.vehicle.getTau(testVehicle)
-%     if ismember(testVehicle,vehicles)
-%         vehLeader = traci.vehicle.getLeader(testVehicle, 1)
-%     end
+    if ismember('left_21',vehicles)
+        [leaderID, dist] = traci.vehicle.getLeader('left_21', 1)
+    end
     % vehBestLanes = traci.vehicle.getBestLanes(testVehicle)
     % vehDrivingDistance = traci.vehicle.getDrivingDistance(testVehicle,'2o',30)
     % vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D(testVehicle,620,510)
