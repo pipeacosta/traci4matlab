@@ -10,7 +10,7 @@ function responses = simulationStep(timeStep)
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: simulationStep.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: simulationStep.m 36 2017-07-07 16:21:44Z afacostag $
 
 
 global message edgeSubscriptionResults guiSubscriptionResults ...
@@ -35,8 +35,8 @@ end
 import traci.constants
 
 % Prepare the message to be sent to the SUMO server
-message.queue = [message.queue uint8(sscanf(constants.CMD_SIMSTEP2,'%x'))];
-message.string = [message.string uint8([1+1+4 sscanf(constants.CMD_SIMSTEP2,'%x')]) ...
+message.queue = [message.queue uint8(sscanf(constants.CMD_SIMSTEP,'%x'))];
+message.string = [message.string uint8([1+1+4 sscanf(constants.CMD_SIMSTEP,'%x')]) ...
     traci.packInt32(timeStep)];
 
 % Send the message

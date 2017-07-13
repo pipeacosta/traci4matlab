@@ -3,7 +3,7 @@ function [vehID, dist] = readLeader(result)
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: readBestLanes.m 20 2015-03-02 16:52:32Z afacostag $
+%   $Id: readLeader.m 37 2017-07-07 16:23:05Z afacostag $
 
 result.readInt();
 result.read(1);

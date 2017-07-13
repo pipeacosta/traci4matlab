@@ -6,7 +6,7 @@ function angle = getAngle(vehID)
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getAngle.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: getAngle.m 36 2017-07-07 16:21:44Z afacostag $
 
 import traci.constants
 angle = traci.vehicle.getUniversal(constants.VAR_ANGLE, vehID);

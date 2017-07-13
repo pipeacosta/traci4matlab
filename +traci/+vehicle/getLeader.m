@@ -8,7 +8,7 @@ function [vehicleID, dist] = getLeader(vehID,dist)
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id$
+%   $Id: getLeader.m 37 2017-07-07 16:23:05Z afacostag $
 
 if nargin < 2
     dist = 0;

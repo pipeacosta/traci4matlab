@@ -8,7 +8,7 @@ function vehStopStatestate = getStopState(vehID)
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id$
+%   $Id: getStopState.m 37 2017-07-07 16:23:05Z afacostag $
 
 import traci.constants
 vehStopStatestate = traci.vehicle.getUniversal(constants.VAR_STOPSTATE, vehID);

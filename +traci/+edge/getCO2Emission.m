@@ -6,7 +6,7 @@ function CO2Emission = getCO2Emission(edgeID)
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getCO2Emission.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: getCO2Emission.m 39 2017-07-13 18:21:39Z afacostag $
 
 import traci.constants
 CO2Emission = traci.edge.getUniversal(constants.VAR_CO2EMISSION, edgeID);
