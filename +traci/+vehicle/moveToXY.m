@@ -55,7 +55,7 @@ if nargin==6
 end
 
 
-traci.beginMessage(constants.CMD_SET_VEHICLE_VARIABLE, constants.VAR_MOVE_TO_VTD,...
+traci.beginMessage(constants.CMD_SET_VEHICLE_VARIABLE, constants.MOVE_TO_XY,...
     vehID,1+4+1+4+length(edgeID)+ 1 + 4 + 1 + 8 + 1 + 8 + 1 + 8 + 1 + 1);
 
 
