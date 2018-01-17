@@ -4,9 +4,9 @@
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: traci_test.m 41 2017-08-17 16:11:56Z afacostag $
 
-clear
+clear all
 close all
 clc
 
@@ -14,7 +14,12 @@ clc
 % HERE, WE START THE SUMO SIMULATOR AND INITIALIZE IT, ACCORDING TO
 % THE EXAMPLE FOUND IN http://sumo-sim.org/userdoc/Tutorials/TraCI4Traffic_Lights.html
 
-system('sumo -c ./inter_palmas/tls_actuated/inter_palmas_actuated.sumocfg&');
+% This line is required for Matlab on Linux
+% setenv('LD_LIBRARY_PATH','/usr/lib/x86_64-linux-gnu/libxerces-c-3.1.so');
+
+scenarioPath = './inter_palmas/tls_actuated/inter_palmas_actuated.sumocfg ';
+sumoArgs = '--remote-port 8873 --xml-validation never&';
+system(['sumo -c ' scenarioPath  sumoArgs]);
 
 [traciVersion,sumoVersion] = traci.init();
 traci.close();

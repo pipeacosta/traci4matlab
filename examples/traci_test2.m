@@ -11,9 +11,9 @@
 %   Copyright 2016 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 39 2017-07-13 18:21:39Z afacostag $
+%   $Id: traci_test2.m 44 2017-09-28 14:01:13Z afacostag $
 
-clear
+clear all
 close all
 clc
 
@@ -26,9 +26,17 @@ clc
 % pointing to your SUMO root directory and modify the windows path to 
 % include the %SUMO_HOME%/bin directory.
 
+% For linux users
+% setenv('LD_LIBRARY_PATH','/usr/lib/x86_64-linux-gnu/libxerces-c-3.1.so');
+% setenv('SUMO_HOME', '/home/afacostag/sumo');
+
+docsRelPath1 = '/docs/tutorial/traci_tls/data';
+docsRelPath2 = '/doc/tutorial/traci_tls/data';
+testsRelPath = '/tests/complex/tutorial/traci_tls/data/cross.sumocfg';
+
 % Tutorial in docs
-scenarioPath1 = fullfile([getenv('SUMO_HOME') '\docs\tutorial\traci_tls\data'],'cross.sumocfg');
-scenarioPath2 = fullfile([getenv('SUMO_HOME') '\doc\tutorial\traci_tls\data'],'cross.sumocfg');
+scenarioPath1 = fullfile([getenv('SUMO_HOME') docsRelPath1],'cross.sumocfg');
+scenarioPath2 = fullfile([getenv('SUMO_HOME') docsRelPath2],'cross.sumocfg');
 
 if ~isempty(dir(scenarioPath1))
   scenarioPath = scenarioPath1;
@@ -36,7 +44,7 @@ elseif ~isempty(dir(scenarioPath2))
   scenarioPath = scenarioPath2;
 else
   % Tutorial in tests
-  scenarioPath = fullfile([getenv('SUMO_HOME') '\tests\complex\tutorial\traci_tls\data\cross.sumocfg']);
+  scenarioPath = fullfile([getenv('SUMO_HOME') testsRelPath]);
 end
 
 simRuns = 10;
@@ -312,7 +320,7 @@ while traci.simulation.getMinExpectedNumber() > 0
     
   % SHOW THE VEHICLES IDS INSIDE THE NETWORK
 %  if step == 100
-%    vehicles = traci.vehicle.getIDList();
+   vehicles = traci.vehicle.getIDList();
 %    fprintf('IDs of the vehicles in the simulation\n')
 %    for j=1:length(vehicles)
 %      fprintf('%s\n',vehicles{j});
@@ -320,7 +328,7 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   % VEHICLE COMMANDS
-%   if ismember(testVehicle, vehicles)      
+  if ismember(testVehicle, vehicles)      
 %     if ~vehicleCommandsTested
      %% VEHICLE GET COMMANDS
 %      vehSpeed = traci.vehicle.getSpeed(testVehicle)
@@ -413,7 +421,7 @@ while traci.simulation.getMinExpectedNumber() > 0
 %      traci.vehicle.setAccel(testVehicle, 2);
 %      traci.vehicle.setImperfection(testVehicle, 1);
 %      traci.vehicle.setTau(testVehicle, 1);
-%      traci.vehicle.moveToVTD('right_10','2o',0,608,509,0);
+%      traci.vehicle.moveToXY('right_10','3i',0,1000,508.5,90);
 % %    traci.vehicle.moveTo(testVehicle,'1i_0',20);  % TODO
 %        
 %      if step == 100
@@ -453,7 +461,7 @@ while traci.simulation.getMinExpectedNumber() > 0
 %      traci.gui.trackVehicle('View #0', testVehicle);
 %      trackingTestVeh = 1;
 %    end
-%  end
+  end
     
   %% GETSUBSCRIPTIONRESULTS COMMANDS: Note that you have to create the required detectors in the cross.det.xml file
 %  if ~getSubscriptionResultsTested && step == 100
@@ -537,70 +545,70 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
 	
   %% EDGE COMMANDS 
- if ~edgeCommandsTested
-   edgeIDCount = traci.edge.getIDCount();
-   fprintf('Number of edges in the simulation: %d\n',edgeIDCount);
-     
-   travelTime = traci.edge.getAdaptedTraveltime('1i',10);
-   fprintf('Travel time in 10 seconds in the edge 1i: %d\n',travelTime);
-   
-   waitingTime = traci.edge.getWaitingTime('1i');
-   fprintf('Waiting time in the edge 1i: %d\n',waitingTime);
-     
-   effort = traci.edge.getEffort('1i',10);
-   fprintf('Travel effort in 10 seconds in the edge 1i: %d\n',effort);
-    
-   CO2EmissionEdge1i = traci.edge.getCO2Emission('1i');
-   fprintf('CO2 emission in the edge 1i: %d\n',CO2EmissionEdge1i);
-     
-   COEmissionEdge1i = traci.edge.getCOEmission('1i');
-   fprintf('CO emission in the edge 1i: %d\n',COEmissionEdge1i);
-     
-   HCEmissionEdge1i = traci.edge.getHCEmission('1i');
-   fprintf('HC emission in the edge 1i: %d\n',HCEmissionEdge1i);
-     
-   PMxEmissionEdge1i = traci.edge.getPmxEmission('1i');
-   fprintf('PMx emission in the edge 1i: %d\n',PMxEmissionEdge1i);
-     
-   NOxEmissionEdge1i = traci.edge.getNOxEmission('1i');
-   fprintf('NOx emission in the edge 1i: %d\n',NOxEmissionEdge1i);
-     
-   fuelConsumptionEdge1i = traci.edge.getFuelConsumption('1i');
-   fprintf('Fuel consumption in the edge 1i: %d\n',fuelConsumptionEdge1i);
-     
-   noiseEmissionEdge1i = traci.edge.getNoiseEmission('1i');
-   fprintf('Noise emission in the edge 1i: %d\n',noiseEmissionEdge1i);
-   
-   electricityEdge1i = traci.edge.getElectricityConsumption('1i');
-   fprintf('Electricity consumption in the edge 1i: %d\n',electricityEdge1i);
-     
-   vehicleMeanSpeedEdge1i = traci.edge.getLastStepMeanSpeed('1i');
-   fprintf('Average speed in the edge 1i: %d\n',vehicleMeanSpeedEdge1i);
-     
-   vehicleOccupancyEdge1i = traci.edge.getLastStepOccupancy('1i');
-   fprintf('Occupancy in the edge 1i: %d\n',vehicleOccupancyEdge1i);
-     
-   vehicleMeanLengthEdge1i = traci.edge.getLastStepLength('1i');
-   fprintf('Average length in the edge 1i: %d\n',vehicleMeanLengthEdge1i);
-     
-   vehicleTravelTimeEdge1i = traci.edge.getTraveltime('1i');
-   fprintf('Average time of the vehicles in the edge 1i: %d\n',vehicleTravelTimeEdge1i);
-     
-   vehicleHaltingEdge1i = traci.edge.getLastStepHaltingNumber('1i');
-   fprintf('Stopped vehicles in the edge 1i: %d\n',vehicleHaltingEdge1i);
-     
-   vehicleIDsEdge1i = traci.edge.getLastStepVehicleIDs('1i');
-   fprintf('IDs of the vehicles in the edge 1i: \n');
-   disp(vehicleIDsEdge1i)
-     
-   traci.edge.adaptTraveltime('1i',15);
-    
-   traci.edge.setEffort('1i',1.343);
-     
-   traci.edge.setMaxSpeed('1i',5);
-   
-   edgeCommandsTested = 1;
- end
+%  if ~edgeCommandsTested
+%    edgeIDCount = traci.edge.getIDCount();
+%    fprintf('Number of edges in the simulation: %d\n',edgeIDCount);
+%      
+%    travelTime = traci.edge.getAdaptedTraveltime('1i',10);
+%    fprintf('Travel time in 10 seconds in the edge 1i: %d\n',travelTime);
+%    
+%    waitingTime = traci.edge.getWaitingTime('1i');
+%    fprintf('Waiting time in the edge 1i: %d\n',waitingTime);
+%      
+%    effort = traci.edge.getEffort('1i',10);
+%    fprintf('Travel effort in 10 seconds in the edge 1i: %d\n',effort);
+%     
+%    CO2EmissionEdge1i = traci.edge.getCO2Emission('1i');
+%    fprintf('CO2 emission in the edge 1i: %d\n',CO2EmissionEdge1i);
+%      
+%    COEmissionEdge1i = traci.edge.getCOEmission('1i');
+%    fprintf('CO emission in the edge 1i: %d\n',COEmissionEdge1i);
+%      
+%    HCEmissionEdge1i = traci.edge.getHCEmission('1i');
+%    fprintf('HC emission in the edge 1i: %d\n',HCEmissionEdge1i);
+%      
+%    PMxEmissionEdge1i = traci.edge.getPmxEmission('1i');
+%    fprintf('PMx emission in the edge 1i: %d\n',PMxEmissionEdge1i);
+%      
+%    NOxEmissionEdge1i = traci.edge.getNOxEmission('1i');
+%    fprintf('NOx emission in the edge 1i: %d\n',NOxEmissionEdge1i);
+%      
+%    fuelConsumptionEdge1i = traci.edge.getFuelConsumption('1i');
+%    fprintf('Fuel consumption in the edge 1i: %d\n',fuelConsumptionEdge1i);
+%      
+%    noiseEmissionEdge1i = traci.edge.getNoiseEmission('1i');
+%    fprintf('Noise emission in the edge 1i: %d\n',noiseEmissionEdge1i);
+%    
+%    electricityEdge1i = traci.edge.getElectricityConsumption('1i');
+%    fprintf('Electricity consumption in the edge 1i: %d\n',electricityEdge1i);
+%      
+%    vehicleMeanSpeedEdge1i = traci.edge.getLastStepMeanSpeed('1i');
+%    fprintf('Average speed in the edge 1i: %d\n',vehicleMeanSpeedEdge1i);
+%      
+%    vehicleOccupancyEdge1i = traci.edge.getLastStepOccupancy('1i');
+%    fprintf('Occupancy in the edge 1i: %d\n',vehicleOccupancyEdge1i);
+%      
+%    vehicleMeanLengthEdge1i = traci.edge.getLastStepLength('1i');
+%    fprintf('Average length in the edge 1i: %d\n',vehicleMeanLengthEdge1i);
+%      
+%    vehicleTravelTimeEdge1i = traci.edge.getTraveltime('1i');
+%    fprintf('Average time of the vehicles in the edge 1i: %d\n',vehicleTravelTimeEdge1i);
+%      
+%    vehicleHaltingEdge1i = traci.edge.getLastStepHaltingNumber('1i');
+%    fprintf('Stopped vehicles in the edge 1i: %d\n',vehicleHaltingEdge1i);
+%      
+%    vehicleIDsEdge1i = traci.edge.getLastStepVehicleIDs('1i');
+%    fprintf('IDs of the vehicles in the edge 1i: \n');
+%    disp(vehicleIDsEdge1i)
+%      
+%    traci.edge.adaptTraveltime('1i',15);
+%     
+%    traci.edge.setEffort('1i',1.343);
+%      
+%    traci.edge.setMaxSpeed('1i',5);
+%    
+%    edgeCommandsTested = 1;
+%  end
     
   %% GUI COMMANDS
 %  if ~guiCommandsTested
@@ -689,13 +697,14 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% TRAFFIC LIGHTS COMMANDS   
-%  if ~tlsCommandsTested
+ if ~tlsCommandsTested
 %    tlsRYGState = traci.trafficlights.getRedYellowGreenState('0')
 %    tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0')
 %    tlscontrolledLanes = traci.trafficlights.getControlledLanes('0')
 %    tlscontrolledLinks = traci.trafficlights.getControlledLinks('0')
 %    tlsProgram = traci.trafficlights.getProgram('0')
 %    tlsPhase = traci.trafficlights.getPhase('0')
+    tlsPhaseDuration = traci.trafficlights.getPhaseDuration('0')
 %    traci.trafficlights.setPhase('0',0);
 %    traci.trafficlights.setProgram('0','0');
 %    traci.trafficlights.setPhaseDuration('0',5);
@@ -705,21 +714,19 @@ while traci.simulation.getMinExpectedNumber() > 0
 %       traci.trafficlights.Phase(6000,6000,6000,'ryry')});
 %   traci.trafficlights.setCompleteRedYellowGreenDefinition('0',tlsRYGDefinition{1});
 %   tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
-%   tlsCommandsTested = 1;
-% end
+    tlsCommandsTested = 1;
+  end
     
   % Change the phase of the traffic light if a vehicle passed through the
   % induction loop
   if numPriorityVehicles > 0
 %    traci.gui.screenshot('View #0','passedvehicle.bmp')
-%    
-%    if step == 100
-%      loop0VehicleData = traci.inductionloop.getVehicleData('0')
-%    end
+   
+    loop0VehicleData = traci.inductionloop.getVehicleData('0')
     
     if programPointer == length(PROGRAM)
       programPointer = 1;
-	  elseif ~strcmp(PROGRAM(programPointer), WEYELLOW)
+	elseif ~strcmp(PROGRAM(programPointer), WEYELLOW)
       programPointer = 4;
     end
   end

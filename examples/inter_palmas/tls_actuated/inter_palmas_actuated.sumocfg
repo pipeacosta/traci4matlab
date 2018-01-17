@@ -21,9 +21,5 @@
 	<gui_only>
         <gui-settings-file value="../viewsettings.xml"/>
     </gui_only>
-	
-	<traci_server>
-        <remote-port value="8873"/>
-    </traci_server>
 
 </configuration>

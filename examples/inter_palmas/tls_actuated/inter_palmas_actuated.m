@@ -20,7 +20,7 @@ import traci.constants
 % scenarioPath = [scenarioPath '\inter_palmas'];
 cd(scenarioPath);
 
-system(['sumo-gui -c ' './inter_palmas_actuated.sumocfg &']);
+system(['sumo-gui -c ' './inter_palmas_actuated.sumocfg --remote-port 8873&']);
 
 SIM_STEPS = [1 3600];
 beginTime = SIM_STEPS(1);
@@ -150,14 +150,15 @@ else
     timePlot = 1:duration;
 end
 
-plot(greenPhase(timePlot))
+figure;
+axis([0 360 0 1.3]);
 hold on;
-plot(pedAccum(timePlot),'r')
+stairs(greenPhase(timePlot), 'LineWidth', 1)
+stairs(pedAccum(timePlot),'r', 'LineWidth', 1)
+grid on;
+box on;
 title('Green signal and pedestrian accumulation');
 xlabel('t')
 ylabel('Number of pedestrians in walking area')
 legend('Green signal for vehicles', 'Number of pedestrians on sidewalks')
-
-
-
-
+set(gca, 'FontSize', 14)
