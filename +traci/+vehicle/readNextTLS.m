@@ -2,10 +2,10 @@ function nextTLSs = readNextTLS(result)
 %readNextTLS Internal function to read information about the upcoming
 %traffic lights.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: readNextTLS.m 37 2017-07-07 16:23:05Z afacostag $
+%   $Id: readNextTLS.m 48 2018-12-26 15:35:20Z afacostag $
 
 result.read(5);
 numTLS = result.readInt(); % Length

@@ -3,10 +3,10 @@ function distance = getDistance(vehID)
 %   distance = getDistance(VEHID) Returns the distance to the starting
 %   point like an odometer
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getDistance.m 37 2017-07-07 16:23:05Z afacostag $
+%   $Id: getDistance.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 distance = traci.vehicle.getUniversal(constants.VAR_DISTANCE, vehID);

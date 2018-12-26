@@ -2,10 +2,10 @@ function setPosition(poiID, x, y)
 %setPosition Sets the position coordinates of the poi.
 %   setPosition(POIID,X,Y) Sets the position coordinates of the poi.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setPosition.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: setPosition.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

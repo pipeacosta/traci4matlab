@@ -3,10 +3,10 @@
  * http://www.mathworks.com/matlabcentral/fileexchange/25249-tcp-ip-socket-communications-in-matlab-using-java-classes
  * This class improves the TraCI4Matlab performance when reading from the server.
  *
- * Copyright 2015 Universidad Nacional de Colombia,
+ * Copyright 2019 Universidad Nacional de Colombia,
  * Politecnico Jaime Isaza Cadavid.
  * Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
- * $Id: DataReader.java 26 2015-06-25 22:45:10Z afacostag $
+ * $Id: DataReader.java 48 2018-12-26 15:35:20Z afacostag $
  */
 
 package co.edu.unalmed.gaunal.traci4matlab.utils;

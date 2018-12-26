@@ -3,10 +3,10 @@ function adaptTraveltime(edgeID, time)
 %   adaptTraveltime(EDGEID,TIME) Adapt the travel time value used for 
 %   (re-) routing for the given edge in the SUMO server. 
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: adaptTraveltime.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: adaptTraveltime.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

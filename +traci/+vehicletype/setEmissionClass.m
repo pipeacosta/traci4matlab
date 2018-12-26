@@ -3,10 +3,10 @@ function setEmissionClass(typeID, clazz)
 %   setEmissionClass(TYPEID,CLASS) Sets the emission class of vehicles of 
 %   this type.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setEmissionClass.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: setEmissionClass.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 traci.sendStringCmd(constants.CMD_SET_VEHICLETYPE_VARIABLE, constants.VAR_EMISSIONCLASS, typeID, clazz);

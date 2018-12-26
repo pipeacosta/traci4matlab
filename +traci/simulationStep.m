@@ -7,10 +7,10 @@ function responses = simulationStep(timeStep)
 %   simulationStep(STEP) Perform a simulation step in the SUMO server with
 %   a time step STEP.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: simulationStep.m 36 2017-07-07 16:21:44Z afacostag $
+%   $Id: simulationStep.m 48 2018-12-26 15:35:20Z afacostag $
 
 
 global message edgeSubscriptionResults guiSubscriptionResults ...
@@ -36,8 +36,8 @@ import traci.constants
 
 % Prepare the message to be sent to the SUMO server
 message.queue = [message.queue uint8(sscanf(constants.CMD_SIMSTEP,'%x'))];
-message.string = [message.string uint8([1+1+4 sscanf(constants.CMD_SIMSTEP,'%x')]) ...
-    traci.packInt32(timeStep)];
+message.string = [message.string uint8([1+1+8 sscanf(constants.CMD_SIMSTEP,'%x')]) ...
+    traci.packInt64(timeStep)];
 
 % Send the message
 result = traci.sendExact();

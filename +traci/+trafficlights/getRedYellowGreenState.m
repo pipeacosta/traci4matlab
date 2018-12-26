@@ -5,10 +5,10 @@ function redYellowGreenState = getRedYellowGreenState(tlsID)
 %   green, yellow, off, where lower case letters mean that the stream has 
 %   to decelerate. 
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getRedYellowGreenState.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: getRedYellowGreenState.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 redYellowGreenState = traci.trafficlights.getUniversal(constants.TL_RED_YELLOW_GREEN_STATE, tlsID);

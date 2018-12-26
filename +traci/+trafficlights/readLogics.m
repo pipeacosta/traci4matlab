@@ -1,10 +1,10 @@
 function logics = readLogics(result)
 %readLogics Internal function to read the complete program of the traffic lights.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: readLogics.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: readLogics.m 48 2018-12-26 15:35:20Z afacostag $
 
 result.readLength();
 nbLogics = result.readInt();    % Number of logics

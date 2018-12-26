@@ -4,10 +4,10 @@ function setColor(polygonID, color)
 %   a four-element vector whose elements range from 0 to 255, they represent
 %   the R, G, B and Alpha (unused) components of the color.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setColor.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: setColor.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

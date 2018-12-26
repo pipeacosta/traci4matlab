@@ -1,10 +1,10 @@
 classdef constants
     %The SUMO hexadecimal constants.
     
-    %   Copyright 2016 Universidad Nacional de Colombia,
+    %   Copyright 2019 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-	%   $Id: constants.m 36 2017-07-07 16:21:44Z afacostag $
+	%   $Id: constants.m 48 2018-12-26 15:35:20Z afacostag $
 
   properties (Constant = true)
 	% ****************************************
@@ -24,9 +24,15 @@ classdef constants
     
 	% command: simulation step
 	CMD_SIMSTEP = '0x02'
+    
+   % command: set connection priority (execution order)
+   CMD_SETORDER = '0x03'
 
 	% command: stop node
 	CMD_STOP = '0x12'
+    
+    % command: reroute to parking area
+    CMD_REROUTE_TO_PARKING = '0xc2'
 
 	% command: Resume from parking
 	CMD_RESUME = '0x19'
@@ -39,13 +45,19 @@ classdef constants
     
     % command: set sublane (vehicle)
     CMD_CHANGESUBLANE = '0x15'
+    
+    % command: open gap
+    CMD_OPENGAP = '0x16'
 
 	% command: change target
 	CMD_CHANGETARGET = '0x31'
 
 	% command: close sumo
 	CMD_CLOSE = '0x7F'
-
+    
+    %  command: add subscription filter
+    CMD_ADD_SUBSCRIPTION_FILTER = '0x7e'
+    
 
 	% command: subscribe induction loop (e1) context
 	CMD_SUBSCRIBE_INDUCTIONLOOP_CONTEXT = '0x80'
@@ -285,8 +297,6 @@ classdef constants
 	% ****************************************
 	% DATA TYPES
 	% ****************************************
-	% Boundary Box (4 doubles)
-	TYPE_BOUNDINGBOX = '0x05'
 	% Polygon (2*n doubles)
 	TYPE_POLYGON = '0x06'
 	% unsigned byte
@@ -296,14 +306,10 @@ classdef constants
 	% 32 bit signed integer
 	TYPE_INTEGER = '0x09'
 	% float
-	TYPE_FLOAT = '0x0A'
-	% double
 	TYPE_DOUBLE = '0x0B'
 	% 8 bit ASCII string
 	TYPE_STRING = '0x0C'
 	% list of traffic light phases
-	TYPE_TLPHASELIST = '0x0D'
-	% list of strings
 	TYPE_STRINGLIST = '0x0E'
 	% compound object
 	TYPE_COMPOUND = '0x0F'
@@ -322,24 +328,11 @@ classdef constants
 	RTYPE_ERR = '0xFF'
 
 	% return value for invalid queries (especially vehicle is not on the road)
-	INVALID_DOUBLE_VALUE = -1001.
+	INVALID_DOUBLE_VALUE = -1073741824.
 	% return value for invalid queries (especially vehicle is not on the road)
-	INVALID_INT_VALUE = -1
-
-
-	% ****************************************
-	% TRAFFIC LIGHT PHASES
-	% ****************************************
-	% red phase
-	TLPHASE_RED = '0x01'
-	% yellow phase
-	TLPHASE_YELLOW = '0x02'
-	% green phase
-	TLPHASE_GREEN = '0x03'
-	% tl is blinking
-	TLPHASE_BLINKING = '0x04'
-	% tl is off and not blinking
-	TLPHASE_NOSIGNAL = '0x05'
+	INVALID_INT_VALUE = -1073741824
+    %  maximum value for client ordering (2 ^ 30)
+    MAX_ORDER = 1073741824
 
 
 	% ****************************************
@@ -403,7 +396,63 @@ classdef constants
     DEPARTFLAG_LANE_ALLOWED_FREE = '-0x04'
     DEPARTFLAG_LANE_BEST_FREE = '-0x05'
     DEPARTFLAG_LANE_FIRST_ALLOWED = '-0x06'
+    
+    DEPARTFLAG_POS_RANDOM = '-0x02'
+    DEPARTFLAG_POS_FREE = '-0x03'
+    DEPARTFLAG_POS_BASE = '-0x04'
+    DEPARTFLAG_POS_LAST = '-0x05'
+    DEPARTFLAG_POS_RANDOM_FREE = '-0x06'
 
+    ARRIVALFLAG_LANE_CURRENT = '-0x02'
+    ARRIVALFLAG_SPEED_CURRENT = '-0x02'
+
+    ARRIVALFLAG_POS_RANDOM = '-0x02'
+    ARRIVALFLAG_POS_MAX = '-0x03'
+
+    %  ****************************************
+    %  Routing modes
+    %  ****************************************
+    %  use custom weights if available, fall back to loaded weights and then to free-flow speed
+    ROUTING_MODE_DEFAULT = '0x00'
+    %  use aggregated travel times from device.rerouting
+    ROUTING_MODE_AGGREGATED = '0x01'
+    %  use loaded efforts
+    ROUTING_MODE_EFFORT = '0x02'
+    %  use combined costs
+    ROUTING_MODE_COMBINED = '0x03'
+
+    %  ****************************************
+    %  FILTER TYPES (for context subscription filters)
+    %  ****************************************
+
+    %  Reset all filters
+    FILTER_TYPE_NONE = '0x00'
+
+    %  Filter by list of lanes relative to ego vehicle
+    FILTER_TYPE_LANES = '0x01'
+
+    %  Exclude vehicles on opposite (and other) lanes from context subscription result
+    FILTER_TYPE_NOOPPOSITE = '0x02'
+
+    %  Specify maximal downstream distance for vehicles in context subscription result
+    FILTER_TYPE_DOWNSTREAM_DIST = '0x03'
+
+    %  Specify maximal upstream distance for vehicles in context subscription result
+    FILTER_TYPE_UPSTREAM_DIST = '0x04'
+
+    %  Only return leader and follower on the specified lanes in context subscription result
+    FILTER_TYPE_LEAD_FOLLOW = '0x05'
+
+    %  Only return foes on upcoming junction in context subscription result
+    FILTER_TYPE_TURN = '0x07'
+
+    %  Only return vehicles of the given vClass in context subscription result
+    FILTER_TYPE_VCLASS = '0x08'
+
+    %  Only return vehicles of the given vType in context subscription result
+    FILTER_TYPE_VTYPE = '0x09'
+    
+    
 	% ****************************************
 	% VARIABLE TYPES (for CMD_GET_*_VARIABLE)
 	% ****************************************
@@ -454,6 +503,9 @@ classdef constants
         
     % last step person list (get: edges)
     LAST_STEP_PERSON_ID_LIST = '0x1a'
+    
+    %  full name (get: edges, simulation)
+    VAR_NAME = '0x1b'
 
 	% traffic light states, encoded as rRgGyYoO tuple (get: traffic lights)
 	TL_RED_YELLOW_GREEN_STATE = '0x20'
@@ -510,6 +562,9 @@ classdef constants
 	% list of not allowed vehicle classes (get&set: lanes)
 	LANE_DISALLOWED = '0x35'
     
+    %  list of foe lanes (get: lanes)
+    VAR_FOES = '0x37'
+    
     % slope (get: edge, lane, vehicle, person)
     VAR_SLOPE = '0x36'
 
@@ -545,6 +600,12 @@ classdef constants
 
     % apparent deceleration (get: vehicles, vehicle types)
     VAR_APPARENT_DECEL = '0x7c'
+    
+    %  action step length (get: vehicles, vehicle types)
+    VAR_ACTIONSTEPLENGTH = '0x7d'
+    
+    %  last action time (get: vehicles)
+    VAR_LASTACTIONTIME = '0x7f'
 
 	% driver reaction time (get: vehicle types)
 	VAR_TAU = '0x48'
@@ -617,6 +678,9 @@ classdef constants
 
 	% speed deviation (set: vehicle)
 	VAR_SPEED_DEVIATION = '0x5f'
+    
+    %  routing mode (get/set: vehicle)
+    VAR_ROUTING_MODE = '0x89'
 
 		
     % speed without TraCI influence (get: vehicle)
@@ -703,6 +767,15 @@ classdef constants
     
     % upcoming traffic lights (get: vehicle)
     VAR_NEXT_TLS = '0x70'
+    
+    %  upcoming stops (get: vehicle)
+    VAR_NEXT_STOPS = '0x73'
+    
+    %  current acceleration (get: vehicle)
+    VAR_ACCELERATION = '0x72'
+    
+    %  current time in seconds (get: simulation)
+    VAR_TIME = '0x66'
 
 	% current time step (get: simulation)
 	VAR_TIME_STEP = '0x70'
@@ -772,7 +845,19 @@ classdef constants
       
     % ids of vehicles ending to park (get: simulation)
     VAR_PARKING_ENDING_VEHICLES_IDS = '0x6f'
-        
+    
+    %  number of vehicles involved in a collision (get: simulation)
+    VAR_COLLIDING_VEHICLES_NUMBER = '0x80'
+    
+    %  ids of vehicles involved in a collision (get: simulation)
+    VAR_COLLIDING_VEHICLES_IDS = '0x81'
+
+    %  number of vehicles involved in a collision (get: simulation)
+    VAR_EMERGENCYSTOPPING_VEHICLES_NUMBER = '0x89'
+
+    %  ids of vehicles involved in a collision (get: simulation)
+    VAR_EMERGENCYSTOPPING_VEHICLES_IDS = '0x8a'
+    
     % clears the simulation of all not inserted vehicles (set: simulation)
     CMD_CLEAR_PENDING_VEHICLES = '0x94'
     
@@ -800,6 +885,12 @@ classdef constants
         
     % add a fully specified instance (vehicle)
     ADD_FULL = '0x85'
+    
+    %  find a car based route
+    FIND_ROUTE = '0x86'
+
+    %  find an intermodal route
+    FIND_INTERMODAL_ROUTE = '0x87'
 
 	% force rerouting based on travel time (vehicles)
 	CMD_REROUTE_TRAVELTIME = '0x90'
@@ -845,6 +936,9 @@ classdef constants
 
 	% track vehicle
 	VAR_TRACK_VEHICLE = '0xa6'
+    
+    %  presence of view
+    VAR_HAS_VIEW = '0xa7'
 		
     
 %    %/ @name currently wanted lane-change action

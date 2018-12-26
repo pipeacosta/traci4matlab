@@ -1,10 +1,10 @@
 %% SUMO TRACI TEST
 % THIS FILE AIMS TO TEST THE TRACI PROTOCOL FOR SUMO.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test.m 41 2017-08-17 16:11:56Z afacostag $
+%   $Id: traci_test.m 48 2018-12-26 15:35:20Z afacostag $
 
 clear all
 close all

@@ -11,10 +11,10 @@ function add(polygonID, shape, color, fill, polygonType, layer)
 %   add(...,POLYGONTYPE) Assigns a type POLYGONTYPE to the added polygon.
 %   add(...,LAYER) Adds the poi to the given layer.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: add.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: add.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

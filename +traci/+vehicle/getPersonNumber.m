@@ -4,10 +4,10 @@ function personNumber = getPersonNumber(vehID)
 %   persons which includes those defined using attribute 'personNumber' as
 %   well as <person>-objects which are riding in this vehicle.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getPersonNumber.m 37 2017-07-07 16:23:05Z afacostag $
+%   $Id: getPersonNumber.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 personNumber = traci.vehicle.getUniversal(constants.VAR_PERSON_NUMBER, vehID);

@@ -5,10 +5,10 @@ function drivingDistance = getDrivingDistance(vehID, edgeID, pos, laneID)
 %   is a position relative to the edge identified by EDGEID and the lane
 %   index specified in LANEID. If no LANEID is given, it defaults to zero.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getDrivingDistance.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: getDrivingDistance.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

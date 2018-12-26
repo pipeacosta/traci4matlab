@@ -3,7 +3,7 @@ function waitingTime = getWaitingTime(edgeID)
 %   daptedTraveltime = getWaitingTime(EDGEID) Returns the sum of the
 %   waiting time of all vehicles currently onthat edge (see traci.vehicle.getWaitingTime).
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
 %   $Id$

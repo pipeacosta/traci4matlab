@@ -4,10 +4,10 @@ function effort = getEffort(vehID, time, edgeID)
 %   given time as stored in the vehicle's internal container. If such a 
 %   value does not exist, -1 is returned.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getEffort.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: getEffort.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

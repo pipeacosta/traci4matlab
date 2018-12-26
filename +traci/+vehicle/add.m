@@ -8,10 +8,10 @@ function add(vehID, routeID, varargin)
 %   add(...,LANE) Specify the lane number in which the vehicle will start.
 %   add(...,TYPEID) Specify the type of the vehicle.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: add.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: add.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message
@@ -24,6 +24,7 @@ p.addOptional('depart', -3, @isnumeric)   % -3 = DEPART_NOW
 p.addOptional('pos', 0, @isnumeric)
 p.addOptional('speed', 0, @isnumeric)
 p.addOptional('lane', 0, @isnumeric)
+p.addOptional('line', '', @ischar)
 p.addOptional('typeID', 'DEFAULT_VEHTYPE', @ischar)
 p.parse(vehID, routeID, varargin{:})
 
@@ -33,6 +34,7 @@ depart = p.Results.depart;
 pos = p.Results.pos;
 speed = p.Results.speed;
 lane = p.Results.lane;
+line = p.Results.line;
 typeID = p.Results.typeID;
 
 

@@ -2,10 +2,10 @@ function setOffset(viewID, x, y)
 %setOffset Set the offset of the view.
 %   setOffset(VIEWID, X, Y) Set the current offset for the given view.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setOffset.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: setOffset.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

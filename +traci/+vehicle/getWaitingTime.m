@@ -6,10 +6,10 @@ function waitingTime = getWaitingTime(vehID)
 %   of a vehicle is reset to 0 every time it moves). A vehicle that is
 %   stopping intentionally with a <stop> does not accumulate waiting time. 
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getWaitingTime.m 37 2017-07-07 16:23:05Z afacostag $
+%   $Id: getWaitingTime.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 waitingTime = traci.vehicle.getUniversal(constants.VAR_WAITING_TIME, vehID);

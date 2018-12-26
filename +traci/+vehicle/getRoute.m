@@ -3,10 +3,10 @@ function route = getRoute(vehID)
 %   route = getRoute(VEHID) Returns a cell array of strings containing the 
 %   ids of the edges the vehicle's route is made of.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getRoute.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: getRoute.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 route = traci.vehicle.getUniversal(constants.VAR_EDGES, vehID);

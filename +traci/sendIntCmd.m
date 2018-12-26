@@ -1,10 +1,10 @@
 function sendIntCmd(cmdID, varID, objID, value)
 %sendIntCmd An internal function to build a message which sends an int.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: sendIntCmd.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: sendIntCmd.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 global message

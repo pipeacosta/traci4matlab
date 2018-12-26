@@ -8,10 +8,10 @@ function setStop(vehID, edgeID, varargin)
 %   made.
 %   setStop(...,DURATION) Specify the duration of the stop.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
-%   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setStop.m 31 2016-09-28 15:16:56Z afacostag $
+%   Authors: Christian Portilla, Andres Acosta, Jairo Espinosa, Jorge Espinosa.
+%   $Id: setStop.m 48 2018-12-26 15:35:20Z afacostag $
 
 
 import traci.constants
@@ -24,7 +24,7 @@ p.addRequired('edgeID',@ischar)
 p.addOptional('pos', 1, @isnumeric)   % -3 = DEPART_NOW
 p.addOptional('laneIndex', 0, @isnumeric)
 p.addOptional('duration', 2^31-1, @isnumeric)
-p.addOptional('flags', 0, @isnumeric)
+p.addOptional('flags', constants.STOP_DEFAULT, @ischar)
 p.addOptional('startPos', constants.INVALID_DOUBLE_VALUE, @isnumeric)
 p.addOptional('until', -1, @isnumeric)
 p.parse(vehID, edgeID, varargin{:})
@@ -67,7 +67,7 @@ message.string = [message.string uint8(sscanf(constants.TYPE_STRING,'%x')) ...
 message.string = [message.string uint8(sscanf(constants.TYPE_DOUBLE,'%x')) ...
     traci.packInt64(pos) uint8([sscanf(constants.TYPE_BYTE,'%x') ...
     laneIndex sscanf(constants.TYPE_INTEGER,'%x')]) ...
-    traci.packInt32(duration) sscanf(constants.TYPE_BYTE,'%x') flags];
+    traci.packInt32(duration) uint8([sscanf(constants.TYPE_BYTE,'%x') sscanf(flags, '%x')])];
 message.string = [message.string uint8(sscanf(constants.TYPE_DOUBLE,'%x')) ...
     traci.packInt64(startPos) sscanf(constants.TYPE_INTEGER,'%x') traci.packInt32(until)];
 traci.sendExact();

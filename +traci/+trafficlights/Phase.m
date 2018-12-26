@@ -7,10 +7,10 @@ classdef Phase
 %   rRgGyYoO for red, green, yellow, off, where lower case letters mean 
 %   that the stream has to decelerate.
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: Phase.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: Phase.m 48 2018-12-26 15:35:20Z afacostag $
 
     properties
         duration

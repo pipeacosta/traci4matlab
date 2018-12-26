@@ -3,10 +3,10 @@ function phaseDuration = getPhaseDuration(tlsID)
 %   phaseDuration = getPhaseDuration(TLSID) Returns the phase duration of 
 %   the current phase of the named traffic lights.
 
-%   Copyright 2017 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getPhaseDuration.m 43 2017-09-19 18:41:10Z afacostag $
+%   $Id: getPhaseDuration.m 48 2018-12-26 15:35:20Z afacostag $
 
 import traci.constants
 phaseDuration = traci.trafficlights.getUniversal(constants.TL_PHASE_DURATION, tlsID);

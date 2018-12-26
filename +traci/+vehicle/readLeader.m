@@ -1,9 +1,9 @@
 function [vehID, dist] = readLeader(result)
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: readLeader.m 37 2017-07-07 16:23:05Z afacostag $
+%   $Id: readLeader.m 48 2018-12-26 15:35:20Z afacostag $
 
 result.readInt();
 result.read(1);

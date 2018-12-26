@@ -8,10 +8,10 @@
 %   traffic demand, we recommend to obtain it by running tha SUMO TraCI
 %   tutorial using Python 
 
-%   Copyright 2016 Universidad Nacional de Colombia,
+%   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 44 2017-09-28 14:01:13Z afacostag $
+%   $Id: traci_test2.m 48 2018-12-26 15:35:20Z afacostag $
 
 clear all
 close all
@@ -54,8 +54,10 @@ simDurations = zeros(simRuns, 1);
 
 %tic;
 
+traci.start(['sumo-gui -c ' '"' scenarioPath '"' ' --start']);
+
 % system(['sumo -c ' '"' scenarioPath '"' ' --remote-port 8873&']);
-system(['sumo-gui -c ' '"' scenarioPath '"' ' --remote-port 8873 --start&']);
+% system(['sumo-gui -c ' '"' scenarioPath '"' ' --remote-port 8873 --start&']);
 
 % To test vehicle commands, we have to check wether the sumo 0.20.0
 % version is installed, because in that version the prefix of the vehicle
@@ -92,9 +94,6 @@ simCommandsTested = 0;
 tlsCommandsTested = 0;
 
 %getSubscriptionResultsTested = 0;
-
-% Initialize TraCI
-traci.init();
 
 % Define the traffic light phases in a sumo-readable way
 NSGREEN = 'GrGr';
@@ -600,6 +599,14 @@ while traci.simulation.getMinExpectedNumber() > 0
 %    vehicleIDsEdge1i = traci.edge.getLastStepVehicleIDs('1i');
 %    fprintf('IDs of the vehicles in the edge 1i: \n');
 %    disp(vehicleIDsEdge1i)
+%    
+%    streetNameEdge1i = traci.edge.getStreetName('1i');
+%    fprintf('Street name of the edge 1i: \n');
+%    disp(streetNameEdge1i)
+%    
+%    laneNumberEdge1i = traci.edge.getLaneNumber('1i');
+%    fprintf('Number of lanes of the edge 1i: \n');
+%    disp(laneNumberEdge1i)
 %      
 %    traci.edge.adaptTraveltime('1i',15);
 %     
@@ -611,13 +618,14 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% GUI COMMANDS
-%  if ~guiCommandsTested
-%    guizoom = traci.gui.getZoom()
-%    offset = traci.gui.getOffset()
-%    schema = traci.gui.getSchema()
-%    boundary = traci.gui.getBoundary()
-%    guiCommandsTested = 1;
-%  end
+ if ~guiCommandsTested
+   guizoom = traci.gui.getZoom()
+   offset = traci.gui.getOffset()
+   schema = traci.gui.getSchema()
+   boundary = traci.gui.getBoundary()
+   hasDefaultView = traci.gui.hasView('default')
+   guiCommandsTested = 1;
+ end
     
   %% INDUCTION LOOP COMMANDS
 %  if ~indLoopCommandsTested
@@ -632,10 +640,11 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% JUNCTION COMMANDS
-%  if ~junctionCommandsTested
-%    junctionPosition = traci.junction.getPosition('0')
-%    junctionCommandsTested = 1;
-%  end
+ if ~junctionCommandsTested
+   junctionPosition = traci.junction.getPosition('0')
+   junctionShape = traci.junction.getShape('0')
+   junctionCommandsTested = 1;
+ end
     
   %% LANE GET COMMANDS
 %  if ~laneCommandsTested
