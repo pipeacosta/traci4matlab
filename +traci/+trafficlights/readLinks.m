@@ -4,12 +4,12 @@ function signals = readLinks(result)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: readLinks.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: readLinks.m 49 2018-12-27 14:08:44Z afacostag $
 
 result.readLength();
-nbSignals = result.readInt(); % Length
-signals = cell(1,nbSignals);
-for i=1:nbSignals
+numSignals = result.readInt(); % Length
+signals = cell(1,numSignals);
+for i=1:numSignals
     result.read(1);                           % Type of Number of Controlled Links
     nbControlledLinks = result.readInt();       % Number of Controlled Links
     controlledLinks = cell(1,nbControlledLinks);

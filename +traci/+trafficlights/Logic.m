@@ -10,33 +10,42 @@ classdef Logic
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: Logic.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: Logic.m 49 2018-12-27 14:08:44Z afacostag $
 
     properties
-        subID
+        programID
         type
-        subParameter
         currentPhaseIndex
         phases
+        subParameter
     end
     methods
-        function this = Logic(subID, type, subParameter, currentPhaseIndex, phases)            
-            this.subID = subID;
+        function this = Logic(programID, type, currentPhaseIndex, varargin)            
+            this.programID = programID;
             this.type = type;
-            this.subParameter = subParameter;
             this.currentPhaseIndex = currentPhaseIndex;
-            this.phases = phases;
+            
+            this.phases = {};
+            this.subParameter = containers.Map();
+            
+            if nargin > 3
+                this.phases = varargin{1};
+                if nargin > 4
+                    this.subParameter = varargin{2};
+                end
+            end
+                
         end
         
-        function display(this)
+        function disp(this)
             disp('Logic:');
-            disp(['subID: ' num2str(this.subID)]);
+            disp(['programID: ' num2str(this.programID)]);
             disp(['type: ' num2str(this.type)]);
-            disp(['subParameter: ' num2str(this.subParameter)]);
             disp(['currentPhaseIndex: ' num2str(this.currentPhaseIndex)]);
             for i=1:length(this.phases)
-                display(this.phases{i});
+                disp(this.phases{i});
             end
+            disp(['subParameter: ' num2str(this.subParameter)]);
         end
         
     end

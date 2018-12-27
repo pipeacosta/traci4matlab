@@ -6,7 +6,7 @@ function decel = getDecel(typeID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getDecel.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: getDecel.m 49 2018-12-27 14:08:44Z afacostag $
 
 import traci.constants
 decel = traci.vehicletype.getUniversal(constants.VAR_DECEL, typeID);

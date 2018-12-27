@@ -10,28 +10,42 @@ classdef Phase
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: Phase.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: Phase.m 49 2018-12-27 14:08:44Z afacostag $
 
     properties
         duration
-        duration1
-        duration2
-        phaseDef
+        state
+        minDur
+        maxDur
+        next
     end
     methods
-        function this = Phase(duration, duration1, duration2, phaseDef)          
+        function this = Phase(duration, state, varargin)          
             this.duration = duration;
-            this.duration1 = duration1;
-            this.duration2 = duration2;
-            this.phaseDef = phaseDef;
+            this.state = state;
+            
+            this.minDur = -1;
+            this.maxDur = -1;
+            this.next = -1;
+            
+            if nargin > 2
+                this.minDur = varargin{1};
+                if nargin > 3
+                    this.maxDur = varargin{2};
+                    if nargin > 4
+                        this.next = varargin{3};
+                    end
+                end
+            end
         end
         
-        function display(this)
+        function disp(this)
             disp('Phase:');
             disp(['duration: ' num2str(this.duration)]);
-            disp(['duration1: ' num2str(this.duration1)]);
-            disp(['duration2: ' num2str(this.duration1)]);
-            disp(['phaseDef: ' num2str(this.phaseDef)]);
+            disp(['state: ' num2str(this.state)]);
+            disp(['minDur: ' num2str(this.minDur)]);
+            disp(['maxDur: ' num2str(this.maxDur)]);
+            disp(['next: ' num2str(this.next)]);
         end
         
     end

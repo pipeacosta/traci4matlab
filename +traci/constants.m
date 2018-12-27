@@ -4,7 +4,7 @@ classdef constants
     %   Copyright 2019 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-	%   $Id: constants.m 48 2018-12-26 15:35:20Z afacostag $
+	%   $Id: constants.m 49 2018-12-27 14:08:44Z afacostag $
 
   properties (Constant = true)
 	% ****************************************
@@ -25,8 +25,8 @@ classdef constants
 	% command: simulation step
 	CMD_SIMSTEP = '0x02'
     
-   % command: set connection priority (execution order)
-   CMD_SETORDER = '0x03'
+    % command: set connection priority (execution order)
+    CMD_SETORDER = '0x03'
 
 	% command: stop node
 	CMD_STOP = '0x12'
@@ -941,67 +941,67 @@ classdef constants
     VAR_HAS_VIEW = '0xa7'
 		
     
-%    %/ @name currently wanted lane-change action
-%    %/ @{
-%    %/ @brief No action desired
-%    LCA_NONE = 0
-%    %/ @brief Needs to stay on the current lane
-%    LCA_STAY = 1 << 0
-%    %/ @brief Wants go to the left
-%    LCA_LEFT = 1 << 1
-%    %/ @brief Wants go to the right
-%    LCA_RIGHT = 1 << 2
-%    %/ @brief The action is needed to follow the route (navigational lc)
-%    LCA_STRATEGIC = 1 << 3
-%    %/ @brief The action is done to help someone else
-%    LCA_COOPERATIVE = 1 << 4
-%    %/ @brief The action is due to the wish to be faster (tactical lc)
-%    LCA_SPEEDGAIN = 1 << 5
-%    %/ @brief The action is due to the default of keeping right "Rechtsfahrgebot"
-%    LCA_KEEPRIGHT = 1 << 6
-%    %/ @brief The action is due to a TraCI request
-%    LCA_TRACI = 1 << 7
-%    %/ @brief The action is urgent (to be defined by lc-model)
-%    LCA_URGENT = 1 << 8
-%    %/ @brief The action has not been determined
-%    LCA_UNKNOWN = 1 << 30
-%    %/ @}
-%
-%    %/ @name External state
-%    %/ @{
-%    %/ @brief The vehicle is blocked by left leader
-%    LCA_BLOCKED_BY_LEFT_LEADER = 1 << 9
-%    %/ @brief The vehicle is blocked by left follower
-%    LCA_BLOCKED_BY_LEFT_FOLLOWER = 1 << 10
-%    %/ @brief The vehicle is blocked by right leader
-%    LCA_BLOCKED_BY_RIGHT_LEADER = 1 << 11
-%    %/ @brief The vehicle is blocked by right follower
-%    LCA_BLOCKED_BY_RIGHT_FOLLOWER = 1 << 12
-%    %/ @brief The vehicle is blocked being overlapping
-%    LCA_OVERLAPPING = 1 << 13
-%    %/ @brief The vehicle does not have enough space to complete a continuous lane and change before the next turning movement
-%    LCA_INSUFFICIENT_SPACE = 1 << 14
-%    %/ @brief used by the sublane model
-%    LCA_SUBLANE = 1 << 15
-%    %/ @brief lane can change
-%    LCA_WANTS_LANECHANGE = LCA_LEFT | LCA_RIGHT
-%    %/ @brief lane can change or stay
-%    LCA_WANTS_LANECHANGE_OR_STAY = LCA_WANTS_LANECHANGE | LCA_STAY
-%    %/ @brief blocked left
-%    LCA_BLOCKED_LEFT = LCA_BLOCKED_BY_LEFT_LEADER | LCA_BLOCKED_BY_LEFT_FOLLOWER
-%    %/ @brief blocked right
-%    LCA_BLOCKED_RIGHT = LCA_BLOCKED_BY_RIGHT_LEADER | LCA_BLOCKED_BY_RIGHT_FOLLOWER
-%    %/ @brief blocked by leader
-%    LCA_BLOCKED_BY_LEADER = LCA_BLOCKED_BY_LEFT_LEADER | LCA_BLOCKED_BY_RIGHT_LEADER
-%    %/ @brief blocker by follower
-%    LCA_BLOCKED_BY_FOLLOWER = LCA_BLOCKED_BY_LEFT_FOLLOWER | LCA_BLOCKED_BY_RIGHT_FOLLOWER
-%    %/ @brief blocked in all directions
-%    LCA_BLOCKED = LCA_BLOCKED_LEFT | LCA_BLOCKED_RIGHT | LCA_INSUFFICIENT_SPACE
-%    %/ @brief reasons of lane change
-%    LCA_CHANGE_REASONS = (LCA_STRATEGIC | LCA_COOPERATIVE | LCA_SPEEDGAIN | LCA_KEEPRIGHT | LCA_SUBLANE)
-%    % LCA_BLOCKED_BY_CURRENT_LEADER = 1 << 28
-%    % LCA_BLOCKED_BY_CURRENT_FOLLOWER = 1 << 29
-%    %/ @}
+    %/ @name currently wanted lane-change action
+    %/ @{
+    %/ @brief No action desired
+    LCA_NONE = 0
+    %/ @brief Needs to stay on the current lane
+    LCA_STAY = bitshift(1, 0, 'int32')
+    %/ @brief Wants go to the left
+    LCA_LEFT = bitshift(1, 1, 'int32')
+    %/ @brief Wants go to the right
+    LCA_RIGHT = bitshift(1, 2, 'int32')
+    %/ @brief The action is needed to follow the route (navigational lc)
+    LCA_STRATEGIC = bitshift(1, 3, 'int32')
+    %/ @brief The action is done to help someone else
+    LCA_COOPERATIVE = bitshift(1, 4, 'int32')
+    %/ @brief The action is due to the wish to be faster (tactical lc)
+    LCA_SPEEDGAIN = bitshift(1, 5, 'int32')
+    %/ @brief The action is due to the default of keeping right "Rechtsfahrgebot"
+    LCA_KEEPRIGHT = bitshift(1, 6, 'int32')
+    %/ @brief The action is due to a TraCI request
+    LCA_TRACI = bitshift(1, 7, 'int32')
+    %/ @brief The action is urgent (to be defined by lc-model)
+    LCA_URGENT = bitshift(1, 8, 'int32')
+    %/ @brief The action has not been determined
+    LCA_UNKNOWN = bitshift(1, 30, 'int32')
+    %/ @}
+
+    %/ @name External state
+    %/ @{
+    %/ @brief The vehicle is blocked by left leader
+    LCA_BLOCKED_BY_LEFT_LEADER = bitshift(1, 9, 'int32')
+    %/ @brief The vehicle is blocked by left follower
+    LCA_BLOCKED_BY_LEFT_FOLLOWER = bitshift(1, 10, 'int32')
+    %/ @brief The vehicle is blocked by right leader
+    LCA_BLOCKED_BY_RIGHT_LEADER = bitshift(1, 11, 'int32')
+    %/ @brief The vehicle is blocked by right follower
+    LCA_BLOCKED_BY_RIGHT_FOLLOWER = bitshift(1, 12, 'int32')
+    %/ @brief The vehicle is blocked being overlapping
+    LCA_OVERLAPPING = bitshift(1, 13, 'int32')
+    %/ @brief The vehicle does not have enough space to complete a continuous lane and change before the next turning movement
+    LCA_INSUFFICIENT_SPACE = bitshift(1, 14, 'int32')
+    %/ @brief used by the sublane model
+    LCA_SUBLANE = bitshift(1, 15, 'int32')
+    %/ @brief lane can change
+%     LCA_WANTS_LANECHANGE = LCA_LEFT || LCA_RIGHT
+    %/ @brief lane can change or stay
+%     LCA_WANTS_LANECHANGE_OR_STAY = LCA_WANTS_LANECHANGE || LCA_STAY
+    %/ @brief blocked left
+%     LCA_BLOCKED_LEFT = LCA_BLOCKED_BY_LEFT_LEADER || LCA_BLOCKED_BY_LEFT_FOLLOWER
+    %/ @brief blocked right
+%     LCA_BLOCKED_RIGHT = LCA_BLOCKED_BY_RIGHT_LEADER || LCA_BLOCKED_BY_RIGHT_FOLLOWER
+    %/ @brief blocked by leader
+%     LCA_BLOCKED_BY_LEADER = LCA_BLOCKED_BY_LEFT_LEADER || LCA_BLOCKED_BY_RIGHT_LEADER
+    %/ @brief blocker by follower
+%     LCA_BLOCKED_BY_FOLLOWER = LCA_BLOCKED_BY_LEFT_FOLLOWER || LCA_BLOCKED_BY_RIGHT_FOLLOWER
+    %/ @brief blocked in all directions
+%     LCA_BLOCKED = LCA_BLOCKED_LEFT || LCA_BLOCKED_RIGHT || LCA_INSUFFICIENT_SPACE
+    %/ @brief reasons of lane change
+%     LCA_CHANGE_REASONS = (LCA_STRATEGIC || LCA_COOPERATIVE || LCA_SPEEDGAIN || LCA_KEEPRIGHT || LCA_SUBLANE)
+    LCA_BLOCKED_BY_CURRENT_LEADER = bitshift(1, 28, 'int32')
+    LCA_BLOCKED_BY_CURRENT_FOLLOWER = bitshift(1, 29, 'int32')
+    %/ @}
     
 	end
 end

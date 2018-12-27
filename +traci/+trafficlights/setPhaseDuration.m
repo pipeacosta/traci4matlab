@@ -7,8 +7,8 @@ function setPhaseDuration(tlsID, phaseDuration)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setPhaseDuration.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: setPhaseDuration.m 49 2018-12-27 14:08:44Z afacostag $
 
 import traci.constants
-traci.sendIntCmd(constants.CMD_SET_TL_VARIABLE,...
-    constants.TL_PHASE_DURATION, tlsID, 1000*phaseDuration);
+traci.sendDoubleCmd(constants.CMD_SET_TL_VARIABLE,...
+    constants.TL_PHASE_DURATION, tlsID, phaseDuration);

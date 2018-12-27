@@ -11,7 +11,7 @@
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: traci_test2.m 49 2018-12-27 14:08:44Z afacostag $
 
 clear all
 close all
@@ -55,9 +55,6 @@ simDurations = zeros(simRuns, 1);
 %tic;
 
 traci.start(['sumo-gui -c ' '"' scenarioPath '"' ' --start']);
-
-% system(['sumo -c ' '"' scenarioPath '"' ' --remote-port 8873&']);
-% system(['sumo-gui -c ' '"' scenarioPath '"' ' --remote-port 8873 --start&']);
 
 % To test vehicle commands, we have to check wether the sumo 0.20.0
 % version is installed, because in that version the prefix of the vehicle
@@ -199,39 +196,42 @@ programPointer = length(PROGRAM);
 %traci.vehicletype.subscribe('typeWE');
 
 %% POI AND POLYGON COMMANDS
-%traci.poi.add('mypoi', 550, 550, [255 255 0 0], '', 1);
-%pois = traci.poi.getIDList();
-%fprintf('IDs of the pois in the simulation:\n')
-%for i=1:length(pois)
+% traci.poi.add('mypoi', 550, 550, [255 255 0 0], '', 1);
+% pois = traci.poi.getIDList();
+% fprintf('IDs of the pois in the simulation:\n')
+% for i=1:length(pois)
 %  fprintf('%s\n',pois{i});
-%end
-%traci.poi.subscribe('mypoi');
-%poiposition = traci.poi.getPosition('mypoi')
-%poiColor = traci.poi.getColor('mypoi')
-%traci.poi.setType('mypoi', 'mypoitype');
-%poitype = traci.poi.getType('mypoi')
-%traci.poi.setPosition('mypoi', 550, 580);
-%poiposition = traci.poi.getPosition('mypoi')
-%traci.poi.setColor('mypoi', [255 255 255 0]);
-%%traci.poi.remove('mypoi', 1);
+% end
+% % traci.poi.subscribe('mypoi');
+% poiColor = traci.poi.getColor('mypoi')
+% traci.poi.setType('mypoi', 'mypoitype');
+% poitype = traci.poi.getType('mypoi')
+% traci.poi.setPosition('mypoi', 550, 580);
+% poiposition = traci.poi.getPosition('mypoi')
+% traci.poi.setColor('mypoi', [255 255 255 0]);
+% %traci.poi.remove('mypoi', 1);
 % 
-%traci.polygon.add('mypolygon', {[440,440],[440,450],[450,440],[450,450]},...
-%  [0 255 255 0], false, '', 1);
-%traci.polygon.add('my2ndpolygon', {[400,400],[400,420],[430,420],[430,400],[400,400]},...
-%  [255 0 0 0], true, '', 1);
-%polygons = traci.polygon.getIDList();
-%fprintf('IDs of the polygons in the simulation:\n')
-%for i=1:length(polygons)
+% traci.polygon.add('mypolygon', {[440,440],[440,450],[450,440],[450,450]},...
+%  [0 255 255 255], false, '', 1, 1);
+% traci.polygon.add('my2ndpolygon', {[400,400],[400,420],[430,420],[430,400],[400,400]},...
+%  [255 0 0 255], true, '', 1);
+% polygons = traci.polygon.getIDList();
+% fprintf('IDs of the polygons in the simulation:\n')
+% for i=1:length(polygons)
 %  fprintf('%s\n',polygons{i});
-%end
-%traci.polygon.subscribe('mypolygon');
-%polygonColor = traci.polygon.getColor('mypolygon')
-%traci.polygon.setType('mypolygon', 'mypolygontype');
-%polygontype = traci.polygon.getType('mypolygon')
-%traci.polygon.setShape('mypolygon', {[400,400],[400,420],[430,420],[430,400],[400,400]});
-%polygonshape = traci.polygon.getShape('mypolygon')
-%traci.polygon.setColor('mypolygon', [255 255 255 0]);
-%%traci.polygon.remove('mypolygon', 1);
+% end
+% % traci.polygon.subscribe('mypolygon');
+% polygonColor = traci.polygon.getColor('mypolygon')
+% traci.polygon.setType('mypolygon', 'mypolygontype');
+% polygontype = traci.polygon.getType('mypolygon')
+% traci.polygon.setShape('mypolygon', {[400,400],[400,420],[430,420],[430,400],[400,400]});
+% polygonshape = traci.polygon.getShape('mypolygon')
+% traci.polygon.setColor('mypolygon', [255 255 255 0]);
+% traci.polygon.setLineWidth('mypolygon', 1.5);
+% traci.polygon.getLineWidth('mypolygon')
+% traci.polygon.setFilled('mypolygon', true);
+% traci.polygon.getFilled('mypolygon')
+%traci.polygon.remove('mypolygon', 1);
 
 %% CONTEXT SUBSCRIPTIONS
 % It's worth noting that, according to
@@ -308,7 +308,7 @@ while traci.simulation.getMinExpectedNumber() > 0
   % Here, we demonstrate how to use the simulationStep command using an
   % argument. In this case, the simulation is performed each 5 seconds,
   % note the behavior when you increase the delay in the gui
-%  traci.simulationStep(5000*step);
+%  traci.simulationStep(5*step);
 %  pause(1);
   traci.simulationStep();
   programPointer = min(programPointer+1, length(PROGRAM));
@@ -618,14 +618,14 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% GUI COMMANDS
- if ~guiCommandsTested
-   guizoom = traci.gui.getZoom()
-   offset = traci.gui.getOffset()
-   schema = traci.gui.getSchema()
-   boundary = traci.gui.getBoundary()
-   hasDefaultView = traci.gui.hasView('default')
-   guiCommandsTested = 1;
- end
+%  if ~guiCommandsTested
+%    guizoom = traci.gui.getZoom()
+%    offset = traci.gui.getOffset()
+%    schema = traci.gui.getSchema()
+%    boundary = traci.gui.getBoundary()
+%    hasDefaultView = traci.gui.hasView('default')
+%    guiCommandsTested = 1;
+%  end
     
   %% INDUCTION LOOP COMMANDS
 %  if ~indLoopCommandsTested
@@ -640,11 +640,11 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% JUNCTION COMMANDS
- if ~junctionCommandsTested
-   junctionPosition = traci.junction.getPosition('0')
-   junctionShape = traci.junction.getShape('0')
-   junctionCommandsTested = 1;
- end
+%  if ~junctionCommandsTested
+%    junctionPosition = traci.junction.getPosition('0')
+%    junctionShape = traci.junction.getShape('0')
+%    junctionCommandsTested = 1;
+%  end
     
   %% LANE GET COMMANDS
 %  if ~laneCommandsTested
@@ -668,9 +668,12 @@ while traci.simulation.getMinExpectedNumber() > 0
 %    lane1i0Occupancy = traci.lane.getLastStepOccupancy('1i_0')
 %    lane1i0MeanVehicleLength = traci.lane.getLastStepLength('1i_0')
 %    lane1i0TravelTime = traci.lane.getTraveltime('1i_0')
-%    lane1i0HalringNumber = traci.lane.getLastStepHaltingNumber('1i_0')
-%    lane1i0VehicleIDs = traci.lane.getLastStepVehicleIDs('1i_0')
 %    lane1i0HaltingNumber = traci.lane.getLastStepHaltingNumber('1i_0')
+%    lane1i0VehicleIDs = traci.lane.getLastStepVehicleIDs('1i_0')
+%    lane1i0ElectricityConsumption = traci.lane.getElectricityConsumption('1i_0')
+%    lane1i0WaitingTime = traci.lane.getWaitingTime('1i_0')
+%    foes = traci.lane.getFoes('1i_0', '2o_0')
+%    internalFoes = traci.lane.getInternalFoes('1i_0')
 %    laneCommandsTested = 1;
 %  end
    
@@ -706,24 +709,26 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% TRAFFIC LIGHTS COMMANDS   
- if ~tlsCommandsTested
-%    tlsRYGState = traci.trafficlights.getRedYellowGreenState('0')
-%    tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0')
-%    tlscontrolledLanes = traci.trafficlights.getControlledLanes('0')
-%    tlscontrolledLinks = traci.trafficlights.getControlledLinks('0')
-%    tlsProgram = traci.trafficlights.getProgram('0')
-%    tlsPhase = traci.trafficlights.getPhase('0')
-    tlsPhaseDuration = traci.trafficlights.getPhaseDuration('0')
-%    traci.trafficlights.setPhase('0',0);
-%    traci.trafficlights.setProgram('0','0');
-%    traci.trafficlights.setPhaseDuration('0',5);
-%    myRYGDefinition = traci.trafficlights.Logic('0',0,0,0,...
-%      {traci.trafficlights.Phase(31000,31000,31000,'GrGr'),...
-%       traci.trafficlights.Phase(31000,31000,31000,'rGrG'),...
-%       traci.trafficlights.Phase(6000,6000,6000,'ryry')});
-%   traci.trafficlights.setCompleteRedYellowGreenDefinition('0',tlsRYGDefinition{1});
-%   tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
-    tlsCommandsTested = 1;
+  if ~tlsCommandsTested
+      tlsRYGState = traci.trafficlights.getRedYellowGreenState('0')
+      tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0')
+      tlscontrolledLanes = traci.trafficlights.getControlledLanes('0')
+      tlscontrolledLinks = traci.trafficlights.getControlledLinks('0')
+      tlsProgram = traci.trafficlights.getProgram('0')
+      tlsPhase = traci.trafficlights.getPhase('0')
+      tlsPhaseDuration = traci.trafficlights.getPhaseDuration('0')
+      traci.trafficlights.setPhase('0',0);
+      traci.trafficlights.setProgram('0','0');
+      traci.trafficlights.setPhaseDuration('0',5);
+      myRYGDefinition = traci.trafficlights.Logic('0',0,0,...
+          {traci.trafficlights.Phase(31000,'GrGr',31000,31000),...
+          traci.trafficlights.Phase(31000,'rGrG',31000,31000),...
+          traci.trafficlights.Phase(6000,'ryry',6000,6000)});
+      traci.trafficlights.setCompleteRedYellowGreenDefinition('0',tlsRYGDefinition{1});
+      tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
+      tlsCommandsTested = 1;
+      traci.trafficlights.setLinkState('0',0,'o');
+      traci.trafficlights.setLinkState('0',8,'o');
   end
     
   % Change the phase of the traffic light if a vehicle passed through the
@@ -731,7 +736,7 @@ while traci.simulation.getMinExpectedNumber() > 0
   if numPriorityVehicles > 0
 %    traci.gui.screenshot('View #0','passedvehicle.bmp')
    
-    loop0VehicleData = traci.inductionloop.getVehicleData('0')
+%     loop0VehicleData = traci.inductionloop.getVehicleData('0');
     
     if programPointer == length(PROGRAM)
       programPointer = 1;
