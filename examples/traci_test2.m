@@ -11,7 +11,7 @@
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 49 2018-12-27 14:08:44Z afacostag $
+%   $Id: traci_test2.m 50 2018-12-28 16:25:47Z afacostag $
 
 clear all
 close all
@@ -272,35 +272,50 @@ traci.gui.setSchema('View #0',  'real world');
 %traci.vehicle.setRoute(testVehicle, {'51o' '1i' '2o'});
 
 %% VEHICLE TYPE COMMANDS
-%typeLength = traci.vehicletype.getLength('typeWE')
-%typeMaxSpeed = traci.vehicletype.getMaxSpeed('typeWE')
-%typeSpeedFactor = traci.vehicletype.getSpeedFactor('typeWE')
-%typeSpeedDeviation = traci.vehicletype.getSpeedDeviation('typeWE')
-%typeAccel = traci.vehicletype.getAccel('typeWE')
-%typeDecel = traci.vehicletype.getDecel('typeWE')
-%typeImperfection = traci.vehicletype.getImperfection('typeWE')
-%typeTau = traci.vehicletype.getTau('typeWE')
-%typeClass = traci.vehicletype.getVehicleClass('typeWE')
-%typeEmissionClass = traci.vehicletype.getEmissionClass('typeWE')
-%typeShapeClass = traci.vehicletype.getShapeClass('typeWE')
-%typeMinGap = traci.vehicletype.getShapeClass('typeWE')
-%typeWidth = traci.vehicletype.getWidth('typeWE')
-%typeColor = traci.vehicletype.getColor('typeWE')
+% typeLength = traci.vehicletype.getLength('typeWE')
+% typeMaxSpeed = traci.vehicletype.getMaxSpeed('typeWE')
+% typeSpeedFactor = traci.vehicletype.getSpeedFactor('typeWE')
+% typeSpeedDeviation = traci.vehicletype.getSpeedDeviation('typeWE')
+% typeAccel = traci.vehicletype.getAccel('typeWE')
+% typeDecel = traci.vehicletype.getDecel('typeWE')
+% typeEmergencyDecel = traci.vehicletype.getEmergencyDecel('typeWE')
+% apparentDecel = traci.vehicletype.getApparentDecel('typeWE')
+% actionStepLength = traci.vehicletype.getActionStepLength('typeWE')
+% typeImperfection = traci.vehicletype.getImperfection('typeWE')
+% typeTau = traci.vehicletype.getTau('typeWE')
+% typeClass = traci.vehicletype.getVehicleClass('typeWE')
+% typeEmissionClass = traci.vehicletype.getEmissionClass('typeWE')
+% typeShapeClass = traci.vehicletype.getShapeClass('typeWE')
+% typeMinGap = traci.vehicletype.getMinGap('typeWE')
+% typeWidth = traci.vehicletype.getWidth('typeWE')
+% typeHeight = traci.vehicletype.getHeight('typeWE')
+% typeColor = traci.vehicletype.getColor('typeWE')
+% typeMaxSpeedLat = traci.vehicletype.getMaxSpeedLat('typeWE')
+% typeLateralAlignment = traci.vehicletype.getLateralAlignment('typeWE')
+% typeMinGapLat = traci.vehicletype.getMinGapLat('typeWE')
 % 
-%traci.vehicletype.setLength('typeWE',8);
-%traci.vehicletype.setMaxSpeed('typeWE',10);
-%traci.vehicletype.setVehicleClass('typeWE','passenger');
-%traci.vehicletype.setSpeedFactor('typeWE',0.8);
-%traci.vehicletype.setSpeedDeviation('typeWE',0.2);
-%traci.vehicletype.setEmissionClass('typeWE','unknown');
-%traci.vehicletype.setWidth('typeWE',1);
-%traci.vehicletype.setMinGap('typeWE',1);
-%traci.vehicletype.setShapeClass('typeWE','');
-%traci.vehicletype.setAccel('typeWE',5);
-%traci.vehicletype.setDecel('typeWE',3);
-%traci.vehicletype.setImperfection('typeWE',0.6);
-%traci.vehicletype.setTau('typeWE',0.1);
-%traci.vehicletype.setColor('typeWE',[255 255 255 0]);
+% traci.vehicletype.setLength('typeWE',8);
+% traci.vehicletype.setMaxSpeed('typeWE',10);
+% traci.vehicletype.setVehicleClass('typeWE','passenger');
+% traci.vehicletype.setSpeedFactor('typeWE',0.8);
+% traci.vehicletype.setSpeedDeviation('typeWE',0.2);
+% traci.vehicletype.setEmissionClass('typeWE','unknown');
+% traci.vehicletype.setWidth('typeWE',1);
+% traci.vehicletype.setHeight('typeWE', 3);
+% traci.vehicletype.setMinGap('typeWE',1);
+% traci.vehicletype.setMinGapLat('typeWE', 0.5);
+% traci.vehicletype.setMaxSpeedLat('typeWE', 0.4);
+% traci.vehicletype.setLateralAlignment('typeWE', 'left');
+% traci.vehicletype.setShapeClass('typeWE','');
+% traci.vehicletype.setAccel('typeWE',5);
+% traci.vehicletype.setDecel('typeWE',3);
+% traci.vehicletype.setEmergencyDecel('typeWE', 5);
+% traci.vehicletype.setActionStepLength('typeWE', 2)
+% traci.vehicletype.setApparentDecel('typeWE', 3)
+% traci.vehicletype.setImperfection('typeWE',0.6);
+% traci.vehicletype.setTau('typeWE',0.1);
+% traci.vehicletype.setColor('typeWE',[255 255 255 0]);
+% traci.vehicletype.copy('typeWE', 'typeWE_copy');
 
 step = 1;
 %for i=1:length(steps)
@@ -310,7 +325,9 @@ while traci.simulation.getMinExpectedNumber() > 0
   % note the behavior when you increase the delay in the gui
 %  traci.simulationStep(5*step);
 %  pause(1);
-  traci.simulationStep();
+%   traci.simulationStep();
+  traci.simulation.step();
+%   traci.simulation.step(5*step);
   programPointer = min(programPointer+1, length(PROGRAM));
     
   % Get the number of vehicles that passed through the induction loop in
@@ -687,49 +704,67 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% SIMULATION COMMANDS
-%  if ~simCommandsTested
-%    currentTime = traci.simulation.getCurrentTime()
-%    loadedNumber = traci.simulation.getLoadedNumber()
-%    loadedIDList = traci.simulation.getLoadedIDList();
-%    departedNumber = traci.simulation.getDepartedNumber()
-%    departedIDList = traci.simulation.getDepartedIDList();
-%    arrivedNumber = traci.simulation.getArrivedNumber()
-%    arrivedIDList = traci.simulation.getArrivedIDList()
-%    startingTeleportNumber = traci.simulation.getStartingTeleportNumber()
-%    startingTeleportIDList = traci.simulation.getStartingTeleportIDList()
-%    endingTeleportNumber = traci.simulation.getEndingTeleportNumber()
-%    deltaT = traci.simulation.getDeltaT()
-%    netBoundary = traci.simulation.getNetBoundary()
-%    [x y] = traci.simulation.convert2D('1i',10)
-%    [roadID pos laneID] = traci.simulation.convertRoad(20, 508.35)
-%    [longitude latitude] = traci.simulation.convertGeo(20, 508.35)
-%    distance2D = traci.simulation.getDistance2D(20, 508.35, 30, 508.35)
-%    distanceRoad = traci.simulation.getDistanceRoad('1i', 10, '1i', 20)
-%    simCommandsTested = 1;
-%  end
+ if ~simCommandsTested
+   time = traci.simulation.getTime()
+   currentTime = traci.simulation.getCurrentTime()
+   loadedNumber = traci.simulation.getLoadedNumber()
+   loadedIDList = traci.simulation.getLoadedIDList()
+   departedNumber = traci.simulation.getDepartedNumber()
+   departedIDList = traci.simulation.getDepartedIDList()
+   arrivedNumber = traci.simulation.getArrivedNumber()
+   arrivedIDList = traci.simulation.getArrivedIDList()
+   parkingStartingNumber = traci.simulation.getParkingStartingVehiclesNumber()
+   parkingStartingIDs = traci.simulation.getParkingStartingVehiclesIDList()
+   parkingEndingNumber = traci.simulation.getParkingEndingVehiclesNumber()
+   parkingEndingIDs = traci.simulation.getParkingEndingVehiclesIDList()
+   stopStartingNumber = traci.simulation.getStopStartingVehiclesNumber()
+   stopStartingIDs = traci.simulation.getStopStartingVehiclesIDList()
+   stopEndingNumber = traci.simulation.getStopEndingVehiclesNumber()
+   stopEndingIDs = traci.simulation.getStopEndingVehiclesIDList()
+   collidingNumber = traci.simulation.getCollidingVehiclesNumber()
+   collidingIDs = traci.simulation.getCollidingVehiclesIDList()
+   emergencyStoppingNumber = traci.simulation.getEmergencyStoppingVehiclesNumber()
+   emergencyStoppingIDs = traci.simulation.getEmergencyStoppingVehiclesIDList()
+   busStopWaiting = traci.simulation.getBusStopWaiting('busStop1')
+   startingTeleportNumber = traci.simulation.getStartingTeleportNumber()
+   startingTeleportIDList = traci.simulation.getStartingTeleportIDList()
+   endingTeleportNumber = traci.simulation.getEndingTeleportNumber()
+   endingTeleportIDs = traci.simulation.getEndingTeleportIDList()
+   deltaT = traci.simulation.getDeltaT()
+   netBoundary = traci.simulation.getNetBoundary()
+   [x2d,y2d] = traci.simulation.convert2D('1i',10)
+   [x3d,y3d,z3d] = traci.simulation.convert3D('1i',10)
+   [roadID pos laneID] = traci.simulation.convertRoad(20, 508.35)
+   [longitude latitude] = traci.simulation.convertGeo(20, 508.35)
+   distance2D = traci.simulation.getDistance2D(20, 508.35, 30, 508.35)
+   distanceRoad = traci.simulation.getDistanceRoad('1i', 10, '1i', 20)
+   route = traci.simulation.findRoute('1i','2o')
+   interModalRoute = traci.simulation.findIntermodalRoute('1i','2o')
+   simCommandsTested = 1;
+ end
     
   %% TRAFFIC LIGHTS COMMANDS   
-  if ~tlsCommandsTested
-      tlsRYGState = traci.trafficlights.getRedYellowGreenState('0')
-      tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0')
-      tlscontrolledLanes = traci.trafficlights.getControlledLanes('0')
-      tlscontrolledLinks = traci.trafficlights.getControlledLinks('0')
-      tlsProgram = traci.trafficlights.getProgram('0')
-      tlsPhase = traci.trafficlights.getPhase('0')
-      tlsPhaseDuration = traci.trafficlights.getPhaseDuration('0')
-      traci.trafficlights.setPhase('0',0);
-      traci.trafficlights.setProgram('0','0');
-      traci.trafficlights.setPhaseDuration('0',5);
-      myRYGDefinition = traci.trafficlights.Logic('0',0,0,...
-          {traci.trafficlights.Phase(31000,'GrGr',31000,31000),...
-          traci.trafficlights.Phase(31000,'rGrG',31000,31000),...
-          traci.trafficlights.Phase(6000,'ryry',6000,6000)});
-      traci.trafficlights.setCompleteRedYellowGreenDefinition('0',tlsRYGDefinition{1});
-      tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
-      tlsCommandsTested = 1;
-      traci.trafficlights.setLinkState('0',0,'o');
-      traci.trafficlights.setLinkState('0',8,'o');
-  end
+%   if ~tlsCommandsTested
+%       tlsRYGState = traci.trafficlights.getRedYellowGreenState('0')
+%       tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0')
+%       tlscontrolledLanes = traci.trafficlights.getControlledLanes('0')
+%       tlscontrolledLinks = traci.trafficlights.getControlledLinks('0')
+%       tlsProgram = traci.trafficlights.getProgram('0')
+%       tlsPhase = traci.trafficlights.getPhase('0')
+%       tlsPhaseDuration = traci.trafficlights.getPhaseDuration('0')
+%       traci.trafficlights.setPhase('0',0);
+%       traci.trafficlights.setProgram('0','0');
+%       traci.trafficlights.setPhaseDuration('0',5);
+%       myRYGDefinition = traci.trafficlights.Logic('0',0,0,...
+%           {traci.trafficlights.Phase(31000,'GrGr',31000,31000),...
+%           traci.trafficlights.Phase(31000,'rGrG',31000,31000),...
+%           traci.trafficlights.Phase(6000,'ryry',6000,6000)});
+%       traci.trafficlights.setCompleteRedYellowGreenDefinition('0',tlsRYGDefinition{1});
+%       tlsRYGDefinition = traci.trafficlights.getCompleteRedYellowGreenDefinition('0');
+%       tlsCommandsTested = 1;
+%       traci.trafficlights.setLinkState('0',0,'o');
+%       traci.trafficlights.setLinkState('0',8,'o');
+%   end
     
   % Change the phase of the traffic light if a vehicle passed through the
   % induction loop

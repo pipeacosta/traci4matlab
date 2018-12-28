@@ -10,7 +10,7 @@ function responses = simulationStep(timeStep)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: simulationStep.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: simulationStep.m 50 2018-12-28 16:25:47Z afacostag $
 
 
 global message edgeSubscriptionResults guiSubscriptionResults ...
@@ -33,6 +33,10 @@ if nargin < 1
 	timeStep = 0;
 end
 import traci.constants
+
+if timeStep > 1000
+    warning('API change now handles step as floating point seconds');
+end
 
 % Prepare the message to be sent to the SUMO server
 message.queue = [message.queue uint8(sscanf(constants.CMD_SIMSTEP,'%x'))];

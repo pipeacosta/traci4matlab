@@ -4,7 +4,7 @@ classdef Storage < handle
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: Storage.m 49 2018-12-27 14:08:44Z afacostag $
+%   $Id: Storage.m 50 2018-12-28 16:25:47Z afacostag $
 
 	properties
 		content
@@ -15,18 +15,13 @@ classdef Storage < handle
 			this.content = content;
 			this.pos = 1;
         end
+        
 		function value = read(this,numbytes)
 			oldpos = this.pos;
 			this.pos = this.pos + numbytes;
 			value = this.content(oldpos:this.pos-1);
-			
-% 			interval = round(numbytes/nargout);
-% 			for i=1:nargout
-% 				oldpos = this.pos;
-% 				this.pos = this.pos + interval;
-% 				varargout{i} = this.content(oldpos:this.pos-1);
-% 			end
         end
+        
         function value = readInt(this)
             value = double(typecast(fliplr(uint8(this.read(4))),'int32'));
         end

@@ -4,7 +4,7 @@ classdef constants
     %   Copyright 2019 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-	%   $Id: constants.m 49 2018-12-27 14:08:44Z afacostag $
+	%   $Id: constants.m 50 2018-12-28 16:25:47Z afacostag $
 
   properties (Constant = true)
 	% ****************************************
@@ -873,6 +873,9 @@ classdef constants
 
 	% remove an instance (poi, polygon)
 	REMOVE = '0x81'
+    
+    % copy an instance (vehicle type, other TBD.)
+    COPY = '0x88'
 
 	% convert coordinates
 	POSITION_CONVERSION = '0x82'
