@@ -6,10 +6,11 @@ function moveTo(vehID, laneID, pos)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: moveTo.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: moveTo.m 51 2018-12-30 22:32:29Z afacostag $
 
 import traci.constants
 global message
+
 traci.beginMessage(constants.CMD_SET_VEHICLE_VARIABLE, constants.VAR_MOVE_TO, vehID,...
     1+4+1+4+length(laneID)+1+8);
 message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
@@ -17,5 +18,5 @@ message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
 message.string = [message.string uint8(sscanf(constants.TYPE_STRING,'%x')) ...
     traci.packInt32(length(laneID)) uint8(laneID)];
 message.string = [message.string uint8(sscanf(constants.TYPE_DOUBLE,'%x')) ...
-    traci.packInt32(pos)];
+    traci.packInt64(pos)];
 traci.sendExact();

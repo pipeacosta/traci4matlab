@@ -11,7 +11,7 @@
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: traci_test2.m 50 2018-12-28 16:25:47Z afacostag $
+%   $Id: traci_test2.m 51 2018-12-30 22:32:29Z afacostag $
 
 clear all
 close all
@@ -208,7 +208,7 @@ programPointer = length(PROGRAM);
 % poitype = traci.poi.getType('mypoi')
 % traci.poi.setPosition('mypoi', 550, 580);
 % poiposition = traci.poi.getPosition('mypoi')
-% traci.poi.setColor('mypoi', [255 255 255 0]);
+% traci.poi.setColor('mypoi', [255 255 255 255]);
 % %traci.poi.remove('mypoi', 1);
 % 
 % traci.polygon.add('mypolygon', {[440,440],[440,450],[450,440],[450,450]},...
@@ -226,7 +226,7 @@ programPointer = length(PROGRAM);
 % polygontype = traci.polygon.getType('mypolygon')
 % traci.polygon.setShape('mypolygon', {[400,400],[400,420],[430,420],[430,400],[400,400]});
 % polygonshape = traci.polygon.getShape('mypolygon')
-% traci.polygon.setColor('mypolygon', [255 255 255 0]);
+% traci.polygon.setColor('mypolygon', [255 255 255 255]);
 % traci.polygon.setLineWidth('mypolygon', 1.5);
 % traci.polygon.getLineWidth('mypolygon')
 % traci.polygon.setFilled('mypolygon', true);
@@ -314,7 +314,7 @@ traci.gui.setSchema('View #0',  'real world');
 % traci.vehicletype.setApparentDecel('typeWE', 3)
 % traci.vehicletype.setImperfection('typeWE',0.6);
 % traci.vehicletype.setTau('typeWE',0.1);
-% traci.vehicletype.setColor('typeWE',[255 255 255 0]);
+% traci.vehicletype.setColor('typeWE',[255 255 255 255]);
 % traci.vehicletype.copy('typeWE', 'typeWE_copy');
 
 step = 1;
@@ -345,111 +345,148 @@ while traci.simulation.getMinExpectedNumber() > 0
     
   % VEHICLE COMMANDS
   if ismember(testVehicle, vehicles)      
-%     if ~vehicleCommandsTested
+    if ~vehicleCommandsTested
      %% VEHICLE GET COMMANDS
-%      vehSpeed = traci.vehicle.getSpeed(testVehicle)
-%      vehSpeedWOTraci = traci.vehicle.getSpeedWithoutTraCI(testVehicle)
-%      vehPosition = traci.vehicle.getPosition(testVehicle)
-%      vehPosition3D = traci.vehicle.getPosition3D(testVehicle)
-%      vehAngle = traci.vehicle.getAngle(testVehicle)
-%      vehRoadID = traci.vehicle.getRoadID(testVehicle)
-%      vehLaneID = traci.vehicle.getLaneID(testVehicle)
-%      vehLaneIndex = traci.vehicle.getLaneIndex(testVehicle)
-%      vehTypeID = traci.vehicle.getTypeID(testVehicle)
-%      vehRouteID = traci.vehicle.getRouteID(testVehicle)
-%      vehRouteIndex = traci.vehicle.getRouteIndex(testVehicle)
-%      vehRoute = traci.vehicle.getRoute(testVehicle)
-%      vehLanePos = traci.vehicle.getLanePosition(testVehicle)
-%      vehColor = traci.vehicle.getColor(testVehicle)
-%      vehCO2Emission = traci.vehicle.getCO2Emission(testVehicle)
-%      vehCOEmission = traci.vehicle.getCOEmission(testVehicle)
-%      vehPmxEmission = traci.vehicle.getPMxEmission(testVehicle)
-%      vehNOxEmission = traci.vehicle.getNOxEmission(testVehicle)
-%      vehFuelConsumption = traci.vehicle.getFuelConsumption(testVehicle)
-%      vehNoiseEmission = traci.vehicle.getNoiseEmission(testVehicle)
-%      vehElectricityConsumption = traci.vehicle.getElectricityConsumption(testVehicle)
-%      vehPersonNumber = traci.vehicle.getPersonNumber(testVehicle)
-%      vehAdaptedTraveltime = traci.vehicle.getAdaptedTraveltime(testVehicle,10,'1i')
-%      vehEffort = traci.vehicle.getEffort(testVehicle,10,'1i')
-%      vehValidRoute = traci.vehicle.isRouteValid(testVehicle)
-%      vehSignals = traci.vehicle.getSignals(testVehicle)
-%      vehLength = traci.vehicle.getLength(testVehicle)
-%      vehMaxSpeed = traci.vehicle.getMaxSpeed(testVehicle)
-%      vehLateralLanePos = traci.vehicle.getLateralLanePosition(testVehicle)
-%      vehMaxSpeedLat = traci.vehicle.getMaxSpeedLat(testVehicle)
-%      vehLatAlignment = traci.vehicle.getLateralAlignment(testVehicle)
-%      vehMinGapLat = traci.vehicle.getMinGapLat(testVehicle)
-%      vehAllowedSpeed = traci.vehicle.getAllowedSpeed(testVehicle)
-%      vehClass = traci.vehicle.getVehicleClass(testVehicle)
-%      vehSpeedFactor = traci.vehicle.getSpeedFactor(testVehicle)
-%      vehSpeedDeviation = traci.vehicle.getSpeedDeviation(testVehicle)
-%      vehEmissionClass = traci.vehicle.getEmissionClass(testVehicle)
-%      vehWaitingTime = traci.vehicle.getWaitingTime(testVehicle)
-%      vehAccumWaitingTime = traci.vehicle.getAccumulatedWaitingTime(testVehicle)
-%      vehSpeedMode = traci.vehicle.getSpeedMode(testVehicle)
-%      vehSlope = traci.vehicle.getSlope(testVehicle)
-%      vehWidth = traci.vehicle.getWidth(testVehicle)
-%      vehHeight = traci.vehicle.getHeight(testVehicle)
-%      vehLine = traci.vehicle.getLine(testVehicle)
-%      vehVia = traci.vehicle.getVia(testVehicle)
-%      vehMinGap = traci.vehicle.getMinGap(testVehicle)
-%      vehShapeClass = traci.vehicle.getShapeClass(testVehicle)
-%      vehAccel = traci.vehicle.getAccel(testVehicle)
-%      vehDecel = traci.vehicle.getDecel(testVehicle)
-%      vehEmergencyDecel = traci.vehicle.getEmergencyDecel(testVehicle)
-%      vehApparentDecel = traci.vehicle.getApparentDecel(testVehicle)
-%      vehImperfection = traci.vehicle.getImperfection(testVehicle)
-%      vehTau = traci.vehicle.getTau(testVehicle)
-%      vehLeader = traci.vehicle.getLeader(testVehicle, 1)
-%      vehNextTLS = traci.vehicle.getNextTLS(testVehicle)
-%      vehBestLanes = traci.vehicle.getBestLanes(testVehicle)
-%      vehDrivingDistance = traci.vehicle.getDrivingDistance(testVehicle,'2o',30)
-%      vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D(testVehicle,620,510)
-%      vehDistance = traci.vehicle.getDistance(testVehicle)
-%      vehStopState = traci.vehicle.getStopState(testVehicle)
+     vehSpeed = traci.vehicle.getSpeed(testVehicle)
+     vehAcceleration = traci.vehicle.getAcceleration(testVehicle)
+     vehSpeedWOTraci = traci.vehicle.getSpeedWithoutTraCI(testVehicle)
+     vehPosition = traci.vehicle.getPosition(testVehicle)
+     vehPosition3D = traci.vehicle.getPosition3D(testVehicle)
+     vehAngle = traci.vehicle.getAngle(testVehicle)
+     vehRoadID = traci.vehicle.getRoadID(testVehicle)
+     vehLaneID = traci.vehicle.getLaneID(testVehicle)
+     vehLaneIndex = traci.vehicle.getLaneIndex(testVehicle)
+     vehTypeID = traci.vehicle.getTypeID(testVehicle)
+     vehRouteID = traci.vehicle.getRouteID(testVehicle)
+     vehRouteIndex = traci.vehicle.getRouteIndex(testVehicle)
+     vehRoute = traci.vehicle.getRoute(testVehicle)
+     vehLanePos = traci.vehicle.getLanePosition(testVehicle)
+     vehColor = traci.vehicle.getColor(testVehicle)
+     vehCO2Emission = traci.vehicle.getCO2Emission(testVehicle)
+     vehCOEmission = traci.vehicle.getCOEmission(testVehicle)
+     vehHCEmission = traci.vehicle.getHCEmission(testVehicle)
+     vehPmxEmission = traci.vehicle.getPMxEmission(testVehicle)
+     vehNOxEmission = traci.vehicle.getNOxEmission(testVehicle)
+     vehFuelConsumption = traci.vehicle.getFuelConsumption(testVehicle)
+     vehNoiseEmission = traci.vehicle.getNoiseEmission(testVehicle)
+     vehElectricityConsumption = traci.vehicle.getElectricityConsumption(testVehicle)
+     vehPersonNumber = traci.vehicle.getPersonNumber(testVehicle)
+     vehPersonIDs = traci.vehicle.getPersonIDList(testVehicle)
+     vehAdaptedTraveltime = traci.vehicle.getAdaptedTraveltime(testVehicle,10,'1i')
+     vehEffort = traci.vehicle.getEffort(testVehicle,10,'1i')
+     vehValidRoute = traci.vehicle.isRouteValid(testVehicle)
+     vehSignals = traci.vehicle.getSignals(testVehicle)
+     vehLength = traci.vehicle.getLength(testVehicle)
+     vehMaxSpeed = traci.vehicle.getMaxSpeed(testVehicle)
+     vehLateralLanePos = traci.vehicle.getLateralLanePosition(testVehicle)
+     vehMaxSpeedLat = traci.vehicle.getMaxSpeedLat(testVehicle)
+     vehLatAlignment = traci.vehicle.getLateralAlignment(testVehicle)
+     vehMinGapLat = traci.vehicle.getMinGapLat(testVehicle)
+     vehAllowedSpeed = traci.vehicle.getAllowedSpeed(testVehicle)
+     vehClass = traci.vehicle.getVehicleClass(testVehicle)
+     vehSpeedFactor = traci.vehicle.getSpeedFactor(testVehicle)
+     vehSpeedDeviation = traci.vehicle.getSpeedDeviation(testVehicle)
+     vehEmissionClass = traci.vehicle.getEmissionClass(testVehicle)
+     vehWaitingTime = traci.vehicle.getWaitingTime(testVehicle)
+     vehAccumWaitingTime = traci.vehicle.getAccumulatedWaitingTime(testVehicle)
+     lcMode = traci.vehicle.getLaneChangeMode(testVehicle);
+     vehSpeedMode = traci.vehicle.getSpeedMode(testVehicle)
+     vehSlope = traci.vehicle.getSlope(testVehicle)
+     vehWidth = traci.vehicle.getWidth(testVehicle)
+     vehHeight = traci.vehicle.getHeight(testVehicle)
+     vehLine = traci.vehicle.getLine(testVehicle)
+     vehVia = traci.vehicle.getVia(testVehicle)
+     vehMinGap = traci.vehicle.getMinGap(testVehicle)
+     vehShapeClass = traci.vehicle.getShapeClass(testVehicle)
+     vehAccel = traci.vehicle.getAccel(testVehicle)
+     vehDecel = traci.vehicle.getDecel(testVehicle)
+     vehEmergencyDecel = traci.vehicle.getEmergencyDecel(testVehicle)
+     vehApparentDecel = traci.vehicle.getApparentDecel(testVehicle)
+     actionStepLength = traci.vehicle.getActionStepLength(testVehicle)
+     lastActionTime = traci.vehicle.getLastActionTime(testVehicle)
+     vehImperfection = traci.vehicle.getImperfection(testVehicle)
+     vehTau = traci.vehicle.getTau(testVehicle)
+     bestLanes = traci.vehicle.getBestLanes(testVehicle)
+     vehLeader = traci.vehicle.getLeader(testVehicle, 1)
+     vehNextTLS = traci.vehicle.getNextTLS(testVehicle)
+     nextStops = traci.vehicle.getNextStops(testVehicle)
+     vehDrivingDistance = traci.vehicle.getDrivingDistance(testVehicle,'2o',30)
+     vehDrivingDistance2D = traci.vehicle.getDrivingDistance2D(testVehicle,620,510)
+     vehDistance = traci.vehicle.getDistance(testVehicle)
+     vehStopState = traci.vehicle.getStopState(testVehicle)
+     vehIsStopped = traci.vehicle.isStopped(testVehicle)
+     vehIsStoppedParking = traci.vehicle.isStoppedParking(testVehicle)
+     vehIsStoppedTriggered = traci.vehicle.isStoppedTriggered(testVehicle)
+     vehIsAtBusStop = traci.vehicle.isAtBusStop(testVehicle)
+     vehIsAtContainerStop = traci.vehicle.isAtContainerStop(testVehicle)
+     lcState = traci.vehicle.getLaneChangeState(testVehicle, 1)
+     vehCouldChangeLane = traci.vehicle.couldChangeLane(testVehicle, 1)
+     vehWantsAndCouldChangeLane = traci.vehicle.wantsAndCouldChangeLane(testVehicle, 1)
+     routingMode = traci.vehicle.getRoutingMode(testVehicle)
      
-%      
-%      %% VEHICLE SET COMMANDS
-%      traci.vehicle.add('myvehicle', 'down');
-%      traci.gui.trackVehicle('View #0', 'myvehicle');
-%      traci.vehicle.remove('myvehicle');
-%      traci.vehicle.setMaxSpeed(testVehicle, 5);
-% %      traci.vehicle.setStop(testVehicle, '1i', 50, 0, 40000);
-%      traci.vehicle.changeLane(testVehicle, 0, 40000);
-%      traci.vehicle.slowDown(testVehicle, 1, 180000);
-%      traci.vehicle.changeTarget(testVehicle, '2o');
-% %      traci.vehicle.setRouteID(testVehicle, 'down');
-% %      traci.vehicle.setAdaptedTraveltime(testVehicle, 10000, 50000, '1i', 15000);
-% %      traci.vehicle.setEffort(testVehicle, 10000, 50000, '1i', 0.125); %Not online
-% %      traci.vehicle.rerouteTraveltime(testVehicle); %Not online
-% %      traci.vehicle.rerouteEffort(testVehicle); %Not online
-%      traci.vehicle.setSignals(testVehicle, 2);
-%      traci.vehicle.setSpeed(testVehicle, 13.8999);
-%      traci.vehicle.setSpeed(testVehicle, 12.0001);
-%      traci.vehicle.setColor(testVehicle,[0 0 255 0]);
-%      traci.vehicle.setLength(testVehicle, 10);
-%      traci.vehicle.setVehicleClass(testVehicle, 'passenger');
-%      traci.vehicle.setSpeedFactor(testVehicle, 0.6);
-%      traci.vehicle.setEmissionClass(testVehicle, 'unknown');
-%      traci.vehicle.setWidth(testVehicle, 3);
-%      traci.vehicle.setMinGap(testVehicle, 10);
-%      traci.vehicle.setShapeClass(testVehicle, '');
-%      traci.vehicle.setAccel(testVehicle, 2);
-%      traci.vehicle.setImperfection(testVehicle, 1);
-%      traci.vehicle.setTau(testVehicle, 1);
-%      traci.vehicle.moveToXY('right_10','3i',0,1000,508.5,90);
-% %    traci.vehicle.moveTo(testVehicle,'1i_0',20);  % TODO
-%        
-%      if step == 100
-%        testVehDecel = traci.vehicle.getDecel(testVehicle)
-%        traci.vehicle.setDecel(testVehicle, 5);
-%      end
-%        
-%      if step > 100
-%        testVehDecel = traci.vehicle.getDecel(testVehicle)
-%      end
+     %% VEHICLE SET COMMANDS
+     traci.vehicle.add('myvehicle', 'down');
+     traci.gui.trackVehicle('View #0', 'myvehicle');
+     traci.vehicle.remove('myvehicle');
+     traci.vehicle.setMaxSpeed(testVehicle, 5);
+     traci.vehicle.setMaxSpeedLat(testVehicle, 2);
+     traci.vehicle.setStop(testVehicle, '1i', 50, 0, 40);
+%      traci.vehicle.setBusStop(testVehicle, 'busStop1');
+     traci.vehicle.changeLane(testVehicle, 0, 40);
+     traci.vehicle.changeLaneRelative(testVehicle, 0, 40);
+     traci.vehicle.changeSublane(testVehicle, 1.2);
+     traci.vehicle.slowDown(testVehicle, 1, 180);
+     traci.vehicle.openGap(testVehicle, 2, 1, 20, 1);
+     traci.vehicle.deactivateGapControl(testVehicle);
+     traci.vehicle.changeTarget(testVehicle, '2o');
+     traci.vehicle.setType(testVehicle, 'typeWE');
+     traci.vehicle.setRouteID(testVehicle, 'right');
+     traci.vehicle.setRoute(testVehicle, {'51o','1i','2o','52i'});
+     traci.vehicle.updateBestLanes(testVehicle);
+     traci.vehicle.setAdaptedTraveltime(testVehicle, '1i');
+     traci.vehicle.setEffort(testVehicle, '1i');
+     traci.vehicle.setRoutingMode(testVehicle,...
+         uint8(sscanf(traci.constants.ROUTING_MODE_DEFAULT,'%x')));
+     traci.vehicle.rerouteTraveltime(testVehicle);
+     traci.vehicle.rerouteEffort(testVehicle);
+     traci.vehicle.setSignals(testVehicle, 2);
+     traci.vehicle.moveTo(testVehicle,'1i_0',20);
+     traci.vehicle.setSpeed(testVehicle, 13.8999);
+     traci.vehicle.setSpeed(testVehicle, 12.0001);
+     traci.vehicle.setColor(testVehicle,[0 0 255 255]);
+     traci.vehicle.setLength(testVehicle, 10);
+     traci.vehicle.setVehicleClass(testVehicle, 'passenger');
+     traci.vehicle.setSpeedFactor(testVehicle, 0.6);
+     traci.vehicle.setEmissionClass(testVehicle, 'unknown');
+     traci.vehicle.setWidth(testVehicle, 3);
+     traci.vehicle.setHeight(testVehicle, 2);
+     traci.vehicle.setLine(testVehicle, 'line1');
+     traci.vehicle.setVia(testVehicle, {'2o'});
+     traci.vehicle.setMinGap(testVehicle, 10);
+     traci.vehicle.setMinGapLat(testVehicle, 2);
+     traci.vehicle.setLateralAlignment(testVehicle, 'right');
+     traci.vehicle.setShapeClass(testVehicle, '');
+     traci.vehicle.setAccel(testVehicle, 2);
+     traci.vehicle.setDecel(testVehicle, 5);
+     traci.vehicle.setEmergencyDecel(testVehicle, 9);
+     traci.vehicle.setApparentDecel(testVehicle, 4.5);
+     traci.vehicle.setActionStepLength(testVehicle, 1);
+     traci.vehicle.setImperfection(testVehicle, 1);
+     traci.vehicle.setTau(testVehicle, 1);
+     traci.vehicle.setLaneChangeMode(testVehicle, 0);
+     traci.vehicle.setSpeedMode(testVehicle, 31);
+     traci.vehicle.moveToXY('right_10','3i',0,1000,508.5,90);
        
-%      vehicleCommandsTested = 1;
+     if step == 100
+       testVehDecel = traci.vehicle.getDecel(testVehicle)
+       traci.vehicle.setDecel(testVehicle, 5);
+     end
+       
+     if step > 100
+       testVehDecel = traci.vehicle.getDecel(testVehicle)
+     end
+       
+     vehicleCommandsTested = 1;
        
   % Subscribe to the vehicle with the id contained in the variable "testVehicle" 
 	% when it is loaded in the network       
@@ -477,6 +514,7 @@ while traci.simulation.getMinExpectedNumber() > 0
 %      traci.gui.trackVehicle('View #0', testVehicle);
 %      trackingTestVeh = 1;
 %    end
+    end
   end
     
   %% GETSUBSCRIPTIONRESULTS COMMANDS: Note that you have to create the required detectors in the cross.det.xml file
@@ -704,44 +742,44 @@ while traci.simulation.getMinExpectedNumber() > 0
 %  end
     
   %% SIMULATION COMMANDS
- if ~simCommandsTested
-   time = traci.simulation.getTime()
-   currentTime = traci.simulation.getCurrentTime()
-   loadedNumber = traci.simulation.getLoadedNumber()
-   loadedIDList = traci.simulation.getLoadedIDList()
-   departedNumber = traci.simulation.getDepartedNumber()
-   departedIDList = traci.simulation.getDepartedIDList()
-   arrivedNumber = traci.simulation.getArrivedNumber()
-   arrivedIDList = traci.simulation.getArrivedIDList()
-   parkingStartingNumber = traci.simulation.getParkingStartingVehiclesNumber()
-   parkingStartingIDs = traci.simulation.getParkingStartingVehiclesIDList()
-   parkingEndingNumber = traci.simulation.getParkingEndingVehiclesNumber()
-   parkingEndingIDs = traci.simulation.getParkingEndingVehiclesIDList()
-   stopStartingNumber = traci.simulation.getStopStartingVehiclesNumber()
-   stopStartingIDs = traci.simulation.getStopStartingVehiclesIDList()
-   stopEndingNumber = traci.simulation.getStopEndingVehiclesNumber()
-   stopEndingIDs = traci.simulation.getStopEndingVehiclesIDList()
-   collidingNumber = traci.simulation.getCollidingVehiclesNumber()
-   collidingIDs = traci.simulation.getCollidingVehiclesIDList()
-   emergencyStoppingNumber = traci.simulation.getEmergencyStoppingVehiclesNumber()
-   emergencyStoppingIDs = traci.simulation.getEmergencyStoppingVehiclesIDList()
-   busStopWaiting = traci.simulation.getBusStopWaiting('busStop1')
-   startingTeleportNumber = traci.simulation.getStartingTeleportNumber()
-   startingTeleportIDList = traci.simulation.getStartingTeleportIDList()
-   endingTeleportNumber = traci.simulation.getEndingTeleportNumber()
-   endingTeleportIDs = traci.simulation.getEndingTeleportIDList()
-   deltaT = traci.simulation.getDeltaT()
-   netBoundary = traci.simulation.getNetBoundary()
-   [x2d,y2d] = traci.simulation.convert2D('1i',10)
-   [x3d,y3d,z3d] = traci.simulation.convert3D('1i',10)
-   [roadID pos laneID] = traci.simulation.convertRoad(20, 508.35)
-   [longitude latitude] = traci.simulation.convertGeo(20, 508.35)
-   distance2D = traci.simulation.getDistance2D(20, 508.35, 30, 508.35)
-   distanceRoad = traci.simulation.getDistanceRoad('1i', 10, '1i', 20)
-   route = traci.simulation.findRoute('1i','2o')
-   interModalRoute = traci.simulation.findIntermodalRoute('1i','2o')
-   simCommandsTested = 1;
- end
+%  if ~simCommandsTested
+%    time = traci.simulation.getTime()
+%    currentTime = traci.simulation.getCurrentTime()
+%    loadedNumber = traci.simulation.getLoadedNumber()
+%    loadedIDList = traci.simulation.getLoadedIDList()
+%    departedNumber = traci.simulation.getDepartedNumber()
+%    departedIDList = traci.simulation.getDepartedIDList()
+%    arrivedNumber = traci.simulation.getArrivedNumber()
+%    arrivedIDList = traci.simulation.getArrivedIDList()
+%    parkingStartingNumber = traci.simulation.getParkingStartingVehiclesNumber()
+%    parkingStartingIDs = traci.simulation.getParkingStartingVehiclesIDList()
+%    parkingEndingNumber = traci.simulation.getParkingEndingVehiclesNumber()
+%    parkingEndingIDs = traci.simulation.getParkingEndingVehiclesIDList()
+%    stopStartingNumber = traci.simulation.getStopStartingVehiclesNumber()
+%    stopStartingIDs = traci.simulation.getStopStartingVehiclesIDList()
+%    stopEndingNumber = traci.simulation.getStopEndingVehiclesNumber()
+%    stopEndingIDs = traci.simulation.getStopEndingVehiclesIDList()
+%    collidingNumber = traci.simulation.getCollidingVehiclesNumber()
+%    collidingIDs = traci.simulation.getCollidingVehiclesIDList()
+%    emergencyStoppingNumber = traci.simulation.getEmergencyStoppingVehiclesNumber()
+%    emergencyStoppingIDs = traci.simulation.getEmergencyStoppingVehiclesIDList()
+%    busStopWaiting = traci.simulation.getBusStopWaiting('busStop1')
+%    startingTeleportNumber = traci.simulation.getStartingTeleportNumber()
+%    startingTeleportIDList = traci.simulation.getStartingTeleportIDList()
+%    endingTeleportNumber = traci.simulation.getEndingTeleportNumber()
+%    endingTeleportIDs = traci.simulation.getEndingTeleportIDList()
+%    deltaT = traci.simulation.getDeltaT()
+%    netBoundary = traci.simulation.getNetBoundary()
+%    [x2d,y2d] = traci.simulation.convert2D('1i',10)
+%    [x3d,y3d,z3d] = traci.simulation.convert3D('1i',10)
+%    [roadID pos laneID] = traci.simulation.convertRoad(20, 508.35)
+%    [longitude latitude] = traci.simulation.convertGeo(20, 508.35)
+%    distance2D = traci.simulation.getDistance2D(20, 508.35, 30, 508.35)
+%    distanceRoad = traci.simulation.getDistanceRoad('1i', 10, '1i', 20)
+%    route = traci.simulation.findRoute('1i','2o')
+%    interModalRoute = traci.simulation.findIntermodalRoute('1i','2o')
+%    simCommandsTested = 1;
+%  end
     
   %% TRAFFIC LIGHTS COMMANDS   
 %   if ~tlsCommandsTested

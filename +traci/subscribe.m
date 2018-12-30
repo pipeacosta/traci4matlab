@@ -1,35 +1,54 @@
-function subscribe(cmdID, subscriptionBegin, subscriptionEnd, objID, varIDs)
+function subscribe(cmdID, subscriptionBegin, subscriptionEnd, objID, varIDs, varargin)
 %subscribe An internal function to build a subscription message and parse
 %the response.
 
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribe.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: subscribe.m 51 2018-12-30 22:32:29Z afacostag $
 
 global message
 
+parameters = containers.Map();
+
+if nargin > 5
+    parameters = varargin{1};
+end
+
 % Construct the TraCI message
 message.queue = [message.queue uint8(sscanf(cmdID,'%x'))];
-len = 1+1+4+4+4+length(objID)+1+length(varIDs);
+len = 1+1+8+8+4+length(objID)+1+length(varIDs);
+
+if ~isempty(parameters)
+    for i = 1:length(varIDs)
+        if parameters.isKey(varIDs{i})
+            len = len + parameters(varIDs{i});
+        end
+    end
+end
+
 if len <= 255
     message.string = [message.string uint8(len)];
 else
     message.string = [message.string uint8(0) traci.packInt32(len+4)];
 end
+
 message.string = [message.string uint8(sscanf(cmdID,'%x')),...
-    traci.packInt32([length(objID) subscriptionEnd ...
-    subscriptionBegin]) uint8(objID)];
+    traci.packInt64([subscriptionBegin subscriptionEnd]) ...
+    traci.packInt32(length(objID)) uint8(objID)];
 message.string = [message.string uint8(length(varIDs))];
 for v=1:length(varIDs)
     message.string = [message.string sscanf(varIDs{v},'%x')];
+    if ~isempty(parameters) && parameters.isKey(varIDs{v})
+        message.string = [message.string uint8(varIDs{v})];
+    end
 end
 
 % Send the TraCI message and receive the result
 result = traci.sendExact();
 
 % Populate the subsctiptions and parse the result
-[response, objectID] = traci.readSubscription(result);
+[objectID,response] = traci.readSubscription(result);
 if response - uint8(sscanf(cmdID,'%x'))~=16 || ~strcmp(objectID,objID) 
     raise(MException('traci:FatalTraciError',['Received answer ' response ...
         ', ' objectID 'for subscription command ' cmdID ', ' objID]));

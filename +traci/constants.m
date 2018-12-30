@@ -4,13 +4,13 @@ classdef constants
     %   Copyright 2019 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-	%   $Id: constants.m 50 2018-12-28 16:25:47Z afacostag $
+	%   $Id: constants.m 51 2018-12-30 22:32:29Z afacostag $
 
   properties (Constant = true)
 	% ****************************************
 	% VERSION
 	% ****************************************
-    TRACI_VERSION = 15
+    TRACI_VERSION = 19
 
 
 	% ****************************************
@@ -645,6 +645,9 @@ classdef constants
 
 	% edges (get: routes)
 	VAR_EDGES = '0x54'
+    
+    %  update bestLanes (set: vehicle)
+    VAR_UPDATE_BESTLANES = '0x6a'
 
 	% filled? (get: polygons)
 	VAR_FILL = '0x55'
@@ -986,24 +989,28 @@ classdef constants
     LCA_INSUFFICIENT_SPACE = bitshift(1, 14, 'int32')
     %/ @brief used by the sublane model
     LCA_SUBLANE = bitshift(1, 15, 'int32')
+    % @brief Vehicle is too slow to guarantee success of lane change (used for continuous lane changing in case that maxSpeedLatStanding==0)
+    LCA_INSUFFICIENT_SPEED = bitshift(1,28,'int32')
     %/ @brief lane can change
-%     LCA_WANTS_LANECHANGE = LCA_LEFT || LCA_RIGHT
-    %/ @brief lane can change or stay
-%     LCA_WANTS_LANECHANGE_OR_STAY = LCA_WANTS_LANECHANGE || LCA_STAY
-    %/ @brief blocked left
-%     LCA_BLOCKED_LEFT = LCA_BLOCKED_BY_LEFT_LEADER || LCA_BLOCKED_BY_LEFT_FOLLOWER
-    %/ @brief blocked right
-%     LCA_BLOCKED_RIGHT = LCA_BLOCKED_BY_RIGHT_LEADER || LCA_BLOCKED_BY_RIGHT_FOLLOWER
-    %/ @brief blocked by leader
-%     LCA_BLOCKED_BY_LEADER = LCA_BLOCKED_BY_LEFT_LEADER || LCA_BLOCKED_BY_RIGHT_LEADER
-    %/ @brief blocker by follower
-%     LCA_BLOCKED_BY_FOLLOWER = LCA_BLOCKED_BY_LEFT_FOLLOWER || LCA_BLOCKED_BY_RIGHT_FOLLOWER
-    %/ @brief blocked in all directions
-%     LCA_BLOCKED = LCA_BLOCKED_LEFT || LCA_BLOCKED_RIGHT || LCA_INSUFFICIENT_SPACE
-    %/ @brief reasons of lane change
-%     LCA_CHANGE_REASONS = (LCA_STRATEGIC || LCA_COOPERATIVE || LCA_SPEEDGAIN || LCA_KEEPRIGHT || LCA_SUBLANE)
-    LCA_BLOCKED_BY_CURRENT_LEADER = bitshift(1, 28, 'int32')
-    LCA_BLOCKED_BY_CURRENT_FOLLOWER = bitshift(1, 29, 'int32')
+%     LCA_WANTS_LANECHANGE = bitor(LCA_LEFT,LCA_RIGHT);
+%     %/ @brief lane can change or stay
+%     LCA_WANTS_LANECHANGE_OR_STAY = bitor(LCA_WANTS_LANECHANGE,LCA_STAY);
+%     %/ @brief blocked left
+%     LCA_BLOCKED_LEFT = bitor(LCA_BLOCKED_BY_LEFT_LEADER,LCA_BLOCKED_BY_LEFT_FOLLOWER);
+%     %/ @brief blocked right
+%     LCA_BLOCKED_RIGHT = bitor(LCA_BLOCKED_BY_RIGHT_LEADER,LCA_BLOCKED_BY_RIGHT_FOLLOWER);
+%     %/ @brief blocked by leader
+%     LCA_BLOCKED_BY_LEADER = bitor(LCA_BLOCKED_BY_LEFT_LEADER,LCA_BLOCKED_BY_RIGHT_LEADER);
+%     %/ @brief blocker by follower
+%     LCA_BLOCKED_BY_FOLLOWER = bitor(LCA_BLOCKED_BY_LEFT_FOLLOWER,LCA_BLOCKED_BY_RIGHT_FOLLOWER)
+%     %/ @brief blocked in all directions
+%     LCA_BLOCKED = bitor(bitor(bitor(LCA_BLOCKED_LEFT,LCA_BLOCKED_RIGHT),...
+%         LCA_INSUFFICIENT_SPACE),LCA_INSUFFICIENT_SPEED);
+%     %/ @brief reasons of lane change
+%     LCA_CHANGE_REASONS = bitor(bitor(bitor(bitor(bitor(LCA_STRATEGIC,LCA_COOPERATIVE),...
+%         LCA_SPEEDGAIN),LCA_KEEPRIGHT),LCA_SUBLANE),LCA_TRACI);
+%     LCA_BLOCKED_BY_CURRENT_LEADER = bitshift(1, 28, 'int32')
+%     LCA_BLOCKED_BY_CURRENT_FOLLOWER = bitshift(1, 29, 'int32')
     %/ @}
     
 	end

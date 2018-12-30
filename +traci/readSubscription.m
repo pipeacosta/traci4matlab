@@ -1,10 +1,10 @@
-function [response, objectID] = readSubscription(result)
+function [objectID,response] = readSubscription(result)
 %readSubscription Internal function to read the TraCI subscriptions.
 
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: readSubscription.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: readSubscription.m 51 2018-12-30 22:32:29Z afacostag $
 
 import traci.constants
 global edgeSubscriptionResults guiSubscriptionResults ...
@@ -80,9 +80,11 @@ subscriptionResults = containers.Map({...
     edgeSubscriptionResults, simSubscriptionResults,...
     guiSubscriptionResults, personSubscriptionResults,...
     });
+
 result.readLength();
 response = result.read(1);
 strresponse = ['0x' sprintf('%x',response)];
+
 % Determine if the subscription is context related.
 isVariableSubscription = response>=sscanf(...
     traci.constants.RESPONSE_SUBSCRIBE_INDUCTIONLOOP_VARIABLE,'%x')...
@@ -111,7 +113,7 @@ if isVariableSubscription
             subsResultsHandle.add(objectID,...
                 ['0x' sprintf('%.2x',varID)], result);
         else
-            throw(MException('traci:FatalTraciError','Cannot handle subscription response %s for %s\n',...
+            throw(MException('TraCI4Matlab:FatalTraciError','Cannot handle subscription response %s for %s\n',...
                 num2str(response), objectID));
         end
         numVars = numVars - 1;

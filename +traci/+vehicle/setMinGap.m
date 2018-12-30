@@ -6,7 +6,7 @@ function setMinGap(vehID, minGap)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setMinGap.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: setMinGap.m 51 2018-12-30 22:32:29Z afacostag $
 
 import traci.constants
 traci.sendDoubleCmd(constants.CMD_SET_VEHICLE_VARIABLE, constants.VAR_MINGAP, vehID, minGap);

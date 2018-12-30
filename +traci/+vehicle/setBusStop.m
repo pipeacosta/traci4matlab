@@ -11,8 +11,7 @@ function setBusStop(vehID, stopID, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Christian Portilla, Nicolás Arroyo, Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setBusStop.m 48 2018-12-26 15:35:20Z afacostag $
-
+%   $Id: setBusStop.m 51 2018-12-30 22:32:29Z afacostag $
 
 import traci.constants
 
@@ -21,7 +20,7 @@ p.FunctionName = 'vehicle.setBusStop';
 p.addRequired('vehID',@ischar)
 p.addRequired('stopID',@ischar)
 p.addOptional('duration', 2^31-1, @isnumeric)
-p.addOptional('flags', 0, @isnumeric)
+p.addOptional('flags', constants.STOP_BUS_STOP, @isnumeric)
 p.addOptional('until', -1, @isnumeric)
 p.parse(vehID, stopID, varargin{:})
 
@@ -31,5 +30,5 @@ duration= p.Results.duration;
 flags = p.Results.flags;
 until = p.Results.until;
 
-
-traci.vehicle.setStop(vehID,stopID, 'duration', duration,'until', until, 'flags', constants.STOP_BUS_STOP);
+traci.vehicle.setStop(vehID,stopID, 'duration', duration,'until', until,...
+    'flags', constants.STOP_BUS_STOP);

@@ -11,7 +11,7 @@ function setStop(vehID, edgeID, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Christian Portilla, Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setStop.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: setStop.m 51 2018-12-30 22:32:29Z afacostag $
 
 
 import traci.constants
@@ -21,12 +21,12 @@ p = inputParser;
 p.FunctionName = 'vehicle.setStop';
 p.addRequired('vehID',@ischar)
 p.addRequired('edgeID',@ischar)
-p.addOptional('pos', 1, @isnumeric)   % -3 = DEPART_NOW
+p.addOptional('pos', 1, @isnumeric)
 p.addOptional('laneIndex', 0, @isnumeric)
-p.addOptional('duration', 2^31-1, @isnumeric)
+p.addOptional('duration', constants.INVALID_DOUBLE_VALUE, @isnumeric)
 p.addOptional('flags', constants.STOP_DEFAULT, @ischar)
 p.addOptional('startPos', constants.INVALID_DOUBLE_VALUE, @isnumeric)
-p.addOptional('until', -1, @isnumeric)
+p.addOptional('until', constants.INVALID_DOUBLE_VALUE, @isnumeric)
 p.parse(vehID, edgeID, varargin{:})
 
 vehID = p.Results.vehID;
@@ -38,36 +38,20 @@ flags = p.Results.flags;
 startPos = p.Results.startPos;
 until = p.Results.until;
 
-
-% if nargin < 8
-%     until = -1;
-%     if nargin < 7
-%         startPos = constants.INVALID_DOUBLE_VALUE;
-%         if nargin < 6
-%             flags = 0;
-%             if nargin < 5 
-%                 duration = 2^31-1;
-%                 if nargin < 4
-%                     laneIndex = 0;
-%                     if nargin < 3
-%                         pos = 1;
-%                     end
-%                 end
-%             end
-%         end
-%     end
-% end
+if duration >= 1000 && rem(duration,1000) == 0
+  warning('API change now handles duration as floating point seconds');
+end
 
 traci.beginMessage(constants.CMD_SET_VEHICLE_VARIABLE, constants.CMD_STOP,...
-    vehID, 1+4+1+4+length(edgeID)+1+8+1+1+1+4+1+1+1+8+1+4);
+    vehID, 1+4+1+4+length(edgeID)+1+8+1+1+1+8+1+1+1+8+1+8);
 message.string = [message.string uint8(sscanf(constants.TYPE_COMPOUND,'%x')) ...
     traci.packInt32(7)];
 message.string = [message.string uint8(sscanf(constants.TYPE_STRING,'%x')) ...
     traci.packInt32(length(edgeID)) uint8(edgeID)];
 message.string = [message.string uint8(sscanf(constants.TYPE_DOUBLE,'%x')) ...
     traci.packInt64(pos) uint8([sscanf(constants.TYPE_BYTE,'%x') ...
-    laneIndex sscanf(constants.TYPE_INTEGER,'%x')]) ...
-    traci.packInt32(duration) uint8([sscanf(constants.TYPE_BYTE,'%x') sscanf(flags, '%x')])];
+    laneIndex sscanf(constants.TYPE_DOUBLE,'%x')]) ...
+    traci.packInt64(duration) uint8([sscanf(constants.TYPE_BYTE,'%x') sscanf(flags, '%x')])];
 message.string = [message.string uint8(sscanf(constants.TYPE_DOUBLE,'%x')) ...
-    traci.packInt64(startPos) sscanf(constants.TYPE_INTEGER,'%x') traci.packInt32(until)];
+    traci.packInt64(startPos) sscanf(constants.TYPE_DOUBLE,'%x') traci.packInt64(until)];
 traci.sendExact();

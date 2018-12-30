@@ -6,7 +6,7 @@ function accel = getAccel(vehID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getAccel.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: getAccel.m 51 2018-12-30 22:32:29Z afacostag $
 
 import traci.constants
 accel = traci.vehicle.getUniversal(constants.VAR_ACCEL, vehID);
