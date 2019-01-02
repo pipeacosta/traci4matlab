@@ -7,7 +7,7 @@ function nextEdge = getNextEdge(personID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getNextEdge.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: getNextEdge.m 52 2019-01-02 15:20:39Z afacostag $
 
 import traci.constants
 nextEdge = traci.person.getUniversal(constants.VAR_NEXT_EDGE, personID);

@@ -6,13 +6,13 @@ function c = connect(varargin)
 %   connection is 'default'. The connection is attempted for a number of
 %   retries of ten.
 %
-%   INIT(PORT) Establishes the connection to the TraCI-Server server in the
+%   CONNECT(PORT) Establishes the connection to the TraCI-Server server in the
 %   localhost:PORT socket. 
 %
-%   INIT(PORT,NUMRETRIES) Try the connection for the given number of
+%   CONNECT(PORT,NUMRETRIES) Try the connection for the given number of
 %   retries.
 %   
-%   INIT(...,HOST) Specify the ip address of the TraCI-Server server as a
+%   CONNECT(...,HOST) Specify the ip address of the TraCI-Server server as a
 %   string e.g. '192.168.1.15'.
 
 %   Copyright 2019 Universidad Nacional de Colombia,
