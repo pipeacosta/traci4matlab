@@ -6,7 +6,7 @@ function lastStepHaltingNumber = getLastStepHaltingNumber(detID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id$
+%   $Id: getLastStepHaltingNumber.m 54 2019-01-03 15:41:54Z afacostag $
 
 import traci.constants
 lastStepHaltingNumber = traci.lanearea.getUniversal(constants.LAST_STEP_VEHICLE_HALTING_NUMBER, detID);

@@ -12,7 +12,7 @@ function setRoute(vehID, edgeList)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: setRoute.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: setRoute.m 53 2019-01-03 15:18:31Z afacostag $
 
 import traci.constants
 global message
@@ -25,4 +25,4 @@ for i=1:length(edgeList)
     message.string = [message.string traci.packInt32(length(edgeList{i})) ...
         uint8(edgeList{i})];
 end
-traci.sendExact()
+traci.sendExact();

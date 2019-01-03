@@ -5,7 +5,7 @@ function subscribeContext(cmdID, subscriptionBegin, subscriptionEnd, objID, doma
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribeContext.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: subscribeContext.m 53 2019-01-03 15:18:31Z afacostag $
 
 global message
 global loopSubscriptionResults laneSubscriptionResults vehSubscriptionResults ...
@@ -29,23 +29,24 @@ elseif strcmp(domain,'0xaa')
 end
 
 message.queue = [message.queue uint8(sscanf(cmdID,'%x'))];
-len = 1+1+4+4+4+length(objID)+1+8+1+length(varIDs);
+len = 1+1+8+8+4+length(objID)+1+8+1+length(varIDs);
 if len<=255
     message.string = [message.string uint8(len)];
 else
-    message.string = [message.string uint8(0) traci.packInt64(len+4)];
+    message.string = [message.string uint8(0) traci.packInt32(len+4)];
 end
 message.string = [message.string uint8(sscanf(cmdID,'%x')),...
-    traci.packInt32([length(objID)...
-    subscriptionEnd subscriptionBegin]) uint8(objID)];
+    traci.packInt64(subscriptionBegin) traci.packInt64(subscriptionEnd) ...
+    traci.packInt32(length(objID)) uint8(objID)];
 message.string = [message.string uint8(sscanf(domain,'%x')) ...
     traci.packInt64(dist) uint8(length(varIDs))];
 for i=1:length(varIDs)
     message.string = [message.string uint8(sscanf(varIDs{i},'%x'))];
 end
 result = traci.sendExact();
-[response, objectID] = traci.readSubscription(result);
+[objectID,response] = traci.readSubscription(result);
 if response - uint8(sscanf(cmdID,'%x'))~=16 || ~strcmp(objectID,objID) 
+    traci.close();
     raise(MException('traci:FatalTraciError','Received answer %.2X,%s for context subscription command %.2X,%s\n',...
         response, objectID, cmdID, objID));
 end

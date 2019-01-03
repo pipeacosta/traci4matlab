@@ -12,7 +12,7 @@ function subscriptionResults = getSubscriptionResults(edgeID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getSubscriptionResults.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: getSubscriptionResults.m 53 2019-01-03 15:18:31Z afacostag $
 
 global edgeSubscriptionResults
 if isempty(edgeSubscriptionResults)

@@ -13,7 +13,7 @@ function subscribe(detID, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribe.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: subscribe.m 54 2019-01-03 15:41:54Z afacostag $
 
 global laneareaSubscriptionResults
 import traci.constants
@@ -23,8 +23,10 @@ p = inputParser;
 p.FunctionName = 'lanearea.subscribe';
 p.addRequired('detID',@ischar)
 p.addOptional('varIDs', {constants.LAST_STEP_VEHICLE_NUMBER}, @iscell)
-p.addOptional('subscriptionBegin', 0, @(x)isnumeric(x) && length(x)==1)
-p.addOptional('subscriptionEnd', 2^31-1, @(x)isnumeric(x) && length(x)==1)
+p.addOptional('subscriptionBegin', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
+p.addOptional('subscriptionEnd', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
 p.parse(detID, varargin{:})
 detID = p.Results.detID;
 varIDs = p.Results.varIDs;

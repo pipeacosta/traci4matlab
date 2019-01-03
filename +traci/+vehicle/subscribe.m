@@ -13,7 +13,7 @@ function subscribe(vehID, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribe.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: subscribe.m 53 2019-01-03 15:18:31Z afacostag $
 
 global vehSubscriptionResults
 import traci.constants
@@ -23,8 +23,10 @@ p = inputParser;
 p.FunctionName = 'vehicle.subscribe';
 p.addRequired('vehID',@ischar)
 p.addOptional('varIDs', {constants.VAR_ROAD_ID, constants.VAR_LANEPOSITION}, @iscell)
-p.addOptional('subscriptionBegin', 0, @(x)isnumeric(x) && length(x)==1)
-p.addOptional('subscriptionEnd', 2^31-1, @(x)isnumeric(x) && length(x)==1)
+p.addOptional('subscriptionBegin', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
+p.addOptional('subscriptionEnd', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
 p.parse(vehID, varargin{:})
 vehID = p.Results.vehID;
 varIDs = p.Results.varIDs;
@@ -35,4 +37,4 @@ vehSubscriptionResults = traci.SubscriptionResults(traci.RETURN_VALUE_FUNC.vehic
 
 vehSubscriptionResults.reset()
 traci.subscribe(constants.CMD_SUBSCRIBE_VEHICLE_VARIABLE,...
-    subscriptionBegin, subscriptionEnd, vehID, varIDs)
+    subscriptionBegin, subscriptionEnd, vehID, varIDs);

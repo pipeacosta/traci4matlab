@@ -13,7 +13,7 @@ function subscribe(viewID, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribe.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: subscribe.m 53 2019-01-03 15:18:31Z afacostag $
 
 global guiSubscriptionResults
 import traci.constants
@@ -23,8 +23,10 @@ p = inputParser;
 p.FunctionName = 'gui.subscribe';
 p.addRequired('viewID',@ischar)
 p.addOptional('varIDs', {constants.VAR_VIEW_OFFSET}, @iscell)
-p.addOptional('subscriptionBegin', 0, @(x)isnumeric(x) && length(x)==1)
-p.addOptional('subscriptionEnd', 2^31-1, @(x)isnumeric(x) && length(x)==1)
+p.addOptional('subscriptionBegin', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
+p.addOptional('subscriptionEnd', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
 p.parse(viewID, varargin{:})
 viewID = p.Results.viewID;
 varIDs = p.Results.varIDs;

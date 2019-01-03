@@ -17,7 +17,7 @@ function subscribeContext(detID, domain, dist, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribeContext.m 31 2016-09-28 15:16:56Z afacostag $
+%   $Id: subscribeContext.m 54 2019-01-03 15:41:54Z afacostag $
 
 global laneareaSubscriptionResults
 import traci.constants

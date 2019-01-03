@@ -5,7 +5,7 @@ function subscribe(cmdID, subscriptionBegin, subscriptionEnd, objID, varIDs, var
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribe.m 51 2018-12-30 22:32:29Z afacostag $
+%   $Id: subscribe.m 53 2019-01-03 15:18:31Z afacostag $
 
 global message
 
@@ -38,9 +38,9 @@ message.string = [message.string uint8(sscanf(cmdID,'%x')),...
     traci.packInt32(length(objID)) uint8(objID)];
 message.string = [message.string uint8(length(varIDs))];
 for v=1:length(varIDs)
-    message.string = [message.string sscanf(varIDs{v},'%x')];
+    message.string = [message.string uint8(sscanf(varIDs{v},'%x'))];
     if ~isempty(parameters) && parameters.isKey(varIDs{v})
-        message.string = [message.string uint8(varIDs{v})];
+        message.string = [message.string uint8(sscanf(varIDs{v},'%x'))];
     end
 end
 

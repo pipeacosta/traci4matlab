@@ -4,7 +4,7 @@ classdef constants
     %   Copyright 2019 Universidad Nacional de Colombia,
     %   Politecnico Jaime Isaza Cadavid.
     %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-	%   $Id: constants.m 51 2018-12-30 22:32:29Z afacostag $
+	%   $Id: constants.m 53 2019-01-03 15:18:31Z afacostag $
 
   properties (Constant = true)
 	% ****************************************
@@ -328,7 +328,7 @@ classdef constants
 	RTYPE_ERR = '0xFF'
 
 	% return value for invalid queries (especially vehicle is not on the road)
-	INVALID_DOUBLE_VALUE = -1073741824.
+	INVALID_DOUBLE_VALUE = -1073741824
 	% return value for invalid queries (especially vehicle is not on the road)
 	INVALID_INT_VALUE = -1073741824
     %  maximum value for client ordering (2 ^ 30)

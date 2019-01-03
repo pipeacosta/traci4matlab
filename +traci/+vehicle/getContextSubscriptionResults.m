@@ -1,4 +1,4 @@
-function ContextSubscriptionResults = getContextSubscriptionResults(vehID)
+function contextSubscriptionResults = getContextSubscriptionResults(vehID)
 %getContextSubscriptionResults Get the context subscription results for the
 %   last time step.
 %   contextSubscriptionResults = getContextSubscriptionResults(VEHICLEID) 
@@ -13,7 +13,7 @@ function ContextSubscriptionResults = getContextSubscriptionResults(vehID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: getContextSubscriptionResults.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: getContextSubscriptionResults.m 53 2019-01-03 15:18:31Z afacostag $
 
 global vehSubscriptionResults
 if isempty(vehSubscriptionResults)
@@ -23,4 +23,4 @@ end
 if nargin < 1
     vehID=None;
 end
-ContextSubscriptionResults = vehSubscriptionResults.getContext(vehID);
+contextSubscriptionResults = vehSubscriptionResults.getContext(vehID);

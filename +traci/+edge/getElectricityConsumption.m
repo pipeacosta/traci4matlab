@@ -6,7 +6,7 @@ function electricityConsumption = getElectricityConsumption(edgeID)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id$
+%   $Id: getElectricityConsumption.m 54 2019-01-03 15:41:54Z afacostag $
 
 import traci.constants
 electricityConsumption = traci.edge.getUniversal(constants.VAR_ELECTRICITYCONSUMPTION, edgeID);

@@ -17,7 +17,7 @@ function subscribeContext(laneID, domain, dist, varargin)
 %   Copyright 2019 Universidad Nacional de Colombia,
 %   Politecnico Jaime Isaza Cadavid.
 %   Authors: Andres Acosta, Jairo Espinosa, Jorge Espinosa.
-%   $Id: subscribeContext.m 48 2018-12-26 15:35:20Z afacostag $
+%   $Id: subscribeContext.m 53 2019-01-03 15:18:31Z afacostag $
 
 global laneSubscriptionResults
 import traci.constants
@@ -29,8 +29,10 @@ p.addRequired('laneID',@ischar)
 p.addRequired('domain',@ischar)
 p.addRequired('dist',@isnumeric)
 p.addOptional('varIDs', {constants.LAST_STEP_VEHICLE_NUMBER}, @iscell)
-p.addOptional('subscriptionBegin', 0, @(x)isnumeric(x) && length(x)==1)
-p.addOptional('subscriptionEnd', 2^31-1, @(x)isnumeric(x) && length(x)==1)
+p.addOptional('subscriptionBegin', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
+p.addOptional('subscriptionEnd', constants.INVALID_DOUBLE_VALUE,...
+    @(x)(isnumeric(x) && length(x)==1))
 p.parse(laneID, domain, dist, varargin{:})
 laneID = p.Results.laneID;
 domain = p.Results.domain;
