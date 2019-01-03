@@ -1,5 +1,5 @@
 *.mat
 examples\inter_palmas\net_patched.net.xml
 examples\inter_palmas\inter_palmas_notls.net.xml
-examples\inter_palmas\notls
-examples\inter_palmas\tls
+examples\inter_palmas\notls\*
+examples\inter_palmas\tls\*
