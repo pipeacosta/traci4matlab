@@ -830,7 +830,7 @@ while traci.simulation.getMinExpectedNumber() > 0
   % Change the phase of the traffic light if a vehicle passed through the
   % induction loop
   if numPriorityVehicles > 0
-%    traci.gui.screenshot('View #0','passedvehicle.bmp')
+%    traci.gui.screenshot('View #0','passedvehicle.bmp',-1,-1)
    
 %     loop0VehicleData = traci.inductionloop.getVehicleData('0');
     
