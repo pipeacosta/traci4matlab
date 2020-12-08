@@ -554,7 +554,7 @@ classdef constants
 	LANE_EDGE_ID = '0x31'
     
     % lateral speed within last step (get: vehicle)
-	LATERAL_SPEED = '0x32'
+	VAR_LATERAL_SPEED = '0x32'
 
 	% outgoing link definitions (get: lanes)
 	LANE_LINKS = '0x33'
