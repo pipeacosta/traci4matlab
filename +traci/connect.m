@@ -44,7 +44,7 @@ for i=1:numRetries
         c.connect(host, port);
     break
     catch err        
-        fprintf('Could not connect to TraCI server at %s:%s. %s\n', host, port, err);
+        fprintf('Could not connect to TraCI server at %s:%s. %s\n', host, port, err.message);
         pause(i)
     end
 end

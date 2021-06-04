@@ -18,6 +18,7 @@ classdef Phase
         minDur
         maxDur
         next
+        name
     end
     methods
         function this = Phase(duration, state, varargin)          
@@ -27,6 +28,7 @@ classdef Phase
             this.minDur = -1;
             this.maxDur = -1;
             this.next = -1;
+            this.name = '';
             
             if nargin > 2
                 this.minDur = varargin{1};
@@ -34,6 +36,9 @@ classdef Phase
                     this.maxDur = varargin{2};
                     if nargin > 4
                         this.next = varargin{3};
+                        if nargin > 5
+                            this.name = varargin(4);
+                        end
                     end
                 end
             end

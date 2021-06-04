@@ -17,13 +17,18 @@ for i=1:numLogics
     numPhases = result.readCompound();
     phases = cell(1, numPhases);
     for j=1:numPhases
-        result.readCompound(5);
+        result.readCompound(6);
         duration = result.readTypedDouble();
         state = result.readTypedString();
         minDur = result.readTypedDouble();
         maxDur = result.readTypedDouble();
-        next = result.readTypedInt();
-        phases{j} = traci.trafficlights.Phase(duration, state, minDur, maxDur, next);
+        numNext = result.readCompound();
+        next = zeros(1, numNext);
+        for k = 1:numNext
+            next(k) = resut.readTypedInt();
+        end
+        name = result.readTypedString();
+        phases{j} = traci.trafficlights.Phase(duration, state, minDur, maxDur, next, name);
     end
     logic.phases = phases;
     numParams = result.readCompound();
