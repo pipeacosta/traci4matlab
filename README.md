@@ -23,3 +23,5 @@ author = {Acosta, Andrés F. and Espinosa, Jorge E. and Espinosa, Jairo}, <br>
 year = {2015}, <br>
 pages = {155--170} <br>
 }
+
+[![View TraCI4Matlab on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/44805-traci4matlab)
